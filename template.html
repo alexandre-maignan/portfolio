@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Consommation d'eau en temps réel - ChatGPT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+
+
+  
+<style>
+  /* Reset et typographie */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: white;
+    color: black;
+    
+  }
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+
+  /* Navbar */
+
+  nav {
+  position: fixed; /* reste visible en scroll */
+  background-color: white;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 25px;
+  align-items: center;
+  z-index: 1000; /* pour être au-dessus du contenu */
+  transition: top 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+
+/* Logo à gauche : colonne 1 à 6 */
+nav h2 {
+  grid-column: 1 / span 2;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+
+.nav-links {
+  grid-column: 7 / span 6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+
+  .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 1rem;
+    }
+
+    nav .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 1rem;
+      height: 80px;
+      border-bottom: 2.5px solid black;
+    }
+
+
+    footer .grid {
+      border-top: 2.5px solid black;
+    }
+
+
+
+    .nav-links a {
+    text-decoration: none;      /* enlever le soulignement */
+    color: #000;                /* couleur du texte */
+    font-weight: 500;           /* épaisseur */
+    font-size: 1rem;            /* taille */
+    transition: 0.3s ease;      /* animation douce */
+    text-transform: uppercase;
+}
+
+
+    .hero {
+      padding: 150px 25px 0 25px; /* haut | droite | bas | gauche */
+    }
+
+
+    /* Bloc texte */
+    .text-hero {
+      grid-column: 1 / span 11; /* commence à la 2e colonne et prends 4 colonnes*/
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    h1 {
+      font-size: 8rem;
+      color: rgb(12, 12, 12);
+      margin-bottom: 40px;
+      font-weight: 600;
+      letter-spacing: -0px;
+      line-height: 100px;
+    }
+
+    .section-1 {
+      padding: 0px 25px 0 25px; /* haut | droite | bas | gauche */
+      margin-bottom: 80px;
+    }
+
+    .image-section {
+      grid-column: 1 / span 12; /* commence à la 2e colonne et prends 4 colonnes*/
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+    }
+
+    .image-section img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover; /* recadre l'image sans la déformer */
+      display: block;
+    }
+
+    .text-gras-section {
+      grid-column: 1 / span 4; /* commence à la 2e colonne et prends 4 colonnes*/
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+    }
+
+    .text-gras-section p {
+      font-size: 30px;
+      color: rgb(11, 11, 12);
+      line-height: 25px;
+      font-weight: 700;
+
+      margin-bottom: 16px;
+      letter-spacing: -0px;
+
+    }
+
+
+    .text-section {
+      grid-column: 6 / span 6; /* commence à la 2e colonne et prends 4 colonnes*/
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+    }
+
+    .text-section p {
+      font-size: 20px;
+      color: rgb(11, 11, 12);
+      line-height: 25px;
+      font-weight: 500;
+      max-width: 800px;
+      margin-bottom: 16px;
+      letter-spacing: -0px;
+      
+    }
+
+
+    .text-principal {
+      grid-column: 1 / span 8; /* commence à la 2e colonne et prends 4 colonnes*/
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+    }
+
+    .text-principal p {
+      font-size: 30px;
+      color: rgb(11, 11, 12);
+      line-height: 25px;
+      font-weight: 700;
+
+      margin-bottom: 16px;
+      letter-spacing: -0px;
+
+    }
+
+
+
+.sticky-column {
+  position: sticky;
+  top: 110px;
+  align-self: start;
+}
+
+
+
+
+
+
+
+
+
+footer {
+      padding: 0px 25px 0 25px; /* haut | droite | bas | gauche */
+      margin-bottom: 80px;
+    }
+
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="grid">
+  <h2>Alexandre</h2>
+  <div class="nav-links">
+    <a href="#compteur">Acceuil</a>
+    <a href="#explications">À propos</a>
+    <a href="#motivations">Projets</a>
+    <a href="#footer">Contact</a>
+  </div>
+  </div>
+</nav>
+
+
+
+
+<section class="hero">
+    <div class="grid">
+      <div class="text-hero">
+        <h1>Projet</h1>
+      </div>
+    </div>
+  </section>
+
+<section class="section-1">
+    <div class="grid">
+      <div class="image-section">
+        <img src="https://www.airzen.fr/wp-content/uploads/2022/03/AdobeStock_249450930-scaled.jpeg" alt="Description de l'image">
+      </div>
+    </div>
+</section>
+
+
+
+<section class="section-1">
+  <div class="grid">
+    <div class="text-gras-section sticky-column">
+        <p>Cette initiative vise à rendre plus visibles et compréhensibles les impacts environnementaux du numérique.</p>
+
+      </div>
+      <div class="text-section sticky-column">
+        <p>L’intérêt de cette initiative est de rendre visible une consommation souvent invisible : l’eau utilisée par les technologies numériques. En traduisant des chiffres abstraits en litres et en équivalents concrets, comme des piscines olympiques, ce compteur permet de mieux comprendre l’impact environnemental réel de l’intelligence artificielle. L’objectif n’est pas seulement d’informer, mais aussi de sensibiliser aux enjeux de durabilité et d’encourager l’innovation vers des solutions plus sobres et responsables.</p>
+
+        <p>Cette démarche contribue également à instaurer une nouvelle culture de transparence autour des usages numériques. En rendant accessibles des données jusqu’ici réservées aux experts, elle offre aux citoyens, aux entreprises et aux décideurs des repères concrets pour évaluer l’impact de leurs pratiques digitales. Ce type d’outil favorise ainsi une prise de conscience collective et peut devenir un levier pour orienter les politiques publiques, guider les choix technologiques et encourager le développement de services numériques plus respectueux des ressources naturelles.</p>
+
+        
+
+        
+      </div>
+    </div>
+</section>
+
+
+
+<section class="section-1">
+    <div class="grid">
+      <div class="image-section">
+        <img src="https://www.airzen.fr/wp-content/uploads/2022/03/AdobeStock_249450930-scaled.jpeg" alt="Description de l'image">
+      </div>
+    </div>
+</section>
+
+
+
+<footer>
+  <div class="grid">
+    <div class="colonnes-footer">
+
+    </div>
+  
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/gh/alexandre-maignan/tools/smooth-scroll-local.js"></script>
+<script>
+
+initSmoothScroll({
+    ease: 0.1,             // vitesse du lissage du scroll (plus haut = plus rapide)
+    scrollMult: 1,         // intensité de la molette (1 = normal)
+
+    MOBILE_BREAKPOINT: 768,     // désactive le script sous 768px (mobile)
+    minPageHeightRatio: 1.05,   // désactive si page trop petite
+
+    DEBUG: false,               // active les logs console si besoin
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+let lastScroll = 0;
+const nav = document.querySelector('nav');
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+
+  if (currentScroll > lastScroll) {
+    // Scroll vers le bas → cacher la navbar
+    nav.style.top = '-100px'; // ajuste selon la hauteur de ta navbar
+  } else {
+    // Scroll vers le haut → montrer la navbar
+    nav.style.top = '0';
+  }
+
+  lastScroll = currentScroll;
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
