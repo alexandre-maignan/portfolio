@@ -126,9 +126,24 @@ nav h2 {
       justify-content: start;
     }
 
+    .image-section-2 {
+      grid-column: 1 / span 12; /* commence à la 2e colonne et prends 4 colonnes*/
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+    }
+
+
     .image-section img {
       width: 100%;
-      height: 500px;
+      height: 700px;
+      object-fit: cover; /* recadre l'image sans la déformer */
+      display: block;
+    }
+
+    .image-section-2 img {
+      width: 100%;
+      
       object-fit: cover; /* recadre l'image sans la déformer */
       display: block;
     }
@@ -143,11 +158,12 @@ nav h2 {
     .text-gras-section p {
       font-size: 30px;
       color: rgb(11, 11, 12);
-      line-height: 25px;
+      line-height: 30px;
       font-weight: 700;
 
       margin-bottom: 16px;
       letter-spacing: -0px;
+      max-width: 430px;
 
     }
 
@@ -171,21 +187,23 @@ nav h2 {
     }
 
 
-    .text-principal {
-      grid-column: 1 / span 8; /* commence à la 2e colonne et prends 4 colonnes*/
+    .text-section-2 {
+      margin-top: 80px;
+      grid-column: 1 / span 11; /* commence à la 2e colonne et prends 4 colonnes*/
       display: flex;
       flex-direction: column;
       justify-content: start;
     }
 
-    .text-principal p {
-      font-size: 30px;
+    .text-section-2 p {
+      font-size: 50px;
       color: rgb(11, 11, 12);
-      line-height: 25px;
-      font-weight: 700;
+      line-height: 45px;
+      font-weight: 500;
 
       margin-bottom: 16px;
       letter-spacing: -0px;
+      max-width: 1000px;
 
     }
 
@@ -257,13 +275,9 @@ footer {
 
       </div>
       <div class="text-section sticky-column">
-        <p>L’intérêt de cette initiative est de rendre visible une consommation souvent invisible : l’eau utilisée par les technologies numériques. En traduisant des chiffres abstraits en litres et en équivalents concrets, comme des piscines olympiques, ce compteur permet de mieux comprendre l’impact environnemental réel de l’intelligence artificielle. L’objectif n’est pas seulement d’informer, mais aussi de sensibiliser aux enjeux de durabilité et d’encourager l’innovation vers des solutions plus sobres et responsables.</p>
+        <p>L’intérêt de cette initiative est de rendre visible une consommation souvent invisible : l’eau utilisée par les technologies numériques. En traduisant des chiffres abstraits en litres et en équivalents concrets, comme des piscines olympiques, ce compteur permet de mieux comprendre l’impact environnemental réel de l’intelligence artificielle.</p>
 
-        <p>Cette démarche contribue également à instaurer une nouvelle culture de transparence autour des usages numériques. En rendant accessibles des données jusqu’ici réservées aux experts, elle offre aux citoyens, aux entreprises et aux décideurs des repères concrets pour évaluer l’impact de leurs pratiques digitales. Ce type d’outil favorise ainsi une prise de conscience collective et peut devenir un levier pour orienter les politiques publiques, guider les choix technologiques et encourager le développement de services numériques plus respectueux des ressources naturelles.</p>
-
-        
-
-        
+        <p>Cette démarche contribue également à instaurer une nouvelle culture de transparence autour des usages numériques. En rendant accessibles des données jusqu’ici réservées aux experts, elle offre aux citoyens, aux entreprises et aux décideurs des repères concrets pour évaluer l’impact de leurs pratiques digitales.</p>
       </div>
     </div>
 </section>
@@ -271,9 +285,19 @@ footer {
 
 
 <section class="section-1">
+  <div class="grid">
+      <div class="text-section-2">
+        <p>En traduisant des chiffres abstraits en litres et en équivalents concrets, comme des piscines olympiques, ce compteur permet de mieux comprendre l’impact environnemental réel de l’intelligence artificielle.</p>
+
+      </div>
+    </div>
+</section>
+
+
+<section class="section-1">
     <div class="grid">
-      <div class="image-section">
-        <img src="https://www.airzen.fr/wp-content/uploads/2022/03/AdobeStock_249450930-scaled.jpeg" alt="Description de l'image">
+      <div class="image-section-2">
+        <img src="https://oceanpanel.org/wp-content/uploads/2020/06/summer-time-under-the-sea-ocean-water-2021-08-28-14-51-43-utc-scaled.jpg" alt="Description de l'image">
       </div>
     </div>
 </section>
@@ -367,6 +391,10 @@ window.addEventListener('scroll', () => {
 
 </body>
 </html>
+
+
+
+
 
 
 
