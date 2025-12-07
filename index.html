@@ -396,6 +396,7 @@ function initSmoothScroll(options = {}) {
     let current = 0;
     let target = 0;
     let rafId = null;
+    let draggingScrollbar = false;
 
     const clamp = (v, min, max) => Math.max(min, Math.min(v, max));
     const log = (...args) => { if (SmoothConfig.DEBUG) console.log('[smooth]', ...args); };
@@ -430,9 +431,20 @@ function initSmoothScroll(options = {}) {
         log('Smooth disabled');
     }
 
-    // Gestion de la molette
+    // --- Stop animation when dragging scrollbar ---
+    document.addEventListener("mousedown", () => {
+        draggingScrollbar = true;
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = null;
+    });
+
+    document.addEventListener("mouseup", () => {
+        draggingScrollbar = false;
+        current = target = window.scrollY;
+    });
+
     function onWheel(e) {
-        if (!smoothEnabled) return;
+        if (!smoothEnabled || draggingScrollbar) return;
         if (e.ctrlKey) return;
         e.preventDefault();
 
@@ -447,30 +459,35 @@ function initSmoothScroll(options = {}) {
     }
 
     function onNativeScroll() {
-        if (!rafId) {
+        if (!rafId || draggingScrollbar) {
             target = current = window.scrollY;
         }
     }
 
-    // Stop smooth scroll avec touches clavier
+    // --- NEW: STOP SMOOTH SCROLL WHEN USING KEYBOARD (arrows, pgup, pgdn, etc) ---
     window.addEventListener("keydown", (e) => {
         const keys = [
-            "ArrowUp", "ArrowDown",
-            "PageUp", "PageDown",
-            "Home", "End",
+            "ArrowUp",
+            "ArrowDown",
+            "PageUp",
+            "PageDown",
+            "Home",
+            "End",
             "Space"
         ];
 
         if (!keys.includes(e.code)) return;
 
+        // Stop the animation instantly
         if (rafId) cancelAnimationFrame(rafId);
         rafId = null;
 
+        // Sync to native scroll position
         current = target = window.scrollY;
     });
 
     function render() {
-        if (!smoothEnabled) return;
+        if (!smoothEnabled || draggingScrollbar) return;
 
         const diff = target - current;
 
@@ -515,14 +532,16 @@ function initSmoothScroll(options = {}) {
         }, 120);
     });
 
-    // Smooth scroll pour liens internes
+    // Internal links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
             const targetEl = document.querySelector(targetId);
             if (!targetEl) return;
 
-            if (window.innerWidth < SmoothConfig.MOBILE_BREAKPOINT) return;
+            if (window.innerWidth < SmoothConfig.MOBILE_BREAKPOINT) {
+                return;
+            }
 
             e.preventDefault();
 
@@ -540,7 +559,7 @@ function initSmoothScroll(options = {}) {
 initSmoothScroll({
     DEBUG: false,
     ease: 0.06,
-    scrollMult: 2
+    scrollMult: 1.5,
 });
 </script>
 
@@ -559,10 +578,9 @@ initSmoothScroll({
 
 
 
-
-
 </body>
 </html>
+
 
 
 
