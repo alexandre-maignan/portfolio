@@ -1,581 +1,121 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Consommation d'eau en temps réel - ChatGPT</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-
-
-
-  
-<style>
-  /* Reset et typographie */
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'inter', sans-serif;
-    background: white;
-    color: black;
-    
-  }
-
-html {
-  scroll-behavior: smooth;
-}
-
-
-
-  /* Navbar */
-
-  nav {
-  position: fixed; /* reste visible en scroll */
-  background-color: white;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 0 25px;
-  align-items: center;
-  z-index: 1000; /* pour être au-dessus du contenu */
-  transition: top 1s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-
-
-/* Logo à gauche : colonne 1 à 6 */
-nav h2 {
-  grid-column: 1 / span 2;
-  display: flex;
-  align-items: center;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-}
-
-
-.nav-links {
-  grid-column: 7 / span 6;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-}
-
-
-  .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: 1rem;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Site Smooth Scroll</title>
+  <style>
+    /* Smooth scroll natif (marche sur mobile moderne) */
+    html {
+      scroll-behavior: smooth;
     }
 
-    nav .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: 1rem;
-      height: 80px;
-      border-bottom: 2.5px solid black;
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
     }
 
-
-    footer .grid {
-      border-top: 2.5px solid black;
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #111;
+      padding: 1rem;
+      z-index: 1000;
     }
 
-
-
-    .nav-links a {
-    text-decoration: none;      /* enlever le soulignement */
-    color: #000;                /* couleur du texte */
-    font-weight: 500;           /* épaisseur */
-    font-size: 1rem;            /* taille */
-    transition: 0.3s ease;      /* animation douce */
-    text-transform: uppercase;
-}
-
-
-    .hero {
-      padding: 150px 25px 0 25px; /* haut | droite | bas | gauche */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
     }
 
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
 
-    /* Bloc texte */
-    .text-hero {
-      grid-column: 1 / span 11; /* commence à la 2e colonne et prends 4 colonnes*/
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 6rem 1.5rem 2rem; /* espace pour le header fixe */
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
+      text-align: center;
     }
 
-    h1 {
-      font-size: 8rem;
-      color: rgb(12, 12, 12);
-      margin-bottom: 40px;
-      font-weight: 600;
-      letter-spacing: -0px;
-      line-height: 100px;
+    #home { background: #f5f5f5; }
+    #about { background: #e0e7ff; }
+    #services { background: #d1fae5; }
+    #contact { background: #fde68a; }
+
+    h1, h2 {
+      margin-bottom: 1rem;
     }
 
-    .section-1 {
-      padding: 0px 25px 0 25px; /* haut | droite | bas | gauche */
-      margin-bottom: 80px;
+    p {
+      max-width: 600px;
     }
 
-    .image-section {
-      grid-column: 1 / span 12; /* commence à la 2e colonne et prends 4 colonnes*/
-      display: flex;
-      flex-direction: column;
-      justify-content: start;
+    /* Mobile tweaks */
+    @media (max-width: 600px) {
+      nav {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
     }
-
-    .image-section-2 {
-      grid-column: 2 / span 10; /* commence à la 2e colonne et prends 4 colonnes*/
-      display: flex;
-      flex-direction: column;
-      justify-content: start;
-    }
-
-
-    .image-section img {
-      width: 100%;
-      height: 700px;
-      object-fit: cover; /* recadre l'image sans la déformer */
-      display: block;
-    }
-
-    .image-section-2 img {
-      width: 100%;
-      
-      object-fit: cover; /* recadre l'image sans la déformer */
-      display: block;
-    }
-
-    .text-gras-section {
-      grid-column: 1 / span 4; /* commence à la 2e colonne et prends 4 colonnes*/
-      display: flex;
-      flex-direction: column;
-      justify-content: start;
-    }
-
-    .text-gras-section p {
-      font-size: 28px;
-      color: rgb(11, 11, 12);
-      line-height: 30px;
-      font-weight: 700;
-
-      margin-bottom: 16px;
-      letter-spacing: -0px;
-    }
-
-
-    .text-section {
-      grid-column: 6 / span 6; /* commence à la 2e colonne et prends 4 colonnes*/
-      display: flex;
-      flex-direction: column;
-      justify-content: start;
-    }
-
-    .text-section p {
-      font-size: 20px;
-      color: rgb(11, 11, 12);
-      line-height: 25px;
-      font-weight: 500;
-      max-width: 800px;
-      margin-bottom: 16px;
-      letter-spacing: -0px;
-      
-    }
-
-
-    .text-section-2 {
-      margin-top: 80px;
-      grid-column: 1 / span 11; /* commence à la 2e colonne et prends 4 colonnes*/
-      display: flex;
-      flex-direction: column;
-      justify-content: start;
-    }
-
-    .text-section-2 p {
-      font-size: 50px;
-      color: rgb(11, 11, 12);
-      line-height: 48px;
-      font-weight: 500;
-
-      margin-bottom: 16px;
-      letter-spacing: -0px;
-      max-width: 1000px;
-
-    }
-
-
-
-.sticky-column {
-  position: sticky;
-  top: 110px;
-  align-self: start;
-}
-
-
-
-
-
-
-
-
-
-footer {
-      padding: 0px 25px 0 25px; /* haut | droite | bas | gauche */
-      margin-bottom: 80px;
-    }
-
-
-
-
-</style>
+  </style>
 </head>
 <body>
 
-<nav>
-  <div class="grid">
-  <h2>Alexandre</h2>
-  <div class="nav-links">
-    <a href="#compteur">Acceuil</a>
-    <a href="#explications">À propos</a>
-    <a href="#motivations">Projets</a>
-    <a href="#footer">Contact</a>
-  </div>
-  </div>
-</nav>
+  <header>
+    <nav>
+      <a href="#home">Accueil</a>
+      <a href="#about">À propos</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-
-
-
-<section class="hero">
-    <div class="grid">
-      <div class="text-hero">
-        <h1>Projet</h1>
-      </div>
-    </div>
+  <section id="home">
+    <h1>Bienvenue 👋</h1>
+    <p>Un site simple avec un smooth scroll fluide, compatible mobile.</p>
   </section>
 
-<section class="section-1">
-    <div class="grid">
-      <div class="image-section">
-        <img src="https://www.airzen.fr/wp-content/uploads/2022/03/AdobeStock_249450930-scaled.jpeg" alt="Description de l'image">
-      </div>
-    </div>
-</section>
-
-
-
-
-
-<section class="section-1">
-  <div class="grid">
-      <div class="text-section-2">
-        <p>En traduisant des chiffres abstraits en litres et en équivalents concrets, comme des piscines olympiques, ce compteur permet de mieux comprendre l’impact environnemental réel de l’intelligence artificielle.</p>
-
-      </div>
-    </div>
-</section>
-
-
-
-
-
-
-
-<section class="section-1">
-  <div class="grid">
-    <div class="text-gras-section sticky-column">
-        <p>Cette initiative vise à rendre plus visibles et compréhensibles les impacts environnementaux du numérique.</p>
-
-      </div>
-      <div class="text-section sticky-column">
-        <p>L’intérêt de cette initiative est de rendre visible une consommation souvent invisible : l’eau utilisée par les technologies numériques. En traduisant des chiffres abstraits en litres et en équivalents concrets, comme des piscines olympiques, ce compteur permet de mieux comprendre l’impact environnemental réel de l’intelligence artificielle.</p>
-
-        <p>Cette démarche contribue également à instaurer une nouvelle culture de transparence autour des usages numériques. En rendant accessibles des données jusqu’ici réservées aux experts, elle offre aux citoyens, aux entreprises et aux décideurs des repères concrets pour évaluer l’impact de leurs pratiques digitales.</p>
-      </div>
-    </div>
-</section>
-
-
-
-
-
-
-
-
-<section class="section-1">
-    <div class="grid">
-      <div class="image-section-2">
-        <img src="https://oceanpanel.org/wp-content/uploads/2020/06/summer-time-under-the-sea-ocean-water-2021-08-28-14-51-43-utc-scaled.jpg" alt="Description de l'image">
-      </div>
-    </div>
-</section>
-
-
-
-<footer>
-  <div class="grid">
-    <div class="colonnes-footer">
-
-    </div>
-  
-  </div>
-</footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-let lastScroll = 0;
-const nav = document.querySelector('nav');
-
-window.addEventListener('scroll', () => {
-  const currentScroll = window.pageYOffset;
-
-  if (currentScroll > lastScroll) {
-    // Scroll vers le bas → cacher la navbar
-    nav.style.top = '-100px'; // ajuste selon la hauteur de ta navbar
-  } else {
-    // Scroll vers le haut → montrer la navbar
-    nav.style.top = '0';
-  }
-
-  lastScroll = currentScroll;
-});
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-(function (global) {
-    function initSmoothScroll(options = {}) {
-        const SmoothConfig = {
-            DEBUG: false,
-            MOBILE_BREAKPOINT: 768,
-            ease: 0.07,              // Lissage un peu plus naturel
-            stopThreshold: 0.3,      // Évite les micro-sauts de fin
-            scrollMult: 1,
-            minPageHeightRatio: 1.05,
-            offset: 0,
-            ...options,
-        };
-
-        let enabled = false;
-        let current = 0;
-        let target = 0;
-        let rafId = null;
-
-        const clamp = (v, min, max) => Math.max(min, Math.min(v, max));
-
-        function updateScrollBehavior() {
-            const behavior = window.innerWidth < SmoothConfig.MOBILE_BREAKPOINT ? "" : "auto";
-            document.documentElement.style.scrollBehavior = behavior;
-            document.body.style.scrollBehavior = behavior;
-        }
-
-        function enable() {
-            if (enabled) return;
-            enabled = true;
-
-            current = target = window.scrollY;
-
-            window.addEventListener("wheel", onWheel, { passive: false });
-            window.addEventListener("scroll", syncScroll, { passive: true });
-        }
-
-        function disable() {
-            if (!enabled) return;
-            enabled = false;
-
-            window.removeEventListener("wheel", onWheel);
-            window.removeEventListener("scroll", syncScroll);
-
-            if (rafId) cancelAnimationFrame(rafId);
-            rafId = null;
-        }
-
-        function onWheel(e) {
-            if (e.ctrlKey) return;
-
-            e.preventDefault();
-
-            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-            target = clamp(target + e.deltaY * SmoothConfig.scrollMult, 0, maxScroll);
-
-            if (!rafId) render();
-        }
-
-        function syncScroll() {
-            if (!rafId) {
-                current = target = window.scrollY;
-            }
-        }
-
-        function render() {
-            if (!enabled) return;
-
-            const pageMax = document.documentElement.scrollHeight - window.innerHeight;
-
-            // Si iframe modifie la hauteur → on recalcule
-            if (target > pageMax) target = pageMax;
-
-            const diff = target - current;
-
-            if (Math.abs(diff) < SmoothConfig.stopThreshold) {
-                current = target;
-                window.scrollTo(0, current);
-                rafId = null;
-                return;
-            }
-
-            current += diff * SmoothConfig.ease;
-
-            // PAS D'ARRONDI → fin d'animation fluide
-            window.scrollTo(0, current);
-
-            rafId = requestAnimationFrame(render);
-        }
-
-        function checkState() {
-            const isMobile = window.innerWidth < SmoothConfig.MOBILE_BREAKPOINT;
-            const pageTooShort =
-                document.documentElement.scrollHeight <=
-                window.innerHeight * SmoothConfig.minPageHeightRatio;
-
-            if (isMobile || pageTooShort) {
-                disable();
-                return;
-            }
-
-            enable();
-        }
-
-        function setupAnchors() {
-            document.querySelectorAll('a[href^="#"]').forEach(a => {
-                a.addEventListener("click", e => {
-                    const el = document.querySelector(a.getAttribute("href"));
-                    if (!el) return;
-
-                    if (window.innerWidth < SmoothConfig.MOBILE_BREAKPOINT) return;
-
-                    e.preventDefault();
-                    if (rafId) cancelAnimationFrame(rafId);
-
-                    current = target = window.scrollY;
-                    target = el.getBoundingClientRect().top + window.scrollY + SmoothConfig.offset;
-
-                    render();
-                });
-            });
-        }
-
-        updateScrollBehavior();
-        checkState();
-        setupAnchors();
-
-        window.addEventListener("resize", () => {
-            clearTimeout(window.__smoothResizeTimer);
-            window.__smoothResizeTimer = setTimeout(() => {
-                updateScrollBehavior();
-                checkState();
-            }, 120);
-        });
-    }
-
-    global.initSmoothScroll = initSmoothScroll;
-
-})(window);
-
-window.addEventListener('load', () => {
-    initSmoothScroll();
-});
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <section id="about">
+    <h2>À propos</h2>
+    <p>Le scroll est géré nativement en CSS, ce qui fonctionne très bien sur téléphone et ordinateur.</p>
+  </section>
+
+  <section id="services">
+    <h2>Services</h2>
+    <p>Design propre, responsive, animations fluides sans librairie externe.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Tu peux adapter ce template facilement pour n'importe quel projet.</p>
+  </section>
+
+  <script>
+    // Fallback JS pour vieux navigateurs (rare, mais safe)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
