@@ -35,23 +35,40 @@ body { font-family: 'Montserrat', sans-serif; /* Police Montserrat */; backgroun
   z-index:1101;
 }
 
+
+
+
+
 .hamburger span {
-  width:30px;
-  height:3px;
-  background:#222;
-  display:block;
-  transition:0.3s;
+  width: 40px;
+  height: 3px;
+  background: #222;
+  display: block;
+  position: relative;
+  top: 0; /* position de départ */
+  transition: 
+    top 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Hamburger actif – forme un "moins" */
 .hamburger.active span:nth-child(1) {
-  transform:rotate(45deg) translate(5px,5px);
+  top: 8px;            /* monte vers le centre */
 }
+
 .hamburger.active span:nth-child(2) {
-  opacity:0;
+  opacity: 0;           /* milieu disparaît */
 }
+
 .hamburger.active span:nth-child(3) {
-  transform:rotate(-45deg) translate(5px,-5px);
+  top: -8px;           /* descend vers le centre */
 }
+
+
+
+
+
 
 /* Fond animé du menu */
 .fullscreen-menu-bg {
@@ -68,11 +85,11 @@ body { font-family: 'Montserrat', sans-serif; /* Police Montserrat */; backgroun
 /* Conteneur des liens */
 .fullscreen-menu-links {
   position: fixed;
-  top:0; left:0;
+  top:0; left:40px;
   width:100%;
   height:100%;
   display:flex;
-  justify-content:center;
+  justify-content:left;
   align-items:center;
   z-index:1051;
 
@@ -102,8 +119,8 @@ body { font-family: 'Montserrat', sans-serif; /* Police Montserrat */; backgroun
   font-size:4.5rem;
   color:#222;
   text-decoration:none;
-  text-transform: uppercase;
-  font-weight: 500;
+
+  letter-spacing: -0.2rem;
 }
 
 .fullscreen-menu-links li a:hover { opacity:0.8; }
@@ -114,7 +131,9 @@ body.no-scroll {
 }
 
 @media (max-width:768px) {
-  .fullscreen-menu-links li a { font-size:2rem; }
+  .fullscreen-menu-links li a { font-size:3.3rem; }
+  .navbar {padding:10px 20px;}
+  .fullscreen-menu-links { top:0; left:20px;}
 }
 </style>
 </head>
