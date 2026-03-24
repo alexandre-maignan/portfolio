@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menu Punchy In-Out 6.4 - Rebonds</title>
+<title>Menu Punchy In-Out</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
@@ -20,7 +20,6 @@ body { font-family: 'Montserrat', sans-serif; background:white; color:#222; }
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:transparent;
   z-index:1100;
 }
 
@@ -38,44 +37,38 @@ body { font-family: 'Montserrat', sans-serif; background:white; color:#222; }
   width: 40px;
   height: 3px;
   background: #222;
-  display: block;
   position: relative;
-  top: 0;
-  transition: top 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.5s cubic-bezier(0.4,0,0.2,1), transform 0.5s cubic-bezier(0.4,0,0.2,1);
+  transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
 }
 
 .hamburger.active span:nth-child(1) { top: 8px; }
 .hamburger.active span:nth-child(2) { opacity: 0; }
 .hamburger.active span:nth-child(3) { top: -8px; }
 
-/* Fond animé du menu */
+/* Fond */
 .fullscreen-menu-bg {
   position: fixed;
   top:0; left:0;
   width:100%;
   height:100%;
   background:#a7a376;
-  pointer-events:none;
   z-index:1050;
   transform-origin: top;
   transform: scaleY(0);
-  will-change: transform;
-  transition: transform 0.2s ease-out; /* lissage fin animation */
 }
 
-/* Conteneur des liens */
+/* Menu */
 .fullscreen-menu-links {
   position: fixed;
   top:0; left:40px;
   width:100%;
   height:100%;
   display:flex;
-  justify-content:left;
   align-items:center;
   z-index:1051;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.6s ease 0s;
+  transition: opacity 0.3s ease;
 }
 
 .fullscreen-menu-links.show {
@@ -85,13 +78,20 @@ body { font-family: 'Montserrat', sans-serif; background:white; color:#222; }
 
 .fullscreen-menu-links ul {
   list-style:none;
-  text-align:center;
-  padding:0;
-  margin:0;
 }
 
 .fullscreen-menu-links li {
   margin:20px 0;
+
+  /* animation stagger */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+
+.fullscreen-menu-links.show li {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .fullscreen-menu-links li a {
@@ -99,16 +99,18 @@ body { font-family: 'Montserrat', sans-serif; background:white; color:#222; }
   color:#222;
   text-decoration:none;
   letter-spacing: -0.2rem;
+  transition: opacity 0.3s ease;
 }
 
-.fullscreen-menu-links li a:hover { opacity:0.8; }
+/* hover focus */
+.fullscreen-menu-links ul:hover li a:not(:hover) {
+  opacity: 0.5;
+}
 
-body.no-scroll { overflow:hidden; height:100%; }
+body.no-scroll { overflow:hidden; }
 
 @media (max-width:768px) {
   .fullscreen-menu-links li a { font-size:3rem; }
-  .navbar {padding:10px 20px;}
-  .fullscreen-menu-links { left:20px; }
 }
 </style>
 </head>
@@ -122,10 +124,8 @@ body.no-scroll { overflow:hidden; height:100%; }
   </div>
 </nav>
 
-<!-- Fond animé -->
 <div class="fullscreen-menu-bg" id="menu-bg"></div>
 
-<!-- Liens fixes -->
 <div class="fullscreen-menu-links" id="menu-links">
   <ul>
     <li><a href="#">Accueil,</a></li>
@@ -135,51 +135,24 @@ body.no-scroll { overflow:hidden; height:100%; }
   </ul>
 </div>
 
-
-
-
-
-
-<section style="height:200vh;padding: 100px 40px; background:#f5f5f5;">
-  <h2 style="font-family:'Merriweather', serif; font-size:2.5rem; margin-bottom:20px;">Section de Test</h2>
-  <p style="font-size:1.2rem; line-height:1.6; margin-bottom:20px;">
-    Ceci est une section de test pour vérifier le scroll de la page. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec neque nec mauris dignissim suscipit.
-  </p>
-  <p style="font-size:1.2rem; line-height:1.6; margin-bottom:20px;">
-    Ajoutez autant de paragraphes que nécessaire pour générer le scroll. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>
-  <p style="font-size:1.2rem; line-height:1.6; margin-bottom:20px;">
-    Encore un autre paragraphe pour tester le défilement. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel orci ac justo posuere luctus.
-  </p>
-  <p style="font-size:1.2rem; line-height:1.6; margin-bottom:20px;">
-    Et un dernier pour bien remplir la page et voir comment le menu interagit avec le scroll. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  </p>
+<section style="height:200vh;padding:100px 40px;">
+  <h2>Scroll test</h2>
 </section>
-
-
-
-
-
 
 <script>
 const hamburger = document.getElementById('hamburger');
 const menuBg = document.getElementById('menu-bg');
 const menuLinks = document.getElementById('menu-links');
 
-let progress = 0;       // 0 à 100
-let direction = 0;      // 1 = ouverture, -1 = fermeture
-const duration = 1200;
+let progress = 0;
+let direction = 0;
+const duration = 1000; // plus rapide = meilleur UX
 let lastTime = null;
 
-/* Easing custom puissance 6.4 avec petit rebond */
-function easeInOutPow64(t){
-  const power = 6.4;
-  let val;
-  if(t < 0.5) val = Math.pow(2*t, power)/2;
-  else val = 1 - Math.pow(-2*t + 2, power)/2;
-
-  // léger overshoot pour éviter fin brusque
-  return Math.min(val*1.02, 1); // dépasse un peu et revient à 1 via transition CSS
+function ease(t){
+  return t<0.5
+    ? Math.pow(2*t,6.4)/2
+    : 1 - Math.pow(-2*t+2,6.4)/2;
 }
 
 function animate(timestamp){
@@ -193,9 +166,7 @@ function animate(timestamp){
     if(progress >= 100){ progress = 100; direction = 0; }
     if(progress <= 0){ progress = 0; direction = 0; }
 
-    const t = progress/100;
-    const eased = easeInOutPow64(t);
-    menuBg.style.transform = `scaleY(${eased})`;
+    menuBg.style.transform = `scaleY(${ease(progress/100)})`;
 
     if(progress > 0) document.body.classList.add('no-scroll');
     else document.body.classList.remove('no-scroll');
@@ -213,24 +184,27 @@ hamburger.addEventListener('click', ()=>{
   else if(progress === 100) direction = -1;
   else direction *= -1;
 
+  const items = menuLinks.querySelectorAll('li');
+
   if(direction === 1){
-    menuLinks.style.transitionDelay = '0.8s';
-    menuLinks.style.transitionDuration = '0.4s';
     menuLinks.classList.add('show');
+
+    items.forEach((item, index) => {
+      item.style.transitionDelay = `${0.5 + index * 0.1}s`;
+    });
+
   } else {
-    menuLinks.style.transitionDelay = '0s';
-    menuLinks.style.transitionDuration = '0.3s';
     menuLinks.classList.remove('show');
+
+    items.forEach(item => {
+      item.style.transitionDelay = '0s';
+    });
   }
 });
 </script>
 
 </body>
 </html>
-
-
-
-
 
 
 
