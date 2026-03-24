@@ -5,9 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Menu Punchy In-Out 6.4</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
 * { margin:0; padding:0; box-sizing:border-box; } 
-body { font-family:'Open Sans', sans-serif; background:white; color:#222; }
+body { font-family: 'Montserrat', sans-serif; /* Police Montserrat */; background:white; color:#222; }
 
 .navbar {
   position: fixed;
@@ -98,6 +102,8 @@ body { font-family:'Open Sans', sans-serif; background:white; color:#222; }
   font-size:4.5rem;
   color:#222;
   text-decoration:none;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
 .fullscreen-menu-links li a:hover { opacity:0.8; }
@@ -128,10 +134,10 @@ body.no-scroll {
 <!-- Liens fixes -->
 <div class="fullscreen-menu-links" id="menu-links">
   <ul>
-    <li><a href="#">Accueil</a></li>
-    <li><a href="#">Galerie</a></li>
-    <li><a href="#">Articles</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="#">Accueil,</a></li>
+    <li><a href="#">Galerie,</a></li>
+    <li><a href="#">Articles,</a></li>
+    <li><a href="#">Contact.</a></li>
   </ul>
 </div>
 
@@ -142,7 +148,7 @@ const menuLinks = document.getElementById('menu-links');
 
 let progress = 0;       // 0 à 100
 let direction = 0;      // 1 = ouverture, -1 = fermeture
-const duration = 1600;
+const duration = 1200;
 let lastTime = null;
 
 /* Easing custom puissance 6.4 */
@@ -187,8 +193,8 @@ hamburger.addEventListener('click', () => {
 
   if (direction === 1) {
     // menu ouverture : régler délai et vitesse ici
-    menuLinks.style.transitionDelay = '1s';   // délai avant apparition
-    menuLinks.style.transitionDuration = '0.8s'; // durée de l'apparition
+    menuLinks.style.transitionDelay = '0.8s';   // délai avant apparition
+    menuLinks.style.transitionDuration = '0.4s'; // durée de l'apparition
     menuLinks.classList.add('show');
   } else {
     // menu fermeture
