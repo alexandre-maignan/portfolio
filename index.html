@@ -1,234 +1,203 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menu Punchy In-Out</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Menu Bézier Clean</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; } 
-body { font-family: 'Montserrat', sans-serif; background:white; color:#222; }
+  * {
+    box-sizing: border-box;
+  }
 
-.navbar {
-  position: fixed;
-  top:0; left:0;
-  width:100%;
-  padding:20px 40px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  z-index:1100;
-}
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: white;
+  }
 
-.nav-logo { font-weight:bold; font-size:1.8rem; }
+  /* NAVBAR */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 5000;
+  }
 
-.hamburger {
-  display:flex;
-  flex-direction:column;
-  gap:5px;
-  cursor:pointer;
-  z-index:1101;
-}
+  /* BURGER */
+  .burger {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 6000;
+  }
 
-.hamburger span {
-  width: 40px;
-  height: 3px;
-  background: #222;
-  position: relative;
-  transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
-}
+  .burger div {
+    width: 28px;
+    height: 3px;
+    background: black;
+    transition: 0.4s ease;
+  }
 
-.hamburger.active span:nth-child(1) { top: 8px; }
-.hamburger.active span:nth-child(2) { opacity: 0; }
-.hamburger.active span:nth-child(3) { top: -8px; }
+  .burger.active div:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
 
-/* Fond */
-.fullscreen-menu-bg {
-  position: fixed;
-  top:0; left:0;
-  width:100%;
-  height:100%;
-  background:#a7a376;
-  z-index:1050;
-  transform-origin: top;
-  transform: scaleY(0);
-}
+  .burger.active div:nth-child(2) {
+    opacity: 0;
+  }
 
-/* Menu */
-.fullscreen-menu-links {
-  position: fixed;
-  top:0; left:40px;
-  width:100%;
-  height:100%;
-  display:flex;
-  align-items:center;
-  z-index:1051;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
+  .burger.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
 
-.fullscreen-menu-links.show {
-  opacity: 1;
-  pointer-events: all;
-}
+  /* MENU BACKGROUND */
+  .menu {
+    position: fixed;
+    inset: 0;
+    background: #ffeb00;
 
-.fullscreen-menu-links ul {
-  list-style:none;
-}
+    transform: scaleY(0);
+    transform-origin: top;
 
-.fullscreen-menu-links li {
-  margin:20px 0;
+    transition: transform 1s cubic-bezier(0.5, 0.1, 0.2, 1);
 
-  /* animation stagger */
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.22,1,0.36,1);
-}
+    z-index: 1000;
+  }
 
-.fullscreen-menu-links.show li {
-  opacity: 1;
-  transform: translateY(0);
-}
+  .menu.active {
+    transform: scaleY(1);
+  }
 
-.fullscreen-menu-links li a {
-  font-size:4.5rem;
-  color:#222;
-  text-decoration:none;
-  letter-spacing: -0.2rem;
-  transition: opacity 0.3s ease;
-}
+  /* CONTENT */
+  .menu-content {
+    position: fixed;
+    inset: 0;
 
-/* hover focus */
-.fullscreen-menu-links ul:hover li a:not(:hover) {
-  opacity: 0.5;
-}
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 
-body.no-scroll { overflow:hidden; }
+    z-index: 2000;
 
-@media (max-width:768px) {
-  .fullscreen-menu-links li a { font-size:3rem; }
-}
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .menu-content.show {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* LINKS */
+  .menu-content a {
+    font-size: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  .menu-content.show a {
+    opacity: 1;
+  }
+
+  .menu-content.show a:nth-child(1) { transition-delay: 0s; }
+  .menu-content.show a:nth-child(2) { transition-delay: 0.08s; }
+  .menu-content.show a:nth-child(3) { transition-delay: 0.18s; }
+
+  .menu-content a:hover {
+    opacity: 0.6;
+  }
 </style>
 </head>
 
 <body>
 
-<nav class="navbar">
-  <div class="nav-logo">ΣΚΟΥΛΤΕΙΑ.</div>
-  <div class="hamburger" id="hamburger">
-    <span></span><span></span><span></span>
+<!-- NAVBAR -->
+<div class="navbar">
+  <div>LOGO</div>
+  <div class="burger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
-</nav>
-
-<div class="fullscreen-menu-bg" id="menu-bg"></div>
-
-<div class="fullscreen-menu-links" id="menu-links">
-  <ul>
-    <li><a href="#">Accueil,</a></li>
-    <li><a href="#">Galerie,</a></li>
-    <li><a href="#">Articles,</a></li>
-    <li><a href="#">Contact.</a></li>
-  </ul>
 </div>
 
-<section style="height:200vh;padding:100px 40px;">
-  <h2>Scroll test</h2>
-</section>
+<!-- MENU -->
+<div class="menu" id="menu"></div>
+
+<!-- CONTENT -->
+<div class="menu-content" id="content">
+  <a href="#">Accueil</a>
+  <a href="#">À propos</a>
+  <a href="#">Services</a>
+</div>
 
 <script>
-const hamburger = document.getElementById('hamburger');
-const menuBg = document.getElementById('menu-bg');
-const menuLinks = document.getElementById('menu-links');
+let open = false;
+let animating = false;
 
-let progress = 0;
-let direction = 0;
-const duration = 1000; // plus rapide = meilleur UX
-let lastTime = null;
+let delay = 250;
+let textDelay = 450;
 
-function ease(t){
-  return t<0.5
-    ? Math.pow(2*t,6.4)/2
-    : 1 - Math.pow(-2*t+2,6.4)/2;
-}
+const menu = document.getElementById("menu");
+const content = document.getElementById("content");
 
-function animate(timestamp){
-  if(!lastTime) lastTime = timestamp;
-  const delta = timestamp - lastTime;
-  lastTime = timestamp;
+/* TOGGLE MENU CLEAN */
+function toggleMenu() {
+  const burger = document.querySelector(".burger");
 
-  if(direction !== 0){
-    progress += (delta/duration)*100*direction;
+  if (animating) return;
+  animating = true;
 
-    if(progress >= 100){ progress = 100; direction = 0; }
-    if(progress <= 0){ progress = 0; direction = 0; }
+  open = !open;
+  burger.classList.toggle("active");
 
-    menuBg.style.transform = `scaleY(${ease(progress/100)})`;
+  if (open) {
 
-    if(progress > 0) document.body.classList.add('no-scroll');
-    else document.body.classList.remove('no-scroll');
-  }
+    setTimeout(() => {
+      menu.classList.add("active");
 
-  requestAnimationFrame(animate);
-}
+      setTimeout(() => {
+        content.classList.add("show");
+        animating = false;
+      }, textDelay);
 
-requestAnimationFrame(animate);
-
-hamburger.addEventListener('click', ()=>{
-  hamburger.classList.toggle('active');
-
-  if(progress === 0) direction = 1;
-  else if(progress === 100) direction = -1;
-  else direction *= -1;
-
-  const items = menuLinks.querySelectorAll('li');
-
-  if(direction === 1){
-    menuLinks.classList.add('show');
-
-    items.forEach((item, index) => {
-      item.style.transitionDelay = `${0.5 + index * 0.05}s`;
-    });
+    }, delay);
 
   } else {
-    menuLinks.classList.remove('show');
 
-    items.forEach(item => {
-      item.style.transitionDelay = '0s';
-    });
+    content.classList.remove("show");
+
+    setTimeout(() => {
+      menu.classList.remove("active");
+      animating = false;
+    }, delay);
+
   }
-});
+}
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
