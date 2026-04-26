@@ -2,198 +2,171 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Menu Bézier Clean</title>
+<title>Reveal vertical</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-  * {
-    box-sizing: border-box;
-  }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
 
-  body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background: white;
-  }
-
-  /* NAVBAR */
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 70px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    z-index: 5000;
-  }
-
-  /* BURGER */
-  .burger {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    flex-direction: column;
+    body {     display: flex;
     justify-content: center;
-    gap: 6px;
-    cursor: pointer;
-    z-index: 6000;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    background-color: white ;
+    }
+
+  :root {
+    --font-size: 80px; /* ETAPE 1 : tu mets ta taille de police */
+    --box-height: 63px;  /* ETAPE 2 : tu mets la  meme taille que item / ETAPE 4 : tu réajuste la taille de la boxe pour que en position haute, le bas soit pile sur les lettres */
+    --stagger: 0.03s;
   }
 
-  .burger div {
-    width: 28px;
-    height: 3px;
-    background: black;
-    transition: 0.4s ease;
-  }
-
-  .burger.active div:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-  }
-
-  .burger.active div:nth-child(2) {
-    opacity: 0;
-  }
-
-  .burger.active div:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-  }
-
-  /* MENU BACKGROUND */
-  .menu {
-    position: fixed;
-    inset: 0;
-    background: #ffeb00;
-
-    transform: scaleY(0);
-    transform-origin: top;
-
-    transition: transform 1s cubic-bezier(0.5, 0.1, 0.2, 1);
-
-    z-index: 1000;
-  }
-
-  .menu.active {
-    transform: scaleY(1);
-  }
-
-  /* CONTENT */
-  .menu-content {
-    position: fixed;
-    inset: 0;
-
+  .container {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+
+    gap: 80px;
+    background-color: transparent ; 
+    padding: 40px 50px;
+    
+  }
+
+  /* CHAQUE LIGNE */
+  .item {
+    height: var(--box-height); 
+    width: auto;
+  }
+
+  /* MASQUE */
+  .mask {
+    height: var(--box-height); 
+    overflow: hidden;
+    background: transparent;
+    
+  }
+
+  /* TEXTE */
+  .text {
+    display: flex;
     align-items: center;
-
-    z-index: 2000;
-
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s ease;
-  }
-
-  .menu-content.show {
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  /* LINKS */
-  .menu-content a {
-    font-size: 50px;
-    font-weight: 700;
-    text-decoration: none;
-    color: black;
+    font-size: var(--font-size);
+    font-weight: 600;
     text-transform: uppercase;
-
-    opacity: 0;
-    transition: opacity 0.35s ease;
+    transform: translateY(70px); /* ETAPE 5 : tu mets la  meme taille que item + quelques pixels */
+    /* caché en bas */
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.1, 1);
+    margin-top: -18px; /*ETAPE 3  - tu diminue le margin pour que en position haute, tu soit pile au bord de la case item /mask*/
+    letter-spacing: -4px;
+    padding-right: 20px;
+    
   }
 
-  .menu-content.show a {
-    opacity: 1;
+.text a {
+  color: inherit;
+  text-decoration: none;
+
+  display: inline;
+  padding: 0;
+  margin: 0;
+
+  opacity: 1;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* quand un lien est hover → tous deviennent grisés */
+.container:has(.text a:hover) .text a {
+  opacity: 0.5;
+}
+
+/* MAIS le lien hover reste normal (plus spécifique + important) */
+.container:has(.text a:hover) .text a:hover {
+  opacity: 1;
+}
+
+
+  /* état visible */
+  .show .text {
+    transform: translateY(0);
   }
 
-  .menu-content.show a:nth-child(1) { transition-delay: 0s; }
-  .menu-content.show a:nth-child(2) { transition-delay: 0.08s; }
-  .menu-content.show a:nth-child(3) { transition-delay: 0.18s; }
+  .item {
+    --i: 0;
+  }
 
-  .menu-content a:hover {
-    opacity: 0.6;
+  .item:nth-child(1) {
+    --i: 0;
+  }
+
+  .item:nth-child(2) {
+    --i: 1;
+  }
+
+  .item:nth-child(3) {
+    --i: 2;
+  }
+
+  .item:nth-child(4) {
+    --i: 3;
+  }
+
+  .text {
+    transition-delay: calc((var(--i) * var(--i)) * 0.02s);
+  }
+
+  button {
+    position: absolute;
+    bottom: 40px;
+    padding: 10px 20px;
+    cursor: pointer;
   }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
-  <div>LOGO</div>
-  <div class="burger" onclick="toggleMenu()">
-    <div></div>
-    <div></div>
-    <div></div>
+<div class="container" id="container">
+
+  <div class="item">
+    <div class="mask">
+      <div class="text"><a href="#">Accueil</a></div>
+    </div>
   </div>
+
+  <div class="item">
+    <div class="mask">
+      <div class="text"><a href="#">Projets</a></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="mask">
+      <div class="text"><a href="#">Contact</a></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="mask">
+      <div class="text"><a href="#">A propos</a></div>
+    </div>
+  </div>
+
 </div>
 
-<!-- MENU -->
-<div class="menu" id="menu"></div>
-
-<!-- CONTENT -->
-<div class="menu-content" id="content">
-  <a href="#">Accueil</a>
-  <a href="#">À propos</a>
-  <a href="#">Services</a>
-</div>
+<button onclick="toggleText()">Animer</button>
 
 <script>
-let open = false;
-let animating = false;
+  let visible = false;
 
-let delay = 250;
-let textDelay = 450;
-
-const menu = document.getElementById("menu");
-const content = document.getElementById("content");
-
-/* TOGGLE MENU CLEAN */
-function toggleMenu() {
-  const burger = document.querySelector(".burger");
-
-  if (animating) return;
-  animating = true;
-
-  open = !open;
-  burger.classList.toggle("active");
-
-  if (open) {
-
-    setTimeout(() => {
-      menu.classList.add("active");
-
-      setTimeout(() => {
-        content.classList.add("show");
-        animating = false;
-      }, textDelay);
-
-    }, delay);
-
-  } else {
-
-    content.classList.remove("show");
-
-    setTimeout(() => {
-      menu.classList.remove("active");
-      animating = false;
-    }, delay);
-
+  function toggleText() {
+    const container = document.getElementById("container");
+    container.classList.toggle("show");
+    visible = !visible;
   }
-}
 </script>
 
 </body>
