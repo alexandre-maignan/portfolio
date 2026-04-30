@@ -1,173 +1,87 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<title>Reveal vertical</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Hover Slide Text</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-    }
 
-    body {     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Inter', sans-serif;
-    background-color: white ;
-    }
-
-  :root {
-    --font-size: 80px; /* ETAPE 1 : tu mets ta taille de police */
-    --box-height: 63px;  /* ETAPE 2 : tu mets la  meme taille que item / ETAPE 4 : tu réajuste la taille de la boxe pour que en position haute, le bas soit pile sur les lettres */
-    --stagger: 0.03s;
-  }
-
-  .container {
-    display: flex;
-    flex-direction: column;
-
-    gap: 80px;
-    background-color: transparent ; 
-    padding: 40px 50px;
-    
-  }
-
-  /* CHAQUE LIGNE */
-  .item {
-    height: var(--box-height); 
-    width: auto;
-  }
-
-  /* MASQUE */
-  .mask {
-    height: var(--box-height); 
-    overflow: hidden;
-    background: transparent;
-    
-  }
-
-  /* TEXTE */
-  .text {
-    display: flex;
-    align-items: center;
-    font-size: var(--font-size);
-    font-weight: 600;
-    text-transform: uppercase;
-    transform: translateY(70px); /* ETAPE 5 : tu mets la  meme taille que item + quelques pixels */
-    /* caché en bas */
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.1, 1);
-    margin-top: -18px; /*ETAPE 3  - tu diminue le margin pour que en position haute, tu soit pile au bord de la case item /mask*/
-    letter-spacing: -4px;
-    padding-right: 20px;
-    
-  }
-
-.text a {
-  color: inherit;
-  text-decoration: none;
-
-  display: inline;
-  padding: 0;
+  * {
   margin: 0;
-
-  opacity: 1;
-  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* quand un lien est hover → tous deviennent grisés */
-.container:has(.text a:hover) .text a {
-  opacity: 0.5;
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  font-family: Poppins, sans-serif;
 }
 
-/* MAIS le lien hover reste normal (plus spécifique + important) */
-.container:has(.text a:hover) .text a:hover {
-  opacity: 1;
+/* lien */
+a {
+  text-decoration: none;
+  color: black;
 }
 
+/* BOX AUTO */
+.box {
+  --text-size:  clamp(24px, 4vw, 24px); /* hauteur de référence */
+  --marge: 1.3;
 
-  /* état visible */
-  .show .text {
-    transform: translateY(0);
-  }
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  height: calc(var(--marge) * var(--text-size));
+}
 
-  .item {
-    --i: 0;
-  }
+/* texte */
+.text {
+  --ls: -0.05em;
+  font-size: var(--text-size); /* 🔥 height - 15% */
+  font-weight: 500;
+  letter-spacing: var(--ls);
+  line-height: calc(var(--marge) * var(--text-size)); /* 🔥 line-height = height box */
+  display: block;
+  padding-right:calc(-1 * var(--ls));
+}
 
-  .item:nth-child(1) {
-    --i: 0;
-  }
+/* animation */
+.inner {
+  transform: translateY(0);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.05s;
+}
 
-  .item:nth-child(2) {
-    --i: 1;
-  }
-
-  .item:nth-child(3) {
-    --i: 2;
-  }
-
-  .item:nth-child(4) {
-    --i: 3;
-  }
-
-  .text {
-    transition-delay: calc((var(--i) * var(--i)) * 0.02s);
-  }
-
-  button {
-    position: absolute;
-    bottom: 40px;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
+/* hover */
+.box:hover .inner {
+  transform: translateY(-50%);
+}
 </style>
 </head>
 
 <body>
 
-<div class="container" id="container">
-
-  <div class="item">
-    <div class="mask">
-      <div class="text"><a href="#">Accueil</a></div>
+<a href="#">
+  <div class="box">
+    <div class="inner">
+      <div class="text">A propos</div>
+      <div class="text">A propos</div>
     </div>
   </div>
-
-  <div class="item">
-    <div class="mask">
-      <div class="text"><a href="#">Projets</a></div>
-    </div>
-  </div>
-
-  <div class="item">
-    <div class="mask">
-      <div class="text"><a href="#">Contact</a></div>
-    </div>
-  </div>
-
-  <div class="item">
-    <div class="mask">
-      <div class="text"><a href="#">A propos</a></div>
-    </div>
-  </div>
-
-</div>
-
-<button onclick="toggleText()">Animer</button>
-
-<script>
-  let visible = false;
-
-  function toggleText() {
-    const container = document.getElementById("container");
-    container.classList.toggle("show");
-    visible = !visible;
-  }
-</script>
+</a>
 
 </body>
 </html>
+
+
+
+
+
