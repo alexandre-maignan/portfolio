@@ -5,7 +5,6 @@
 .drawing-gallery {
     width: 90%;
     max-width: 1400px;
-
     margin: 0 auto;
     padding: 120px 0;
 }
@@ -17,13 +16,11 @@
 
 .gallery-header {
     max-width: 700px;
-
     margin-bottom: 70px;
 }
 
 .gallery-label {
     margin-bottom: 15px;
-
     font-size: 14px;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -31,18 +28,15 @@
 
 .gallery-header h2 {
     margin-bottom: 25px;
-
-    font-size: 64px;
-    font-weight: 500;
+    font-size: 50px;
+    font-weight: 600;
     letter-spacing: -1px;
 }
 
 .gallery-intro {
     font-family: Arial, sans-serif;
-
     font-size: 18px;
     line-height: 1.7;
-
     color: #555;
 }
 
@@ -53,9 +47,7 @@
 
 .gallery-grid {
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
-
     gap: 35px;
 }
 
@@ -66,16 +58,14 @@
 
 .drawing-card {
     display: block;
-
     text-decoration: none;
     color: #111;
-
     overflow: hidden;
 }
 
 
 /* =========================
-   IMAGE
+   IMAGE DE LA GALERIE
 ========================= */
 
 .drawing-card img {
@@ -102,19 +92,20 @@
     margin-bottom: 7px;
 
     font-size: 22px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .drawing-info p {
-    font-family: Arial, sans-serif;
+    margin: 0;
 
+    font-family: Arial, sans-serif;
     font-size: 14px;
     color: #777;
 }
 
 
 /* =========================
-   HOVER
+   HOVER GALERIE
 ========================= */
 
 .drawing-card:hover img {
@@ -122,7 +113,7 @@
 }
 
 .drawing-card:hover .drawing-info h3 {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 
@@ -139,6 +130,7 @@
     .gallery-header h2 {
         font-size: 50px;
     }
+
 }
 
 
@@ -165,56 +157,134 @@
     .gallery-header h2 {
         font-size: 42px;
     }
+
 }
 
 
-
-
-
-
-
-
-
-/* =========================
+/* ==================================================
    LIGHTBOX
-========================= */
+================================================== */
 
 .lightbox {
     position: fixed;
+    inset: 0;
 
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    display: none;
-
+    display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: 40px;
+    background: rgba(0, 0, 0, 0);
 
-    background-color: rgba(0, 0, 0, 0.9);
+    visibility: hidden;
+    opacity: 0;
 
     z-index: 2000;
+
+    transition:
+        background-color 0.4s ease,
+        opacity 0.4s ease,
+        visibility 0.4s;
 }
 
 
-/* Image agrandie */
+/* =========================
+   LIGHTBOX ACTIVE
+========================= */
+
+.lightbox.active {
+    visibility: visible;
+    opacity: 1;
+
+    background: rgba(0, 0, 0, 0.7);
+}
+
+
+/* ==================================================
+   IMAGE DANS LA LIGHTBOX
+================================================== */
 
 .lightbox img {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 90vw;
+    max-height: 90vh;
 
     width: auto;
     height: auto;
 
     object-fit: contain;
+
+    opacity: 0;
+
+    /*
+       IMPORTANT :
+       Le scale est géré par JavaScript.
+    */
+
+    transform: translate3d(0, 0, 0) scale(0.92);
+
+    cursor: zoom-in;
+
+    /*
+       Empêche la sélection de l'image
+       pendant le déplacement.
+    */
+
+    user-select: none;
+    -webkit-user-select: none;
+
+    /*
+       Empêche le navigateur de faire
+       glisser l'image nativement.
+    */
+
+    -webkit-user-drag: none;
+
+    /*
+       Optimisation des transformations.
+    */
+
+    will-change: transform;
+
+    /*
+       Seule l'opacité est animée par CSS.
+       Le zoom est géré par JavaScript.
+    */
+
+    transition: opacity 0.3s ease;
 }
 
 
-/* Bouton fermer */
+/* =========================
+   IMAGE APRÈS OUVERTURE
+========================= */
+
+.lightbox.active img {
+    opacity: 1;
+
+    transform: translate3d(0, 0, 0) scale(1);
+}
+
+
+/* =========================
+   IMAGE ZOOMÉE
+========================= */
+
+.lightbox img.zoomed {
+    cursor: grab;
+}
+
+
+/* =========================
+   IMAGE PENDANT LE DÉPLACEMENT
+========================= */
+
+.lightbox img.zoomed:active {
+    cursor: grabbing;
+}
+
+
+/* ==================================================
+   BOUTON FERMER
+================================================== */
 
 .lightbox-close {
     position: absolute;
@@ -222,19 +292,96 @@
     top: 25px;
     right: 35px;
 
+    width: 50px;
+    height: 50px;
+
+    padding: 0;
+
     border: none;
-    background: none;
+    background: transparent;
 
     color: white;
 
+    font-family: Arial, sans-serif;
     font-size: 50px;
     font-weight: 300;
-
     line-height: 1;
 
     cursor: pointer;
+
+    opacity: 0;
+
+    z-index: 2001;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.2s ease;
 }
+
+
+/* =========================
+   BOUTON ACTIF
+========================= */
+
+.lightbox.active .lightbox-close {
+    opacity: 1;
+}
+
+
+/* =========================
+   HOVER BOUTON
+========================= */
 
 .lightbox-close:hover {
     opacity: 0.6;
+
+    transform: scale(1.05);
+}
+
+
+/* ==================================================
+   TABLETTE — LIGHTBOX
+================================================== */
+
+@media (max-width: 900px) {
+
+    .lightbox img {
+        max-width: 92vw;
+        max-height: 85vh;
+    }
+
+    .lightbox-close {
+        top: 15px;
+        right: 20px;
+
+        width: 45px;
+        height: 45px;
+
+        font-size: 42px;
+    }
+
+}
+
+
+/* ==================================================
+   MOBILE — LIGHTBOX
+================================================== */
+
+@media (max-width: 600px) {
+
+    .lightbox img {
+        max-width: 94vw;
+        max-height: 80vh;
+    }
+
+    .lightbox-close {
+        top: 10px;
+        right: 15px;
+
+        width: 40px;
+        height: 40px;
+
+        font-size: 38px;
+    }
+
 }

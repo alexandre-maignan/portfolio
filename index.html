@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="Portfolio d'Alexandre — dessins et sculptures.">
+    <meta name="author"
+          content="Alexandre Maignan">
+
+
+
 
     <title>Mon Portfolio</title>
+
+    <link rel="icon" type="image/jpeg" href="logo/favicon.jpg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,25 +31,41 @@
 
 <body>
 
-    <!-- NAVBAR -->
-    <header class="navbar">
-        <nav class="nav-container">
+<nav class="navbar">
 
-            <a href="index.html" class="logo">
-                Alexandre
-            </a>
+    <div class="nav-container">
 
-            <ul class="nav-links">
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="pages/dessin.html">Dessin</a></li>
-                <li><a href="pages/sculpture.html">Sculpture</a></li>
-                <li><a href="pages/3d.html">3D</a></li>
-                <li><a href="pages/projets.html">Projets</a></li>
-                <li><a href="pages/contact.html">Contact</a></li>
-            </ul>
+        <a href="index.html" class="logo">
+            ΣΚΟΥΛΤΕΙΑ.
+        </a>
 
-        </nav>
-    </header>
+        <button class="menu-toggle" id="menu-toggle">
+            Menu
+        </button>
+
+        <ul class="nav-links" id="nav-links">
+
+            <li>
+                <a href="index.html">Accueil</a>
+            </li>
+
+            <li>
+                <a href="dessin.html">Dessin</a>
+            </li>
+
+            <li>
+                <a href="sculpture.html">Sculpture</a>
+            </li>
+
+            <li>
+                <a href="a-propos.html">À propos</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>
 
 
     <!-- CONTENU PRINCIPAL -->
@@ -56,7 +81,7 @@
 
     <div class="gallery-header">
 
-        <p class="gallery-label">Portfolio</p>
+        
 
         <h2>Galerie de dessins</h2>
 
@@ -189,50 +214,91 @@
 
 
 
-<footer>
+<footer class="footer">
+
     <div class="footer-container">
 
-      <div class="footer-column">
-        <h3>Sculteia.</h3>
-        <p>Sculteia est un blog de sculpture, permettant également de servir comme portfolio pour mes prochaines créations.</p>
-      </div>
+        <div class="footer-grid">
 
-      <div class="footer-column">
-        <h3>Contact.</h3>
-        <ul class="footer-links">
-          <li><a href="mailto:alex.maignan@gmail.com">alex.maignan@gmail.com</a></li>
-        </ul>
-      </div>
+            <!-- Sculteia -->
+            <div class="footer-column footer-about">
 
-      <div class="footer-column">
-        <h3>Navigation.</h3>
-        <ul class="footer-links">
-          <li><a href="#">Accueil</a></li>
-          <li><a href="#">Dessin</a></li>
-          <li><a href="#">Sculpture</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
+                <h2>Sculteia.</h2>
 
-      <div class="footer-column">
-        <h3>Réseaux sociaux.</h3>
-        <ul class="footer-links">
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">LinkedIn</a></li>
-        </ul>
-      </div>
+                <p>
+                    Sculteia est un blog de sculpture, permettant également
+                    de servir comme portfolio pour mes prochaines créations.
+                </p>
+
+            </div>
+
+
+            <!-- Contact -->
+            <div class="footer-column">
+
+                <h3>Contact.</h3>
+
+                <a href="mailto:alex.maignan@gmail.com">
+                    alex.maignan@gmail.com
+                </a>
+
+            </div>
+
+
+            <!-- Navigation -->
+            <div class="footer-column">
+
+                <h3>Navigation.</h3>
+
+                <a href="index.html">Accueil</a>
+                <a href="dessin.html">Dessin</a>
+                <a href="sculpture.html">Sculpture</a>
+                <a href="contact.html">Contact</a>
+
+            </div>
+
+
+            <!-- Réseaux sociaux -->
+            <div class="footer-column">
+
+                <h3>Réseaux sociaux.</h3>
+
+                <a href="#" target="_blank">Instagram</a>
+                <a href="#" target="_blank">LinkedIn</a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Bas du footer -->
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Sculteia. Tous droits réservés.
+            </p>
+
+            <div class="footer-legal">
+
+                <a href="mentions-legales.html">
+                    Mentions légales
+                </a>
+
+                <a href="politique-confidentialite.html">
+                    Politique de confidentialité
+                </a>
+
+            </div>
+
+        </div>
 
     </div>
 
-    <div class="footer-bottom">
-      <div class="footer-logo">ΣΚΟΥΛΤΕΙΑ.</div>
-      <div class="footer-copy">© 2026 Sculteia, tous droits réservés.</div>
-    </div>
-  </footer>
+</footer>
 
 
 <script src="js/dessin.js"></script>
-
+<script src="js/navbar.js"></script>
 
 </body>
 </html>

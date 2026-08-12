@@ -1,3 +1,7 @@
+/* =========================
+   NAVBAR
+========================= */
+
 .navbar {
     position: fixed;
     top: 0;
@@ -13,6 +17,11 @@
     z-index: 1000;
 }
 
+
+/* =========================
+   CONTENEUR
+========================= */
+
 .nav-container {
     width: 90%;
     max-width: 1400px;
@@ -27,7 +36,9 @@
 }
 
 
-/* LOGO */
+/* =========================
+   LOGO
+========================= */
 
 .logo {
     text-decoration: none;
@@ -38,12 +49,18 @@
 }
 
 
-/* LIENS */
+/* =========================
+   LIENS
+========================= */
 
 .nav-links {
     display: flex;
     align-items: center;
+
     gap: 40px;
+
+    margin: 0;
+    padding: 0;
 
     list-style: none;
 }
@@ -63,3 +80,112 @@
 }
 
 
+/* =========================
+   BOUTON MENU
+========================= */
+
+.menu-toggle {
+    display: none;
+
+    border: none;
+    background: none;
+
+    padding: 0;
+
+    color: #111;
+
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        height: 70px;
+    }
+
+    .nav-container {
+        width: 90%;
+    }
+
+
+    /* LOGO */
+
+    .logo {
+        font-size: 21px;
+    }
+
+
+    /* BOUTON MENU */
+
+    .menu-toggle {
+        display: block;
+
+        position: relative;
+
+        z-index: 1002;
+    }
+
+
+    /* =========================
+       MENU OUVERT
+    ========================= */
+
+    .nav-links {
+        position: fixed;
+
+        top: 70px;
+        left: 0;
+
+        width: 100%;
+
+        padding: 30px 0;
+
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 25px;
+
+        background-color: white;
+
+        border-bottom: 1px solid #ddd;
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateY(-10px);
+
+        transition:
+            opacity 0.3s ease,
+            transform 0.3s ease,
+            visibility 0.3s ease;
+    }
+
+
+    /* MENU ACTIF */
+
+    .nav-links.active {
+        opacity: 1;
+        visibility: visible;
+
+        transform: translateY(0);
+    }
+
+
+    /* LIENS */
+
+    .nav-links a {
+        font-size: 17px;
+    }
+
+}
