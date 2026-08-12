@@ -120,6 +120,77 @@
 }
 
 
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   RÉSEAUX SOCIAUX
+========================= */
+
+.social-links {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+/* =========================
+   CERCLES
+========================= */
+
+.social-links a {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    margin: 0;
+
+    background-color: #111;
+
+    color: white;
+
+    border-radius: 50%;
+
+    text-decoration: none;
+}
+
+
+/* =========================
+   ICÔNES
+========================= */
+
+.social-links i {
+    font-size: 17px;
+}
+
+.social-links a:hover {
+    color: white;
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* =========================
    BAS DU FOOTER
 ========================= */
