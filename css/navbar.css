@@ -135,8 +135,46 @@
     }
 
 
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        height: 70px;
+    }
+
+    .nav-container {
+        width: 90%;
+    }
+
+
     /* =========================
-       MENU OUVERT
+       LOGO
+    ========================= */
+
+    .logo {
+        font-size: 21px;
+    }
+
+
+    /* =========================
+       BOUTON MENU
+    ========================= */
+
+    .menu-toggle {
+        display: block;
+
+        position: relative;
+
+        z-index: 1002;
+    }
+
+
+    /* =========================
+       MENU MOBILE
     ========================= */
 
     .nav-links {
@@ -146,19 +184,16 @@
         left: 0;
 
         width: 100%;
-
-        padding: 30px 0;
+        height: calc(100dvh - 70px);
 
         display: flex;
         flex-direction: column;
-
         align-items: center;
+        justify-content: center;
 
-        gap: 25px;
+        gap: 0;
 
         background-color: white;
-
-        border-bottom: 1px solid #ddd;
 
         opacity: 0;
         visibility: hidden;
@@ -172,20 +207,51 @@
     }
 
 
-    /* MENU ACTIF */
+    /* =========================
+       ÉLÉMENTS DU MENU
+    ========================= */
+
+    .nav-links li {
+        width: 70%;
+
+        text-align: center;
+
+        padding: 25px 0;
+    }
+
+
+    /* =========================
+       TRAITS ENTRE LES LIENS
+    ========================= */
+
+    .nav-links li:not(:first-child) {
+        border-top: 1px solid #e5e5e5;
+    }
+
+
+    /* =========================
+       MENU ACTIF
+    ========================= */
 
     .nav-links.active {
         opacity: 1;
+
         visibility: visible;
 
         transform: translateY(0);
     }
 
 
-    /* LIENS */
+    /* =========================
+       LIENS
+    ========================= */
 
     .nav-links a {
-        font-size: 17px;
+        font-size: 30px;
+
+        text-decoration: none;
+
+        color: #111;
     }
 
 }

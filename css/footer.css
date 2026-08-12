@@ -75,8 +75,6 @@
 
     margin: 0;
 
-    font-family: Arial, sans-serif;
-
     font-size: 15px;
     line-height: 1.7;
 
@@ -106,8 +104,6 @@
     margin-bottom: 12px;
 
     color: #444;
-
-    font-family: Arial, sans-serif;
 
     font-size: 15px;
 
@@ -142,8 +138,6 @@
 .footer-bottom p {
     margin: 0;
 
-    font-family: Arial, sans-serif;
-
     font-size: 13px;
 
     color: #888;
@@ -162,8 +156,6 @@
 
 .footer-legal a {
     color: #888;
-
-    font-family: Arial, sans-serif;
 
     font-size: 13px;
 

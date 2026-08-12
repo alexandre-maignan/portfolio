@@ -1,72 +1,75 @@
-/* =========================
+/* ==================================================
    GALERIE DE DESSINS
-========================= */
+================================================== */
 
 .drawing-gallery {
     width: 90%;
     max-width: 1400px;
+
     margin: 0 auto;
+
     padding: 120px 0;
 }
 
 
-/* =========================
+/* ==================================================
    EN-TÊTE
-========================= */
+================================================== */
 
 .gallery-header {
     max-width: 700px;
+
     margin-bottom: 70px;
 }
 
-.gallery-label {
-    margin-bottom: 15px;
-    font-size: 14px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-}
 
 .gallery-header h2 {
     margin-bottom: 25px;
+
     font-size: 50px;
     font-weight: 600;
-    letter-spacing: -1px;
 }
 
 .gallery-intro {
-    font-family: Arial, sans-serif;
-    font-size: 18px;
-    line-height: 1.7;
+    font-size: clamp(16px, 1.25vw, 18px);
+    line-height: 1.4;
+
     color: #555;
 }
 
 
-/* =========================
-   GRILLE
-========================= */
+/* ==================================================
+   GRILLE MASONRY
+================================================== */
 
 .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 35px;
+    columns: 3;
+    column-gap: 35px;
 }
 
 
-/* =========================
+/* ==================================================
    CARTE
-========================= */
+================================================== */
 
 .drawing-card {
-    display: block;
-    text-decoration: none;
+    display: inline-block;
+
+    width: 100%;
+
+    margin: 0 0 50px;
+
     color: #111;
-    overflow: hidden;
+
+    text-decoration: none;
+
+    break-inside: avoid;
 }
 
 
-/* =========================
-   IMAGE DE LA GALERIE
-========================= */
+/* ==================================================
+   IMAGE
+================================================== */
 
 .drawing-card img {
     display: block;
@@ -76,16 +79,17 @@
 
     cursor: pointer;
 
-    transition: transform 0.5s ease;
+    transition:
+        transform 0.5s ease;
 }
 
 
-/* =========================
+/* ==================================================
    INFORMATIONS
-========================= */
+================================================== */
 
 .drawing-info {
-    padding: 18px 0 10px;
+    padding: 18px 0 0;
 }
 
 .drawing-info h3 {
@@ -98,33 +102,34 @@
 .drawing-info p {
     margin: 0;
 
-    font-family: Arial, sans-serif;
     font-size: 14px;
+
     color: #777;
 }
 
 
-/* =========================
-   HOVER GALERIE
-========================= */
+/* ==================================================
+   HOVER
+================================================== */
 
 .drawing-card:hover img {
-    transform: scale(1.03);
-}
-
-.drawing-card:hover .drawing-info h3 {
-    text-decoration: none;
+    transform: scale(1.015);
 }
 
 
-/* =========================
+/* ==================================================
    TABLETTE
-========================= */
+================================================== */
 
 @media (max-width: 900px) {
 
+    .drawing-gallery {
+        padding: 100px 0;
+    }
+
     .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
+        columns: 2;
+        column-gap: 30px;
     }
 
     .gallery-header h2 {
@@ -134,20 +139,16 @@
 }
 
 
-/* =========================
+/* ==================================================
    MOBILE
-========================= */
+================================================== */
 
 @media (max-width: 600px) {
 
     .drawing-gallery {
         width: 90%;
-        padding: 80px 0;
-    }
 
-    .gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
+        padding: 80px 0;
     }
 
     .gallery-header {
@@ -156,6 +157,16 @@
 
     .gallery-header h2 {
         font-size: 42px;
+    }
+
+    .gallery-grid {
+        columns: 1;
+
+        column-gap: 0;
+    }
+
+    .drawing-card {
+        margin-bottom: 40px;
     }
 
 }
@@ -167,9 +178,11 @@
 
 .lightbox {
     position: fixed;
+
     inset: 0;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -181,18 +194,19 @@
     z-index: 2000;
 
     transition:
-        background-color 0.4s ease,
-        opacity 0.4s ease,
-        visibility 0.4s;
+        background-color 0.2s ease,
+        opacity 0.2s ease,
+        visibility 0.2s;
 }
 
 
-/* =========================
+/* ==================================================
    LIGHTBOX ACTIVE
-========================= */
+================================================== */
 
 .lightbox.active {
     visibility: visible;
+
     opacity: 1;
 
     background: rgba(0, 0, 0, 0.7);
@@ -200,7 +214,7 @@
 
 
 /* ==================================================
-   IMAGE DANS LA LIGHTBOX
+   IMAGE LIGHTBOX
 ================================================== */
 
 .lightbox img {
@@ -215,67 +229,73 @@
     opacity: 0;
 
     /*
-       IMPORTANT :
-       Le scale est géré par JavaScript.
+       Le scale est contrôlé
+       par JavaScript.
     */
 
-    transform: translate3d(0, 0, 0) scale(0.92);
+    transform:
+        translate3d(0, 0, 0)
+        scale(0.92);
 
     cursor: zoom-in;
 
     /*
-       Empêche la sélection de l'image
-       pendant le déplacement.
+       Empêche la sélection
+       de l'image.
     */
 
     user-select: none;
     -webkit-user-select: none;
 
     /*
-       Empêche le navigateur de faire
-       glisser l'image nativement.
+       Empêche le drag natif
+       du navigateur.
     */
 
     -webkit-user-drag: none;
 
     /*
-       Optimisation des transformations.
+       Optimisation du zoom
+       et du déplacement.
     */
 
     will-change: transform;
 
     /*
-       Seule l'opacité est animée par CSS.
-       Le zoom est géré par JavaScript.
+       Seule l'opacité est animée
+       en CSS.
     */
 
-    transition: opacity 0.3s ease;
+    transition:
+        opacity 0.3s ease;
 }
 
 
-/* =========================
+/* ==================================================
    IMAGE APRÈS OUVERTURE
-========================= */
+================================================== */
 
 .lightbox.active img {
     opacity: 1;
 
-    transform: translate3d(0, 0, 0) scale(1);
+    transform:
+        translate3d(0, 0, 0)
+        scale(1);
 }
 
 
-/* =========================
+/* ==================================================
    IMAGE ZOOMÉE
-========================= */
+================================================== */
 
 .lightbox img.zoomed {
     cursor: grab;
 }
 
 
-/* =========================
+/* ==================================================
    IMAGE PENDANT LE DÉPLACEMENT
-========================= */
+================================================== */
 
 .lightbox img.zoomed:active {
     cursor: grabbing;
@@ -298,13 +318,14 @@
     padding: 0;
 
     border: none;
+
     background: transparent;
 
     color: white;
 
-    font-family: Arial, sans-serif;
     font-size: 50px;
     font-weight: 300;
+
     line-height: 1;
 
     cursor: pointer;
@@ -319,18 +340,18 @@
 }
 
 
-/* =========================
+/* ==================================================
    BOUTON ACTIF
-========================= */
+================================================== */
 
 .lightbox.active .lightbox-close {
     opacity: 1;
 }
 
 
-/* =========================
+/* ==================================================
    HOVER BOUTON
-========================= */
+================================================== */
 
 .lightbox-close:hover {
     opacity: 0.6;
@@ -340,7 +361,7 @@
 
 
 /* ==================================================
-   TABLETTE — LIGHTBOX
+   LIGHTBOX — TABLETTE
 ================================================== */
 
 @media (max-width: 900px) {
@@ -364,7 +385,7 @@
 
 
 /* ==================================================
-   MOBILE — LIGHTBOX
+   LIGHTBOX — MOBILE
 ================================================== */
 
 @media (max-width: 600px) {
