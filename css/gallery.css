@@ -44,7 +44,7 @@
 
 .gallery-grid {
     columns: 3;
-    column-gap: 35px;
+    column-gap: 50px;
 }
 
 
@@ -64,7 +64,7 @@
     text-decoration: none;
 
     break-inside: avoid;
-    max-width: 300px;
+    max-width: 325px;
 }
 
 
