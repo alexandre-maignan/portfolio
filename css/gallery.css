@@ -8,7 +8,7 @@
 
     margin: 0 auto;
 
-    padding-top: 120px ;
+    padding-top: 120px;
 }
 
 
@@ -39,12 +39,15 @@
 
 
 /* ==================================================
-   GRILLE MASONRY
+   GRILLE
 ================================================== */
 
 .gallery-grid {
-    columns: 3;
-    column-gap: 50px;
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 50px;
 }
 
 
@@ -53,28 +56,15 @@
 ================================================== */
 
 .drawing-card {
-    display: inline-block;
-
     width: 100%;
 
-    margin: 0 0 50px;
+    margin: 0;
 
     color: #111;
 
     text-decoration: none;
-
-    break-inside: avoid;
-    max-width: 325px;
 }
 
-
-@media (max-width: 600px) {
-
-    .drawing-card {
-        max-width: none;
-    }
-
-}
 
 /* ==================================================
    IMAGE
@@ -83,7 +73,10 @@
 .drawing-card img {
     display: block;
 
-    width: 100%;
+    max-width: 325px;
+    max-height: 500px;
+
+    width: auto;
     height: auto;
 
     cursor: pointer;
@@ -132,13 +125,14 @@
 
 @media (max-width: 900px) {
 
-    .drawing-gallery {
-        padding: 100px 0;
+    .gallery {
+        padding-top: 100px;
     }
 
     .gallery-grid {
-        columns: 2;
-        column-gap: 30px;
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 30px;
     }
 
     .gallery-header h2 {
@@ -154,10 +148,10 @@
 
 @media (max-width: 600px) {
 
-    .drawing-gallery {
+    .gallery {
         width: 90%;
 
-        padding: 80px 0;
+        padding-top: 80px;
     }
 
     .gallery-header {
@@ -169,13 +163,9 @@
     }
 
     .gallery-grid {
-        columns: 1;
+        grid-template-columns: 1fr;
 
-        column-gap: 0;
-    }
-
-    .drawing-card {
-        margin-bottom: 40px;
+        gap: 40px;
     }
 
 }
@@ -237,43 +227,18 @@
 
     opacity: 0;
 
-    /*
-       Le scale est contrôlé
-       par JavaScript.
-    */
-
     transform:
         translate3d(0, 0, 0)
         scale(0.92);
 
     cursor: zoom-in;
 
-    /*
-       Empêche la sélection
-       de l'image.
-    */
-
     user-select: none;
     -webkit-user-select: none;
 
-    /*
-       Empêche le drag natif
-       du navigateur.
-    */
-
     -webkit-user-drag: none;
 
-    /*
-       Optimisation du zoom
-       et du déplacement.
-    */
-
     will-change: transform;
-
-    /*
-       Seule l'opacité est animée
-       en CSS.
-    */
 
     transition:
         opacity 0.3s ease;
