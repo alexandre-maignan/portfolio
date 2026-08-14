@@ -152,7 +152,7 @@
         left: 0;
 
         width: 100%;
-        height: calc(100dvh - 70px);
+        height: calc(100dvh - 0px);
 
         display: flex;
         flex-direction: column;
