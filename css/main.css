@@ -22,7 +22,7 @@ body {
 
 
 main {
-    padding-top: 0px; /*pas de déclage avec le navbar*/
+    padding-top: 120px; /*pas de déclage avec le navbar*/
     padding-bottom: 80px; /*ecart entre le contenu et le footer*/
 }
 

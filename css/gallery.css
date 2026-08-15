@@ -8,7 +8,7 @@
 
     margin: 0 auto;
 
-    padding-top: 120px;
+    padding-top: 0px;
 
     box-sizing: border-box;
 }
@@ -140,7 +140,7 @@
 @media (max-width: 900px) {
 
     .gallery {
-        padding-top: 100px;
+        padding-top: 0px;
     }
 
 
@@ -167,7 +167,7 @@
 
     .gallery {
         width: 90%;
-        padding-top: 80px;
+        padding-top: 0px;
     }
 
 
