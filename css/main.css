@@ -53,3 +53,27 @@ main {
 body.menu-open {
     overflow: hidden;
 }
+
+
+
+
+
+
+
+
+
+
+
+/* ==================================================
+   TRANSITION ENTRE LES PAGES
+================================================== */
+
+
+body {
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+body.page-exit {
+    opacity: 0;
+}

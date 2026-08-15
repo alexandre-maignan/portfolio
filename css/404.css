@@ -41,3 +41,153 @@
 .error-link:hover {
     opacity: 0.6;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================================================
+   PAGE ERREUR
+================================================== */
+
+.error-page {
+    min-height: 80vh;
+    width: 90%;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    /* État initial */
+    opacity: 0;
+    transform: translateY(30px);
+
+    /* Animation d'entrée */
+    animation: error-page-entry 0.6s ease-out forwards;
+}
+
+
+/* ==================================================
+   ANIMATION D'ENTRÉE
+================================================== */
+
+@keyframes error-page-entry {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ==================================================
+   CONTENU
+================================================== */
+
+.error-content {
+    max-width: 600px;
+}
+
+
+/* ==================================================
+   CODE ERREUR
+================================================== */
+
+.error-code {
+    font-size: clamp(5rem, 15vw, 8rem);
+    line-height: 1;
+
+    margin: 0 0 30px;
+}
+
+
+/* ==================================================
+   TITRE
+================================================== */
+
+.error-content h1 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+
+    margin-bottom: 20px;
+}
+
+
+/* ==================================================
+   TEXTE
+================================================== */
+
+.error-content p:not(.error-code) {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+
+    margin-bottom: 40px;
+}
+
+
+/* ==================================================
+   LIEN
+================================================== */
+
+.error-link {
+    color: #111;
+
+    text-decoration: none;
+
+    border-bottom: 1px solid #111;
+
+    padding-bottom: 4px;
+}
+
+.error-link:hover {
+    opacity: 0.6;
+}
