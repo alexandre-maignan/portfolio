@@ -48,15 +48,22 @@
     font-weight: 700;
 }
 
-.menu-title {
-    display: none;
-}
 
 /* =========================
-   LIENS
+   LIENS DESKTOP
 ========================= */
 
 .nav-links {
+    display: flex;
+    align-items: center;
+
+    gap: clamp(40px, 6vw, 80px);
+
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links ul {
     display: flex;
     align-items: center;
 
@@ -80,6 +87,15 @@
 
 .nav-links a:hover {
     opacity: 0.5;
+}
+
+
+/* =========================
+   TITRE DU MENU
+========================= */
+
+.menu-title {
+    display: none;
 }
 
 
@@ -112,22 +128,6 @@
 .menu-close {
     display: none;
 }
-
-
-
-
-
-
-
-
-/* =========================
-   TITRE DU MENU
-========================= */
-
-
-
-
-
 
 
 /* ==================================================
@@ -182,18 +182,13 @@
         height: 100dvh;
 
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
-
-        gap: 0;
 
         margin: 0;
         padding: 0;
 
-        list-style: none;
-
-        background-color: #f7f7f7;
+        background-color: white;
 
         visibility: hidden;
         transform: translateX(-100%);
@@ -204,23 +199,6 @@
 
         z-index: 2000;
     }
-
-
-.menu-title {
-    display: block;
-
-    width: 90%;
-
-    margin: 0;
-    padding: 0 0 35px 0;
-
-    text-align: left;
-
-    color: var(--color-primary);
-
-    font-size: 3rem;
-    font-weight: 600;
-}
 
 
     /* =========================
@@ -238,25 +216,57 @@
 
 
     /* =========================
-       ÉLÉMENTS DU MENU
+       CONTENU DU MENU
     ========================= */
 
-.nav-links li:not(.menu-title) {
-    width: 90%;
-
-    margin: 0;
-    padding: 25px 0;
-
-    text-align: left;
-}
+    .nav-menu-content {
+        width: 90%;
+    }
 
 
     /* =========================
-       TRAITS ENTRE LES LIENS
+       TITRE
     ========================= */
 
-    .nav-links li:not(:first-of-type) {
-        border-top: 1px solid #e5e5e5;
+    .menu-title {
+        display: block;
+
+        margin: 0 0 35px 0;
+
+        color: var(--color-primary);
+
+        font-size: 3rem;
+        font-weight: 600;
+
+        text-align: left;
+    }
+
+
+    /* =========================
+       LISTE
+    ========================= */
+
+    .nav-links ul {
+        display: block;
+
+        width: 100%;
+
+        margin: 0;
+        padding: 0;
+
+        list-style: none;
+    }
+
+
+    /* =========================
+       ÉLÉMENTS
+    ========================= */
+
+    .nav-links li {
+        width: 100%;
+
+        margin: 0;
+        padding: 0;
     }
 
 
@@ -264,11 +274,28 @@
        LIENS
     ========================= */
 
-    .nav-links a {
+    .nav-links li a {
+        display: block;
+
+        width: 100%;
+
+        padding: 25px 0;
+
+        color: var(--color-primary);
+
         font-size: 30px;
+        font-weight: 500;
 
         text-decoration: none;
-        color: var(--color-primary);
+    }
+
+
+    /* =========================
+       TRAITS
+    ========================= */
+
+    .nav-links li + li {
+        border-top: 1px solid #e5e5e5;
     }
 
 
