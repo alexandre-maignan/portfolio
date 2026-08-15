@@ -384,7 +384,7 @@
     transform: translateY(-30px);
 
     /* Animation */
-    animation: navbar-entry 0.8s ease forwards;
+    animation: navbar-entry 1s ease forwards;
 }
 
 
