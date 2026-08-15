@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/gallery.css">
     <link rel="stylesheet" href="css/404.css">
+    <link rel="stylesheet" href="css/animations.css">
 
 </head>
 
@@ -51,11 +52,15 @@
             ΣΚΟΥΛΤΕΙΑ.
         </a>
 
-        <button class="menu-toggle" id="menu-toggle">
-            Menu
+        <button class="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu">
+            <span class="menu-text">Menu</span>
         </button>
 
         <ul class="nav-links" id="nav-links">
+
+            <button class="menu-close" id="menu-close" aria-label="Fermer le menu">
+                ×
+            </button>
 
             <li>
                 <a href="index.html">Accueil</a>

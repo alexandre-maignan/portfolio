@@ -12,7 +12,7 @@
 
     background-color: white;
 
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--color-border);
 
     z-index: 1000;
 }
@@ -42,7 +42,7 @@
 
 .logo {
     text-decoration: none;
-    color: #111;
+    color: var(--color-primary);
 
     font-size: 24px;
     font-weight: 700;
@@ -57,7 +57,7 @@
     display: flex;
     align-items: center;
 
-    gap: 50px;
+    gap: clamp(40px, 6vw, 80px);
 
     margin: 0;
     padding: 0;
@@ -67,7 +67,7 @@
 
 .nav-links a {
     text-decoration: none;
-    color: #111;
+    color: var(--color-primary);
 
     font-size: 16px;
     font-weight: 500;
@@ -92,7 +92,7 @@
 
     padding: 0;
 
-    color: #111;
+    color: var(--color-primary);
 
     font-family: inherit;
     font-size: 16px;
@@ -102,13 +102,15 @@
 }
 
 
-
-
 /* ==================================================
    MOBILE
 ================================================== */
 
-@media (max-width: 800px) {
+@media (max-width: 700px) {
+
+    /* =========================
+       NAVBAR
+    ========================= */
 
     .navbar {
         height: 70px;
@@ -134,25 +136,20 @@
 
     .menu-toggle {
         display: block;
-
-        position: relative;
-
-        z-index: 1002;
     }
 
 
     /* =========================
-       MENU MOBILE
+       PANNEAU DU MENU
     ========================= */
 
     .nav-links {
         position: fixed;
 
-        top: 70px;
-        left: 0;
+        inset: 0;
 
         width: 100%;
-        height: calc(100dvh - 0px);
+        height: 100dvh;
 
         display: flex;
         flex-direction: column;
@@ -161,17 +158,67 @@
 
         gap: 0;
 
-        background-color: white;
+        margin: 0;
+        padding: 0;
 
-        opacity: 0;
+        background-color: #f7f7f7;
+
         visibility: hidden;
-
-        transform: translateY(-10px);
+        transform: translateX(-100%);
 
         transition:
-            opacity 0.3s ease,
-            transform 0.3s ease,
-            visibility 0.3s ease;
+            transform 0.35s ease,
+            visibility 0s linear 0.35s;
+
+        z-index: 2000;
+    }
+
+
+    /* =========================
+       MENU OUVERT
+    ========================= */
+
+    .nav-links.active {
+        visibility: visible;
+        transform: translateX(0);
+
+        transition:
+            transform 0.35s ease,
+            visibility 0s linear 0s;
+    }
+
+
+    /* =========================
+       CROIX
+    ========================= */
+
+    .menu-close {
+        position: absolute;
+
+        top: 20px;
+        right: 5%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 40px;
+        height: 40px;
+
+        margin: 0;
+        padding: 0;
+
+        border: none;
+        background: transparent;
+
+        color: var(--color-primary);
+
+        font-family: inherit;
+        font-size: 34px;
+        font-weight: 300;
+        line-height: 1;
+
+        cursor: pointer;
     }
 
 
@@ -182,9 +229,10 @@
     .nav-links li {
         width: 70%;
 
-        text-align: center;
-
+        margin: 0;
         padding: 25px 0;
+
+        text-align: center;
     }
 
 
@@ -192,21 +240,8 @@
        TRAITS ENTRE LES LIENS
     ========================= */
 
-    .nav-links li:not(:first-child) {
+    .nav-links li:not(:first-of-type) {
         border-top: 1px solid #e5e5e5;
-    }
-
-
-    /* =========================
-       MENU ACTIF
-    ========================= */
-
-    .nav-links.active {
-        opacity: 1;
-
-        visibility: visible;
-
-        transform: translateY(0);
     }
 
 
@@ -218,8 +253,7 @@
         font-size: 30px;
 
         text-decoration: none;
-
-        color: #111;
+        color: var(--color-primary);
     }
 
 }

@@ -13,10 +13,22 @@ html {
     scroll-behavior: smooth;
 }
 
+
+
+:root {
+    --color-primary: #111111;
+    --color-secondary: #666666;
+    --color-muted: #888888;
+    --color-border: #dddddd;
+    --color-background: #ffffff;
+}
+
+
+
 body {
     font-family: 'Open Sans', sans-serif;
-    color: #111;
-    background-color: #fff;
+    color: var(--color-primary);
+    background-color: var(--color-background);
     margin: 0;
 }
 
@@ -35,3 +47,9 @@ main {
 
 
 
+
+
+
+body.menu-open {
+    overflow: hidden;
+}

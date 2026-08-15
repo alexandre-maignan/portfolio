@@ -28,15 +28,15 @@
 .gallery-header h2 {
     margin-bottom: 25px;
 
-    font-size: 50px;
+    font-size: 45px;
     font-weight: 600;
 }
 
 .gallery-intro {
-    font-size: clamp(16px, 1.25vw, 18px);
+    font-size: clamp(15px, 1.25vw, 16px);
     line-height: 1.4;
 
-    color: #555;
+    color: var(--color-secondary);
 }
 
 
@@ -120,7 +120,7 @@
 
     font-size: 14px;
 
-    color: #777;
+    color: var(--color-secondary);
 }
 
 
