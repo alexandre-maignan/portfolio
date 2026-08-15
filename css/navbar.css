@@ -48,6 +48,9 @@
     font-weight: 700;
 }
 
+.menu-title {
+    display: none;
+}
 
 /* =========================
    LIENS
@@ -102,11 +105,37 @@
 }
 
 
+/* =========================
+   BOUTON FERMETURE
+========================= */
+
+.menu-close {
+    display: none;
+}
+
+
+
+
+
+
+
+
+/* =========================
+   TITRE DU MENU
+========================= */
+
+
+
+
+
+
+
 /* ==================================================
    MOBILE
 ================================================== */
 
 @media (max-width: 700px) {
+
 
     /* =========================
        NAVBAR
@@ -146,7 +175,8 @@
     .nav-links {
         position: fixed;
 
-        inset: 0;
+        top: 0;
+        left: 0;
 
         width: 100%;
         height: 100dvh;
@@ -161,6 +191,8 @@
         margin: 0;
         padding: 0;
 
+        list-style: none;
+
         background-color: #f7f7f7;
 
         visibility: hidden;
@@ -174,6 +206,23 @@
     }
 
 
+.menu-title {
+    display: block;
+
+    width: 90%;
+
+    margin: 0;
+    padding: 0 0 35px 0;
+
+    text-align: left;
+
+    color: var(--color-primary);
+
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+
     /* =========================
        MENU OUVERT
     ========================= */
@@ -185,6 +234,41 @@
         transition:
             transform 0.35s ease,
             visibility 0s linear 0s;
+    }
+
+
+    /* =========================
+       ÉLÉMENTS DU MENU
+    ========================= */
+
+.nav-links li:not(.menu-title) {
+    width: 90%;
+
+    margin: 0;
+    padding: 25px 0;
+
+    text-align: left;
+}
+
+
+    /* =========================
+       TRAITS ENTRE LES LIENS
+    ========================= */
+
+    .nav-links li:not(:first-of-type) {
+        border-top: 1px solid #e5e5e5;
+    }
+
+
+    /* =========================
+       LIENS
+    ========================= */
+
+    .nav-links a {
+        font-size: 30px;
+
+        text-decoration: none;
+        color: var(--color-primary);
     }
 
 
@@ -219,41 +303,6 @@
         line-height: 1;
 
         cursor: pointer;
-    }
-
-
-    /* =========================
-       ÉLÉMENTS DU MENU
-    ========================= */
-
-    .nav-links li {
-        width: 70%;
-
-        margin: 0;
-        padding: 25px 0;
-
-        text-align: center;
-    }
-
-
-    /* =========================
-       TRAITS ENTRE LES LIENS
-    ========================= */
-
-    .nav-links li:not(:first-of-type) {
-        border-top: 1px solid #e5e5e5;
-    }
-
-
-    /* =========================
-       LIENS
-    ========================= */
-
-    .nav-links a {
-        font-size: 30px;
-
-        text-decoration: none;
-        color: var(--color-primary);
     }
 
 }
