@@ -1,0 +1,55 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    letter-spacing: -0.03em;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+:root {
+    --color-primary: #111111;
+    --color-secondary: #666666;
+    --color-muted: #888888;
+    --color-border: #dddddd;
+    --color-background: #ffffff;
+}
+
+
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--color-primary);
+    background-color: var(--color-background);
+    margin: 0;
+}
+
+
+main {
+    padding-top: 120px; /*pas de déclage avec le navbar*/
+    padding-bottom: 80px; /*ecart entre le contenu et le footer*/
+}
+
+
+
+::selection {
+    background-color: #000;
+    color: #fff;
+}
+
+
+
+
+
+
+body.menu-open {
+    overflow: hidden;
+}
