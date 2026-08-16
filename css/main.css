@@ -9,10 +9,10 @@
     letter-spacing: -0.03em;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
-
 
 
 
@@ -131,3 +131,79 @@ main.page-exit:not(.error-page) {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   BOUTON RETOUR EN HAUT
+========================= */
+
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+
+    width: 55px;
+    height: 55px;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: black;
+    color: white;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(10px);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+
+    z-index: 999;
+}
+
+#back-to-top i {
+    font-size: 22px;
+}
+
+#back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#back-to-top:hover {
+    transform: scale(1.1);
+}

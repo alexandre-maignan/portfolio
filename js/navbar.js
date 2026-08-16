@@ -51,13 +51,15 @@ menuClose.addEventListener("click", () => {
 
 
 
-let lastScrollY = window.scrollY;
 const navbar = document.querySelector(".navbar");
+
+let lastScrollY = window.scrollY;
 
 window.addEventListener("scroll", () => {
     const currentScrollY = window.scrollY;
+    const navbarHeight = navbar.offsetHeight;
 
-    if (currentScrollY > lastScrollY && currentScrollY > 80) {
+    if (currentScrollY > lastScrollY && currentScrollY > navbarHeight) {
         // Scroll vers le bas
         navbar.classList.add("navbar-hidden");
     } else {
