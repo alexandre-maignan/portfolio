@@ -16,9 +16,8 @@ window.addEventListener("scroll", () => {
 
 backToTop.addEventListener("click", () => {
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+    lenis.scrollTo(0, {
+        duration: 1.2
     });
 
 });
