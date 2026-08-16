@@ -260,3 +260,32 @@ document.addEventListener("keydown", function(event) {
     }
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================================================
+   LAZY LOADING — GALERIE
+================================================== */
+
+const galleryImages = document.querySelectorAll(".drawing-card img");
+
+galleryImages.forEach((image, index) => {
+
+    if (index >= 3) {
+        image.setAttribute("loading", "lazy");
+    }
+
+});
