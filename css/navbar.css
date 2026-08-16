@@ -86,7 +86,7 @@
     color: var(--color-primary);
 
     font-size: 16px;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s cubic-bezier(.55, 0, 0.1, 1);
 }
 
 .nav-links a:hover {

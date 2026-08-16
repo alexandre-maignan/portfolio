@@ -131,7 +131,11 @@ main.page-exit:not(.error-page) {
 }
 
 
-
+@media (max-width: 700px) {
+    main.page-exit:not(.error-page) {
+        animation: none;
+    }
+}
 
 
 
@@ -184,12 +188,12 @@ main.page-exit:not(.error-page) {
     opacity: 0;
     visibility: hidden;
 
-    transform: translateY(10px);
+    transform: translateY(10px) scale(1);
 
     transition:
-        opacity 0.3s ease,
-        transform 0.3s ease,
-        visibility 0.3s ease;
+        opacity 0.6s cubic-bezier(.55, 0, .1, 1),
+        transform 0.6s cubic-bezier(.55, 0, .1, 1),
+        visibility 0.6s cubic-bezier(.55, 0, .1, 1);
 
     z-index: 999;
 }
@@ -201,9 +205,38 @@ main.page-exit:not(.error-page) {
 #back-to-top.visible {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
 #back-to-top:hover {
-    transform: scale(1.1);
+    transform: translateY(0) scale(1.2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+html.lenis {
+    height: auto;
+}
+
+html.lenis.lenis-smooth {
+    scroll-behavior: auto;
+}
+
+html.lenis.lenis-stopped {
+    overflow: hidden;
 }
