@@ -274,8 +274,6 @@ document.addEventListener("keydown", function(event) {
 
 
 
-
-
 /* ==================================================
    LAZY LOADING — GALERIE
 ================================================== */
@@ -284,8 +282,48 @@ const galleryImages = document.querySelectorAll(".drawing-card img");
 
 galleryImages.forEach((image, index) => {
 
-    if (index >= 3) {
+    // Les 3 premières images sont chargées immédiatement
+    if (index < 3) {
+        image.setAttribute("loading", "eager");
+    }
+
+    // À partir de la 4e image : lazy loading
+    else {
         image.setAttribute("loading", "lazy");
     }
+
+});
+
+
+/* ==================================================
+   ATTENDRE LE CHARGEMENT DES 3 PREMIÈRES IMAGES
+================================================== */
+
+const firstImages = Array.from(galleryImages).slice(0, 3);
+
+const imagesLoaded = firstImages.map(image => {
+
+    // Image déjà chargée
+    if (image.complete) {
+        return Promise.resolve();
+    }
+
+    // Attendre que l'image soit réellement chargée
+    return new Promise(resolve => {
+        image.addEventListener("load", resolve, { once: true });
+        image.addEventListener("error", resolve, { once: true });
+    });
+
+});
+
+
+/* ==================================================
+   LANCEMENT DE LA PAGE
+================================================== */
+
+Promise.all(imagesLoaded).then(() => {
+
+    // Les 3 premières images sont maintenant chargées
+    document.body.classList.add("page-loaded");
 
 });
