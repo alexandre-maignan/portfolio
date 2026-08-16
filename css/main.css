@@ -19,7 +19,7 @@ html {
 
 @font-face {
     font-family: "Open Sans";
-    src: url("../fonts/OpenSans-VariableFont_wdth,wght.woff2") format("woff2");
+    src: url("../fonts/opensans.woff2") format("woff2");
     font-style: normal;
     font-weight: 300 800;
 }
