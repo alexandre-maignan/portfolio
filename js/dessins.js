@@ -274,21 +274,34 @@ document.addEventListener("keydown", function(event) {
 
 
 
-/* ==================================================
-   LAZY LOADING — GALERIE
-================================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const galleryImages = document.querySelectorAll(".drawing-card img");
 
+
+/* ==================================================
+   PRIORITÉ DES IMAGES
+================================================== */
+
 galleryImages.forEach((image, index) => {
 
-    // Les 3 premières images sont chargées immédiatement
     if (index < 3) {
         image.setAttribute("loading", "eager");
-    }
-
-    // À partir de la 4e image : lazy loading
-    else {
+        image.setAttribute("fetchpriority", "high");
+    } else {
         image.setAttribute("loading", "lazy");
     }
 
@@ -296,34 +309,30 @@ galleryImages.forEach((image, index) => {
 
 
 /* ==================================================
-   ATTENDRE LE CHARGEMENT DES 3 PREMIÈRES IMAGES
+   ATTENDRE LES 3 PREMIÈRES IMAGES
 ================================================== */
 
 const firstImages = Array.from(galleryImages).slice(0, 3);
 
-const imagesLoaded = firstImages.map(image => {
+const waitForImage = (image) => {
 
-    // Image déjà chargée
-    if (image.complete) {
-        return Promise.resolve();
-    }
-
-    // Attendre que l'image soit réellement chargée
     return new Promise(resolve => {
+
+        if (image.complete && image.naturalWidth > 0) {
+            resolve();
+            return;
+        }
+
         image.addEventListener("load", resolve, { once: true });
         image.addEventListener("error", resolve, { once: true });
+
     });
 
-});
+};
 
 
-/* ==================================================
-   LANCEMENT DE LA PAGE
-================================================== */
+Promise.all(firstImages.map(waitForImage)).then(() => {
 
-Promise.all(imagesLoaded).then(() => {
-
-    // Les 3 premières images sont maintenant chargées
-    document.body.classList.add("page-loaded");
+    document.documentElement.classList.add("page-ready");
 
 });

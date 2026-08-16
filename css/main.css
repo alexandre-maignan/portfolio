@@ -64,10 +64,26 @@ body.menu-open {
 
 
 
+
+
+
+
+/* ==================================================
+   CHARGEMENT INITIAL — ATTENDRE LES 3 IMAGES
+================================================== */
+
+html {
+    visibility: hidden;
+}
+
+html.page-ready {
+    visibility: visible;
+}
+
+
 /* ==================================================
    TRANSITION ENTRE LES PAGES
 ================================================== */
-
 
 body {
     opacity: 1;
