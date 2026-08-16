@@ -15,6 +15,12 @@
     border-bottom: 1px solid var(--color-border);
 
     z-index: 1000;
+
+    transition: transform 0.3s ease;
+}
+
+.navbar.navbar-hidden {
+    transform: translateY(-100%);
 }
 
 

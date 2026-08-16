@@ -51,6 +51,32 @@ menuClose.addEventListener("click", () => {
 
 
 
+let lastScrollY = window.scrollY;
+const navbar = document.querySelector(".navbar");
+
+window.addEventListener("scroll", () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        // Scroll vers le bas
+        navbar.classList.add("navbar-hidden");
+    } else {
+        // Scroll vers le haut
+        navbar.classList.remove("navbar-hidden");
+    }
+
+    lastScrollY = currentScrollY;
+});
+
+
+
+
+
+
+
+
+
+
 
 
 
