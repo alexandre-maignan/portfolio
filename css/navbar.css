@@ -16,7 +16,7 @@
 
     z-index: 1000;
 
-    transition: transform 0.3s ease-in-out;
+    transition: 1.2s transform 0s cubic-bezier(.55,0,.1,1);
 }
 
 .navbar.navbar-hidden {

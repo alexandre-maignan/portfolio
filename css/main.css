@@ -77,13 +77,13 @@ main {
 ========================= */
 
 main:not(.error-page) {
-    animation: main-entry 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: main-entry 1.2s cubic-bezier(.55, 0, .1, 1) both;
 }
 
 @keyframes main-entry {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(120px);
     }
 
     to {
@@ -114,7 +114,7 @@ body.menu-open {
 ========================= */
 
 main.page-exit:not(.error-page) {
-    animation: main-exit 0.3s ease forwards;
+    animation: main-exit 0.3s cubic-bezier(.55, 0, .1, 1) forwards;
 }
 
 
