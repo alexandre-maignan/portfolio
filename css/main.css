@@ -14,6 +14,19 @@ html {
     scroll-behavior: smooth;
 }
 
+html.lenis {
+    height: auto;
+}
+
+html.lenis.lenis-smooth {
+    scroll-behavior: auto;
+}
+
+html.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+
 
 
 
@@ -23,8 +36,6 @@ html {
     font-style: normal;
     font-weight: 300 800;
 }
-
-
 
 
 
@@ -225,18 +236,3 @@ main.page-exit:not(.error-page) {
 
 
 
-
-
-
-
-html.lenis {
-    height: auto;
-}
-
-html.lenis.lenis-smooth {
-    scroll-behavior: auto;
-}
-
-html.lenis.lenis-stopped {
-    overflow: hidden;
-}
