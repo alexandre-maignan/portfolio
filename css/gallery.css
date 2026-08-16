@@ -29,7 +29,7 @@
     margin-bottom: 25px;
 
     font-size: 45px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .gallery-intro {
@@ -109,7 +109,7 @@
     margin-bottom: 7px;
 
     font-size: 22px;
-    font-weight: 600;
+    font-weight: 700;
 
     line-height: 1.25;
 }
@@ -460,51 +460,3 @@
 
 
 
-
-
-
-/* ==================================================
-   GALERIE
-================================================== */
-
-.gallery {
-    width: 90%;
-    max-width: 1400px;
-
-    margin: 0 auto;
-
-    padding-top: 0px;
-
-    box-sizing: border-box;
-
-    /* État initial */
-    opacity: 0;
-    transform: translateY(30px);
-
-    /* Animation d'entrée */
-    animation:
-        gallery-entry
-        1s
-        cubic-bezier(0.16, 1, 0.3, 1)
-        0s
-        forwards;
-}
-
-
-/* ==================================================
-   ANIMATION D'ENTRÉE
-================================================== */
-
-@keyframes gallery-entry {
-
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-}

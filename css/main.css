@@ -15,6 +15,21 @@ html {
 
 
 
+
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("../fonts/OpenSans-VariableFont_wdth,wght.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 300 800;
+}
+
+
+
+
+
+
+
 :root {
     --color-primary: #111111;
     --color-secondary: #666666;
@@ -50,6 +65,35 @@ main {
 
 
 
+
+
+
+
+
+
+
+/* =========================
+   ANIMATION D'ENTRÉE DU MAIN
+========================= */
+
+main {
+    animation: main-entry 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes main-entry {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
 body.menu-open {
     overflow: hidden;
 }
@@ -65,44 +109,24 @@ body.menu-open {
 
 
 
+/* =========================
+   SORTIE
+========================= */
 
-
-
-/* ==================================================
-   CHARGEMENT INITIAL — ATTENDRE LES 3 IMAGES
-================================================== */
-
-html {
-    visibility: hidden;
+main.page-exit {
+    animation: main-exit 0.3s ease forwards;
 }
 
-html.page-ready {
-    visibility: visible;
-}
-
-
-/* ==================================================
-   TRANSITION ENTRE LES PAGES
-================================================== */
-
-body {
-    opacity: 1;
-    transition: opacity 0.1s ease;
-}
-
-body.page-exit {
-    opacity: 0;
-}
-
-
-@media (max-width: 700px) {
-
-    body {
-        transition: none;
-    }
-
-    body.page-exit {
+@keyframes main-exit {
+    from {
         opacity: 1;
+        transform: translateY(0);
     }
 
+    to {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
 }
+
+

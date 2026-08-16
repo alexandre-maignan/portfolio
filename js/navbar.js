@@ -37,3 +37,64 @@ menuClose.addEventListener("click", () => {
     menuToggle.setAttribute("aria-label", "Ouvrir le menu");
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.querySelectorAll("a").forEach(link => {
+
+    link.addEventListener("click", function (event) {
+
+        const href = this.getAttribute("href");
+
+        if (
+            !href ||
+            href.startsWith("#") ||
+            href.startsWith("http") ||
+            this.target === "_blank"
+        ) {
+            return;
+        }
+
+        event.preventDefault();
+
+        const main = document.querySelector("main");
+
+        if (!main) {
+            window.location.href = href;
+            return;
+        }
+
+        main.classList.add("page-exit");
+
+        setTimeout(() => {
+            window.location.href = href;
+        }, 300);
+    });
+
+});
