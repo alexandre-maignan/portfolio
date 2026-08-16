@@ -48,8 +48,7 @@ menuClose.addEventListener("click", () => {
 
 
 
-
-
+/* rendre le navbar invisible en scrollant vers le bas
 
 const navbar = document.querySelector(".navbar");
 
@@ -71,20 +70,7 @@ window.addEventListener("scroll", () => {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
 
 
 
