@@ -76,6 +76,13 @@ main {
 
 
 
+
+
+
+
+
+
+
 /* =========================
    ANIMATION D'ENTRÉE DU MAIN
 ========================= */
@@ -87,7 +94,7 @@ main:not(.error-page) {
 @keyframes main-entry {
     from {
         opacity: 0;
-        transform: translateY(150px);
+        transform: translateY(120px);
     }
 
     to {
@@ -104,22 +111,12 @@ body.menu-open {
 
 
 
-
-
-
-
-
-
-
-
-
-
 /* =========================
    SORTIE
 ========================= */
 
 main.page-exit:not(.error-page) {
-    animation: main-exit 0.8s cubic-bezier(.55, 0, .1, 1) forwards;
+    animation: main-exit 0.3s cubic-bezier(.55, 0, .1, 1) forwards;
 }
 
 
@@ -131,7 +128,7 @@ main.page-exit:not(.error-page) {
 
     to {
         opacity: 0;
-        transform: translateY(-30px);
+        transform: translateY(-15px);
     }
 }
 
