@@ -80,9 +80,6 @@ main {
 
 
 
-
-
-
 /* =========================
    ANIMATION D'ENTRÉE DU MAIN
 ========================= */
@@ -94,7 +91,7 @@ main:not(.error-page) {
 @keyframes main-entry {
     from {
         opacity: 0;
-        transform: translateY(120px);
+        transform: translateY(150px);
     }
 
     to {
@@ -108,6 +105,20 @@ main:not(.error-page) {
 body.menu-open {
     overflow: hidden;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -128,7 +139,7 @@ main.page-exit:not(.error-page) {
 
     to {
         opacity: 0;
-        transform: translateY(-15px);
+        transform: translateY(-30px);
     }
 }
 
