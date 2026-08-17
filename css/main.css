@@ -94,7 +94,7 @@ main:not(.error-page) {
 @keyframes main-entry {
     from {
         opacity: 0;
-        transform: translateY(120px);
+        transform: translateY(150px);
     }
 
     to {
