@@ -114,16 +114,12 @@ body.menu-open {
 
 
 
-
-
-
-
 /* =========================
    SORTIE
 ========================= */
 
 main.page-exit:not(.error-page) {
-    animation: main-exit 0.3s cubic-bezier(.55, 0, .1, 1) forwards;
+    animation: main-exit 0.8s cubic-bezier(.55, 0, .1, 1) forwards;
 }
 
 
