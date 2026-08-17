@@ -17,7 +17,7 @@
 
     z-index: 1000;
 
-    transition: 1.2s transform 0s cubic-bezier(.55,0,.1,1);
+    transition: 0.8s transform 0s cubic-bezier(.55,0,.1,1);
 }
 
 @media (max-width: 700px) {
