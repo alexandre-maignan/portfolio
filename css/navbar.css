@@ -49,9 +49,18 @@
     text-decoration: none;
     color: var(--color-primary);
 
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 700;
+
+    transition:
+        font-size 0.5s cubic-bezier(.55, 0, .1, 1);
 }
+
+.logo.scrolled {
+    font-size: 18px;
+}
+
+
 
 
 /* =========================

@@ -51,3 +51,10 @@
 
 
 
+@media (max-width: 700px) {
+
+    #back-to-top {
+        right: 15px;
+    }
+
+}
