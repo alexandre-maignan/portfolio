@@ -76,13 +76,6 @@ main {
 
 
 
-
-
-
-
-
-
-
 /* =========================
    ANIMATION D'ENTRÉE DU MAIN
 ========================= */
@@ -111,6 +104,20 @@ body.menu-open {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* =========================
    SORTIE
 ========================= */
@@ -128,7 +135,7 @@ main.page-exit:not(.error-page) {
 
     to {
         opacity: 0;
-        transform: translateY(-15px);
+        transform: translateY(-30px);
     }
 }
 

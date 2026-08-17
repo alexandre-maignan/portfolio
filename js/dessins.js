@@ -4,16 +4,12 @@
 
 const drawingCards = document.querySelectorAll(".drawing-card");
 
-requestAnimationFrame(() => {
+drawingCards.forEach((card, index) => {
 
-    drawingCards.forEach((card, index) => {
+    card.style.transitionDelay = `calc(${index} * var(--gallery-stagger))`;
 
-        card.style.transitionDelay = `${index * 0.1}s`;
-
-        requestAnimationFrame(() => {
-            card.classList.add("visible");
-        });
-
+    requestAnimationFrame(() => {
+        card.classList.add("visible");
     });
 
 });
