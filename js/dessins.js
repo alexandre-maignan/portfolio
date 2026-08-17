@@ -2,18 +2,21 @@
    APPARITION PROGRESSIVE DES IMAGES
 ================================================== */
 
-
 const drawingCards = document.querySelectorAll(".drawing-card");
 
-drawingCards.forEach((card, index) => {
+requestAnimationFrame(() => {
 
-    card.style.transitionDelay = `${index * 0.05}s`;
+    drawingCards.forEach((card, index) => {
 
-    card.classList.add("visible");
+        card.style.transitionDelay = `${index * 0.05}s`;
+
+        requestAnimationFrame(() => {
+            card.classList.add("visible");
+        });
+
+    });
 
 });
-
-
 
 
 
