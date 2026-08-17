@@ -8,7 +8,7 @@ requestAnimationFrame(() => {
 
     drawingCards.forEach((card, index) => {
 
-        card.style.transitionDelay = `${index * 0.05}s`;
+        card.style.transitionDelay = `${index * 0.1}s`;
 
         requestAnimationFrame(() => {
             card.classList.add("visible");
