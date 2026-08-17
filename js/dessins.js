@@ -113,13 +113,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================
+       PINCH MOBILE
+    ========================= */
+
+    let isPinching = false;
+
+    let initialPinchDistance = 0;
+    let initialPinchScale = 1;
+
+
+    /* =========================
        POSITION IMAGE
     ========================= */
 
     function updateImage() {
 
         lightboxImage.style.transform =
-            `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+            `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
 
     }
 
@@ -160,6 +170,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 requestAnimationFrame(animateZoom);
 
         }
+
+    }
+
+
+    /* =========================
+       DISTANCE ENTRE 2 DOIGTS
+    ========================= */
+
+    function getTouchDistance(touch1, touch2) {
+
+        const dx =
+            touch2.clientX - touch1.clientX;
+
+        const dy =
+            touch2.clientY - touch1.clientY;
+
+        return Math.sqrt(
+            dx * dx + dy * dy
+        );
 
     }
 
@@ -223,14 +252,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================
-       ZOOM
+       ZOOM DESKTOP
+       MOLETTE
     ========================= */
 
     lightboxImage.addEventListener("wheel", event => {
 
         event.preventDefault();
         event.stopPropagation();
-
 
         if (event.deltaY < 0) {
 
@@ -242,17 +271,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-
         targetScale = Math.max(
             minScale,
             Math.min(maxScale, targetScale)
         );
 
-
-        /*
-         * Si on revient à 100 %,
-         * on recentre l'image.
-         */
 
         if (targetScale === minScale) {
 
@@ -261,41 +284,195 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-
         startZoomAnimation();
 
     }, { passive: false });
 
 
     /* =========================
+       TOUCH START
+    ========================= */
+
+    lightboxImage.addEventListener("touchstart", event => {
+
+        event.preventDefault();
+
+        /* PINCH */
+
+        if (event.touches.length === 2) {
+
+            isPinching = true;
+
+            initialPinchDistance =
+                getTouchDistance(
+                    event.touches[0],
+                    event.touches[1]
+                );
+
+            initialPinchScale = scale;
+
+            return;
+        }
+
+
+        /* DRAG */
+
+        if (
+            event.touches.length === 1 &&
+            scale > 1
+        ) {
+
+            isDragging = true;
+
+            startX = event.touches[0].clientX;
+            startY = event.touches[0].clientY;
+
+            initialX = translateX;
+            initialY = translateY;
+
+        }
+
+    }, { passive: false });
+
+
+    /* =========================
+       TOUCH MOVE
+    ========================= */
+
+    lightboxImage.addEventListener("touchmove", event => {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+
+        /* =========================
+           PINCH
+        ========================= */
+
+        if (
+            isPinching &&
+            event.touches.length === 2
+        ) {
+
+            const currentDistance =
+                getTouchDistance(
+                    event.touches[0],
+                    event.touches[1]
+                );
+
+
+            const ratio =
+                currentDistance /
+                initialPinchDistance;
+
+
+            targetScale =
+                initialPinchScale * ratio;
+
+
+            targetScale = Math.max(
+                minScale,
+                Math.min(maxScale, targetScale)
+            );
+
+
+            scale = targetScale;
+
+            updateImage();
+
+            return;
+        }
+
+
+        /* =========================
+           DRAG
+        ========================= */
+
+        if (
+            isDragging &&
+            event.touches.length === 1 &&
+            scale > 1
+        ) {
+
+            translateX =
+                initialX +
+                (
+                    event.touches[0].clientX -
+                    startX
+                );
+
+
+            translateY =
+                initialY +
+                (
+                    event.touches[0].clientY -
+                    startY
+                );
+
+
+            updateImage();
+
+        }
+
+    }, { passive: false });
+
+
+    /* =========================
+       TOUCH END
+    ========================= */
+
+    lightboxImage.addEventListener("touchend", event => {
+
+        if (event.touches.length < 2) {
+
+            isPinching = false;
+
+        }
+
+        if (event.touches.length === 0) {
+
+            isDragging = false;
+
+        }
+
+
+        /* Retour à 100 % */
+
+        if (scale <= minScale) {
+
+            scale = minScale;
+            targetScale = minScale;
+
+            translateX = 0;
+            translateY = 0;
+
+            updateImage();
+
+        }
+
+    });
+
+
+    /* =========================
        COMMENCER LE DÉPLACEMENT
+       SOURIS
     ========================= */
 
     lightboxImage.addEventListener("mousedown", event => {
-
-        /*
-         * Déplacement uniquement
-         * lorsque l'image est zoomée.
-         */
 
         if (scale <= 1) {
             return;
         }
 
-
         isDragging = true;
-
 
         startX = event.clientX;
         startY = event.clientY;
 
-
         initialX = translateX;
         initialY = translateY;
 
-
         lightboxImage.style.cursor = "grabbing";
-
 
         event.preventDefault();
 
@@ -304,6 +481,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================
        DÉPLACER L'IMAGE
+       SOURIS
     ========================= */
 
     document.addEventListener("mousemove", event => {
@@ -312,16 +490,13 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-
         translateX =
             initialX +
             (event.clientX - startX);
 
-
         translateY =
             initialY +
             (event.clientY - startY);
-
 
         updateImage();
 
@@ -329,7 +504,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================
-       ARRÊTER LE DÉPLACEMENT
+       ARRÊTER DRAG
+       SOURIS
     ========================= */
 
     document.addEventListener("mouseup", () => {
@@ -338,9 +514,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-
         isDragging = false;
-
 
         lightboxImage.style.cursor =
             scale > 1
@@ -358,17 +532,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         lightbox.classList.remove("active");
 
-
         scale = 1;
         targetScale = 1;
-
 
         translateX = 0;
         translateY = 0;
 
-
         isDragging = false;
-
+        isPinching = false;
 
         if (animationFrame) {
 
@@ -378,12 +549,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-
         updateImage();
 
-
         lightboxImage.style.cursor = "default";
-
 
         unlockScroll();
 
