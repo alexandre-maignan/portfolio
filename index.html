@@ -23,7 +23,6 @@
 
     <link rel="icon" type="image/jpeg" href="logo/favicon.jpg">
 
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <link rel="stylesheet" href="css/main.css">
@@ -98,6 +97,7 @@
 
 </nav>
 
+
     <!-- CONTENU PRINCIPAL -->
 <main>
 
@@ -119,7 +119,25 @@
         <p class="gallery-intro">
             Une sélection de dessins réalisés au crayon, au fusain et à la pierre noire.
         </p>
+            <div class="gallery-filters">
 
+                <button class="filter-button active" data-filter="all">
+                    Tous
+                </button>
+
+                <button class="filter-button" data-filter="modele">
+                    Modelé
+                </button>
+
+                <button class="filter-button" data-filter="hachures">
+                    Hachures
+                </button>
+
+                <button class="filter-button" data-filter="aquarelle">
+                    Aquarelle
+                </button>
+
+            </div>
     </div>
 
 
@@ -217,9 +235,10 @@
 
 
 
-
-
  </main>
+
+
+
 
 
 
@@ -334,6 +353,7 @@
     </div>
 
 </footer>
+
 
 <button id="back-to-top" aria-label="Retour en haut">
     <i class="fa-solid fa-arrow-up-long"></i>
