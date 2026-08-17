@@ -1,5 +1,5 @@
 const lenis = new Lenis({
-    duration: 1.2,
+    duration: 1.4,
     smoothWheel: true,
     syncTouch: false,
     wheelMultiplier: 1,

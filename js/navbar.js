@@ -112,3 +112,35 @@ document.querySelectorAll("a").forEach(link => {
     });
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const logo = document.querySelector(".logo");
+
+window.addEventListener("scroll", function() {
+
+    if (window.scrollY > 50) {
+        logo.classList.add("scrolled");
+    } else {
+        logo.classList.remove("scrolled");
+    }
+
+});
