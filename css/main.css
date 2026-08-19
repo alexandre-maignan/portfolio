@@ -152,3 +152,45 @@ main.page-exit:not(.error-page) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   ANIMATIONS BLOQUÉES
+========================= */
+
+body:not(.page-loaded) .gallery-entry,
+body:not(.page-loaded) .hero,
+body:not(.page-loaded) .navbar {
+    animation: none !important;
+    transition: none !important;
+}
+
+
+/* =========================
+   PAGE PRÊTE
+========================= */
+
+body.page-loaded .gallery-entry {
+    /* Tes animations normales reprennent */
+}
