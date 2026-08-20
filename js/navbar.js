@@ -1,81 +1,165 @@
-/* =========================
+/* ==================================================
    MENU MOBILE
-========================= */
+================================================== */
 
 const menuToggle = document.getElementById("menu-toggle");
 const menuClose = document.getElementById("menu-close");
 const navLinks = document.getElementById("nav-links");
 
 
-/* =========================
-   OUVRIR
-========================= */
+if (menuToggle && menuClose && navLinks) {
 
-menuToggle.addEventListener("click", () => {
+    /* =========================
+       OUVRIR
+    ========================= */
 
-    navLinks.classList.add("active");
+    menuToggle.addEventListener("click", () => {
 
-    document.body.classList.add("menu-open");
+        navLinks.classList.add("active");
 
-    menuToggle.setAttribute("aria-expanded", "true");
-    menuToggle.setAttribute("aria-label", "Fermer le menu");
+        document.body.classList.add("menu-open");
 
-});
+        menuToggle.setAttribute("aria-expanded", "true");
+        menuToggle.setAttribute("aria-label", "Fermer le menu");
 
-
-/* =========================
-   FERMER
-========================= */
-
-menuClose.addEventListener("click", () => {
-
-    navLinks.classList.remove("active");
-
-    document.body.classList.remove("menu-open");
-
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.setAttribute("aria-label", "Ouvrir le menu");
-
-});
+    });
 
 
+    /* =========================
+       FERMER
+    ========================= */
 
+    menuClose.addEventListener("click", () => {
 
+        navLinks.classList.remove("active");
 
+        document.body.classList.remove("menu-open");
 
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Ouvrir le menu");
+
+    });
+
+}
 
 
 
-
+/* ==================================================
+   NAVBAR
+================================================== */
 
 const navbar = document.querySelector(".navbar");
 
 let lastScrollY = window.scrollY;
 
-window.addEventListener("scroll", () => {
-    const currentScrollY = window.scrollY;
-    const navbarHeight = navbar.offsetHeight;
 
-    if (currentScrollY > lastScrollY && currentScrollY > navbarHeight) {
-        // Scroll vers le bas
-        navbar.classList.add("navbar-hidden");
-    } else {
-        // Scroll vers le haut
-        navbar.classList.remove("navbar-hidden");
-    }
+/* ==================================================
+   APPARITION
+================================================== */
 
-    lastScrollY = currentScrollY;
-});
+if (navbar) {
 
+    window.addEventListener("load", () => {
 
+        requestAnimationFrame(() => {
 
+            navbar.classList.add("navbar-loaded");
 
+        });
+
+    });
 
 
+    /* ==================================================
+       SCROLL
+    ================================================== */
+
+    window.addEventListener("scroll", () => {
+
+        // Ne rien modifier pendant la transition de page
+        if (document.body.classList.contains("page-exit")) {
+            return;
+        }
+
+
+        const currentScrollY = window.scrollY;
+
+
+        /* -----------------------------------------------
+           Haut de page
+        ----------------------------------------------- */
+
+        if (currentScrollY <= 0) {
+
+            navbar.classList.remove("navbar-hidden");
+
+            lastScrollY = currentScrollY;
+
+            return;
+
+        }
+
+
+        /* -----------------------------------------------
+           Scroll vers le bas
+        ----------------------------------------------- */
+
+        if (currentScrollY > lastScrollY) {
+
+            navbar.classList.add("navbar-hidden");
+
+        }
+
+
+        /* -----------------------------------------------
+           Scroll vers le haut
+        ----------------------------------------------- */
+
+        else if (currentScrollY < lastScrollY) {
+
+            navbar.classList.remove("navbar-hidden");
+
+        }
+
+
+        lastScrollY = currentScrollY;
+
+    });
+
+}
 
 
 
+/* ==================================================
+   LOGO
+================================================== */
 
+const logo = document.querySelector(".logo");
+
+
+if (logo) {
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 50) {
+
+            logo.classList.add("scrolled");
+
+        } else {
+
+            logo.classList.remove("scrolled");
+
+        }
+
+    });
+
+}
+
+
+
+/* ==================================================
+   TRANSITION DE PAGE
+================================================== */
 
 document.querySelectorAll("a").forEach(link => {
 
@@ -83,61 +167,83 @@ document.querySelectorAll("a").forEach(link => {
 
         const href = this.getAttribute("href");
 
+
+        /* -----------------------------------------------
+           Vérifications
+        ----------------------------------------------- */
+
+        if (!href) return;
+
+        if (href.startsWith("#")) return;
+
         if (
-            !href ||
-            href.startsWith("#") ||
-            href.startsWith("http") ||
-            this.target === "_blank"
+            this.hostname &&
+            this.hostname !== window.location.hostname
         ) {
             return;
         }
 
+        if (this.target === "_blank") return;
+
+
         event.preventDefault();
 
-        const main = document.querySelector("main");
 
-        if (!main) {
-            window.location.href = href;
+        /* -----------------------------------------------
+           Éviter plusieurs clics
+        ----------------------------------------------- */
+
+        if (document.body.classList.contains("page-exit")) {
             return;
         }
 
-        main.classList.add("page-exit");
 
-        setTimeout(() => {
+        /* -----------------------------------------------
+           Préparer la navbar
+           
+           On la rend visible uniquement pour la
+           transition de sortie.
+        ----------------------------------------------- */
+
+        if (navbar) {
+            navbar.classList.remove("navbar-hidden");
+        }
+
+
+        /* -----------------------------------------------
+           Attendre la fin de l'animation
+        ----------------------------------------------- */
+
+        const handlePageExit = (event) => {
+
+            if (event.animationName !== "page-exit") {
+                return;
+            }
+
+
+            document.body.removeEventListener(
+                "animationend",
+                handlePageExit
+            );
+
+
             window.location.href = href;
-        }, 300);
+
+        };
+
+
+        document.body.addEventListener(
+            "animationend",
+            handlePageExit
+        );
+
+
+        /* -----------------------------------------------
+           Lancer la sortie
+        ----------------------------------------------- */
+
+        document.body.classList.add("page-exit");
+
     });
-
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const logo = document.querySelector(".logo");
-
-window.addEventListener("scroll", function() {
-
-    if (window.scrollY > 50) {
-        logo.classList.add("scrolled");
-    } else {
-        logo.classList.remove("scrolled");
-    }
 
 });

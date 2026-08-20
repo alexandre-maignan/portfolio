@@ -1,9 +1,25 @@
-/* =========================
+/* ==================================================
+   VARIABLES
+================================================== */
+
+:root {
+    --navbar-entry-duration: var(--main-entry-duration);
+    --navbar-entry-easing: cubic-bezier(0.55, 1, 0.55, 1);
+
+    --navbar-scroll-duration: 0.8s;
+    --navbar-scroll-easing: cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+
+/* ==================================================
    NAVBAR
-========================= */
+================================================== */
 
 .navbar {
     position: fixed;
+
+    --entry-y: -100px;
+
     top: 0;
     left: 0;
 
@@ -11,29 +27,59 @@
     height: 70px;
 
     background-color: var(--color-background);
+
     border-bottom: 1px solid var(--color-border);
 
     z-index: 1000;
 
-    /* Animation uniquement lors du masquage au scroll */
-    transition: transform 0.8s cubic-bezier(.55, 0, .1, 1);
+
+    /* État initial */
+
+    opacity: 0;
+
+    transform: translateY(var(--entry-y));
+
+
+    /* Animation d'entrée + scroll */
+
+    transition:
+        transform var(--navbar-entry-duration) var(--navbar-entry-easing),
+        opacity var(--navbar-entry-duration) var(--navbar-entry-easing);
 }
 
 
-/* =========================
-   NAVBAR CACHÉE
-========================= */
+/* ==================================================
+   NAVBAR APRÈS CHARGEMENT
+================================================== */
 
-.navbar.navbar-hidden {
+.navbar.navbar-loaded {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+    transition:
+        transform var(--navbar-scroll-duration) var(--navbar-scroll-easing),
+        opacity var(--navbar-entry-duration) var(--navbar-entry-easing);
+}
+
+
+/* ==================================================
+   NAVBAR CACHÉE AU SCROLL
+================================================== */
+
+.navbar.navbar-loaded.navbar-hidden {
+
     transform: translateY(-100%);
 }
 
 
-/* =========================
+/* ==================================================
    CONTENEUR
-========================= */
+================================================== */
 
 .nav-container {
+
     width: 90%;
     max-width: 1400px;
 
@@ -42,17 +88,20 @@
     margin: 0 auto;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 }
 
 
-/* =========================
+/* ==================================================
    LOGO
-========================= */
+================================================== */
 
 .logo {
+
     text-decoration: none;
+
     color: var(--color-primary);
 
     font-size: 24px;
@@ -62,17 +111,20 @@
         font-size 0.5s cubic-bezier(.55, 0, .1, 1);
 }
 
+
 .logo.scrolled {
     font-size: 18px;
 }
 
 
-/* =========================
+/* ==================================================
    LIENS DESKTOP
-========================= */
+================================================== */
 
 .nav-links {
+
     display: flex;
+
     align-items: center;
 
     gap: clamp(40px, 6vw, 80px);
@@ -81,8 +133,11 @@
     padding: 0;
 }
 
+
 .nav-links ul {
+
     display: flex;
+
     align-items: center;
 
     gap: clamp(40px, 6vw, 80px);
@@ -93,8 +148,11 @@
     list-style: none;
 }
 
+
 .nav-links a {
+
     text-decoration: none;
+
     color: var(--color-primary);
 
     font-size: 15px;
@@ -103,28 +161,31 @@
         opacity 0.3s cubic-bezier(.55, 0, .1, 1);
 }
 
+
 .nav-links a:hover {
     opacity: 0.5;
 }
 
 
-/* =========================
+/* ==================================================
    TITRE DU MENU
-========================= */
+================================================== */
 
 .menu-title {
     display: none;
 }
 
 
-/* =========================
+/* ==================================================
    BOUTON MENU
-========================= */
+================================================== */
 
 .menu-toggle {
+
     display: none;
 
     border: none;
+
     background: none;
 
     padding: 0;
@@ -132,6 +193,7 @@
     color: var(--color-primary);
 
     font-family: inherit;
+
     font-size: 16px;
     font-weight: 500;
 
@@ -139,9 +201,9 @@
 }
 
 
-/* =========================
+/* ==================================================
    BOUTON FERMETURE
-========================= */
+================================================== */
 
 .menu-close {
     display: none;
@@ -160,10 +222,12 @@
     ========================= */
 
     .navbar {
+
         height: 70px;
 
-        /* Plus rapide sur mobile */
-        transition: transform 0.3s ease;
+        transition:
+            transform 0.3s ease,
+            opacity var(--navbar-entry-duration) var(--navbar-entry-easing);
     }
 
 
@@ -195,10 +259,11 @@
 
 
     /* =========================
-       PANNEAU DU MENU
+       PANNEAU MENU
     ========================= */
 
     .nav-links {
+
         position: fixed;
 
         top: 0;
@@ -208,6 +273,7 @@
         height: 100dvh;
 
         display: flex;
+
         align-items: center;
         justify-content: center;
 
@@ -233,6 +299,7 @@
     ========================= */
 
     .nav-links.active {
+
         visibility: visible;
 
         transform: translateX(0);
@@ -244,7 +311,7 @@
 
 
     /* =========================
-       CONTENU DU MENU
+       CONTENU
     ========================= */
 
     .nav-menu-content {
@@ -257,6 +324,7 @@
     ========================= */
 
     .menu-title {
+
         display: block;
 
         margin: 0 0 20px 0;
@@ -275,6 +343,7 @@
     ========================= */
 
     .nav-links ul {
+
         display: block;
 
         width: 100%;
@@ -291,6 +360,7 @@
     ========================= */
 
     .nav-links li {
+
         width: 100%;
 
         margin: 0;
@@ -303,6 +373,7 @@
     ========================= */
 
     .nav-links li a {
+
         display: block;
 
         width: 100%;
@@ -332,12 +403,14 @@
     ========================= */
 
     .menu-close {
+
         position: absolute;
 
         top: 20px;
         right: 5%;
 
         display: flex;
+
         align-items: center;
         justify-content: center;
 
@@ -348,24 +421,19 @@
         padding: 0;
 
         border: none;
+
         background: transparent;
 
         color: var(--color-primary);
 
         font-family: inherit;
+
         font-size: 34px;
         font-weight: 300;
+
         line-height: 1;
 
         cursor: pointer;
     }
 
 }
-
-
-
-
-
-
-
-

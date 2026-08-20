@@ -8,7 +8,7 @@
 
     margin: 0 auto;
 
-    padding-top: 0px;
+    padding-top: 0;
 
     box-sizing: border-box;
 }
@@ -30,13 +30,20 @@
 
     font-size: 35px;
     font-weight: 700;
+
+    --entry-y: 50px;
 }
+
 
 .gallery-intro {
     font-size: 15px;
     line-height: 1.4;
+
     max-width: 350px;
+
     color: var(--color-secondary);
+
+    --entry-y: 30px;
 }
 
 
@@ -54,6 +61,8 @@
 
     width: 100%;
     min-width: 0;
+
+    --entry-y: 80px;
 }
 
 
@@ -101,6 +110,7 @@
     padding: 18px 0 0;
 
     max-width: 100%;
+
     overflow-wrap: break-word;
 }
 
@@ -134,13 +144,57 @@
 
 
 /* ==================================================
+   ANIMATION D'ENTRÉE
+================================================== */
+
+:root {
+    --gallery-animation-duration: 1.2s;
+    --gallery-animation-easing: cubic-bezier(0.55, 1, 0.55, 1);
+}
+
+
+/* Élément animé */
+
+.gallery-entry {
+    opacity: 0;
+
+    animation:
+        gallery-entry-animation
+        var(--gallery-animation-duration)
+        var(--gallery-animation-easing)
+        forwards;
+}
+
+
+/* Animation commune */
+
+@keyframes gallery-entry-animation {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(var(--entry-y));
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* ==================================================
    TABLETTE
 ================================================== */
 
 @media (max-width: 900px) {
 
     .gallery {
-        padding-top: 0px;
+        padding-top: 0;
     }
 
 
@@ -167,21 +221,28 @@
 
     .gallery {
         width: 90%;
+
         padding-top: 0;
     }
+
 
     .gallery-header {
         margin-bottom: 50px;
     }
 
+
     .gallery-header h2 {
         font-size: 42px;
     }
 
+
     .gallery-grid {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns:
+            minmax(0, 1fr);
+
         gap: 40px;
     }
+
 
     .drawing-card img {
         width: 100%;
@@ -191,6 +252,17 @@
 
         object-fit: cover;
         object-position: center;
+    }
+
+
+    /* Désactivation de l'animation */
+
+    .gallery-entry {
+        opacity: 1;
+
+        transform: none;
+
+        animation: none;
     }
 
 }
@@ -224,127 +296,24 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ==================================================
-   APPARITION PROGRESSIVE DES IMAGES
-================================================== */
-
-.drawing-card {
-    opacity: 0;
-    transform: translateY(25px);
-
-    transition:
-        opacity 1.2s cubic-bezier(.55, 0, .1, 1),
-        transform 1.2s cubic-bezier(.55, 0, .1, 1);
-}
-
-:root {
-    --gallery-stagger: 0.1s;
-}
-
-
-
-/* Image visible */
-
-.drawing-card.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-
-/* ==================================================
-   DÉSACTIVER SUR MOBILE
-================================================== */
-
-@media (max-width: 600px) {
-
-    .drawing-card {
-        opacity: 1;
-        transform: none;
-        transition: none;
-    }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* =========================
    LIGHTBOX
-========================= */
+================================================== */
 
 .lightbox {
     position: fixed;
+
     inset: 0;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     padding: 40px;
 
-    background: rgba(0, 0, 0, 0.92);
+    background:
+        rgba(0, 0, 0, 0.92);
 
     opacity: 0;
     visibility: hidden;
@@ -357,19 +326,20 @@
 }
 
 
-/* =========================
-   OUVERTURE
-========================= */
+/* ==================================================
+   OUVERTURE LIGHTBOX
+================================================== */
 
 .lightbox.active {
     opacity: 1;
+
     visibility: visible;
 }
 
 
-/* =========================
-   IMAGE
-========================= */
+/* ==================================================
+   IMAGE LIGHTBOX
+================================================== */
 
 .lightbox-image {
     display: block;
@@ -384,18 +354,39 @@
 
     transform: scale(0.96);
 
-    transition: transform 0.35s cubic-bezier(.16, 1, .3, 1);
+    transition:
+        transform 0.35s
+        cubic-bezier(0.16, 1, 0.3, 1);
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+
+    touch-action: none;
+
+    cursor: default;
 }
 
+
+/* ==================================================
+   IMAGE LIGHTBOX ACTIVE
+================================================== */
 
 .lightbox.active .lightbox-image {
     transform: scale(1);
+
+    cursor: grab;
 }
 
 
-/* =========================
+.lightbox.active .lightbox-image:active {
+    cursor: grabbing;
+}
+
+
+/* ==================================================
    BOUTON FERMER
-========================= */
+================================================== */
 
 .lightbox-close {
     position: absolute;
@@ -407,11 +398,13 @@
     height: 40px;
 
     border: none;
+
     background: transparent;
 
     color: white;
 
     font-size: 36px;
+
     font-weight: 300;
 
     line-height: 1;
@@ -420,7 +413,9 @@
 
     opacity: 0.8;
 
-    transition: opacity 0.2s ease;
+    transition:
+        opacity 0.2s ease;
+
     z-index: 2000;
 }
 
@@ -430,9 +425,18 @@
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* ==================================================
+   TOUCH / LIGHTBOX
+================================================== */
+
+.lightbox {
+    touch-action: none;
+}
+
+
+/* ==================================================
+   MOBILE LIGHTBOX
+================================================== */
 
 @media (max-width: 600px) {
 
@@ -440,10 +444,12 @@
         padding: 20px;
     }
 
+
     .lightbox-image {
         max-width: 94vw;
         max-height: 85vh;
     }
+
 
     .lightbox-close {
         top: 15px;
@@ -455,92 +461,9 @@
 }
 
 
-
-
-
-.lightbox-image {
-    user-select: none;
-    -webkit-user-drag: none;
-}
-
-.lightbox-image {
-    cursor: default;
-}
-
-.lightbox.active .lightbox-image {
-    cursor: grab;
-}
-
-.lightbox.active .lightbox-image:active {
-    cursor: grabbing;
-}
-
-
-.lightbox-image {
-    touch-action: none;
-    user-select: none;
-    -webkit-user-drag: none;
-}
-
-.lightbox {
-    touch-action: none;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* =========================
+/* ==================================================
    FILTRES GALERIE
-========================= */
+================================================== */
 
 .gallery-filters {
     display: flex;
@@ -548,58 +471,65 @@
     gap: 28px;
 
     margin-top: 50px;
+
     margin-bottom: -25px;
 }
 
 
-/* =========================
-   BOUTONS
-========================= */
+/* ==================================================
+   BOUTONS FILTRES
+================================================== */
 
 .filter-button {
     padding: 0;
 
     border: none;
+
     background: none;
 
     color: var(--color-secondary);
 
     font-family: inherit;
+
     font-size: 13px;
+
     font-weight: 400;
 
     cursor: pointer;
 
-    transition: color 0.25s ease;
+    transition:
+        color 0.25s ease;
 }
 
 
-/* =========================
-   HOVER
-========================= */
+/* ==================================================
+   HOVER FILTRES
+================================================== */
 
 .filter-button:hover {
     color: var(--color-primary);
 }
 
 
-/* =========================
-   ACTIF
-========================= */
+/* ==================================================
+   FILTRE ACTIF
+================================================== */
 
 .filter-button.active {
     color: var(--color-primary);
+
     font-weight: 700;
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* ==================================================
+   MOBILE FILTRES
+================================================== */
 
 @media (max-width: 600px) {
 
     .gallery-filters {
+
         gap: 20px;
 
         flex-wrap: wrap;
@@ -607,8 +537,38 @@
         margin-top: 25px;
     }
 
+
     .filter-button {
         font-size: 13px;
     }
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================================================
+   VALEURS DE TRANSLATION DES ENTRÉES
+================================================== */
+
+.gallery-header h2 {
+    --entry-y: 200px;
+}
+
+.gallery-intro {
+    --entry-y: 100px;
+}
+
+.gallery-grid {
+    --entry-y: 80px;
 }

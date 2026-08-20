@@ -47,8 +47,9 @@ html.lenis.lenis-stopped {
     --color-muted: #888888;
     --color-border: #dddddd;
     --color-background: #ffffff;
-}
 
+    --page-exit-duration: 0.3s;
+}
 
 
 body {
@@ -56,6 +57,10 @@ body {
     color: var(--color-primary);
     background-color: var(--color-background);
     margin: 0;
+}
+
+body.menu-open {
+    overflow: hidden;
 }
 
 
@@ -73,10 +78,9 @@ main {
 
 
 
-
-
-
-
+:root {
+    --main-entry-duration: 2.2s;
+}
 
 
 
@@ -84,11 +88,16 @@ main {
    ANIMATION D'ENTRÉE DU MAIN
 ========================= */
 
+
+
 main:not(.error-page) {
-    animation: main-entry 1.2s cubic-bezier(.55, 0, .1, 1) both;
+    animation:
+        main-entry var(--main-entry-duration)
+        cubic-bezier(.55, 0, .1, 1);
 }
 
 @keyframes main-entry {
+
     from {
         opacity: 0;
         transform: translateY(150px);
@@ -98,12 +107,7 @@ main:not(.error-page) {
         opacity: 1;
         transform: translateY(0);
     }
-}
 
-
-
-body.menu-open {
-    overflow: hidden;
 }
 
 
@@ -123,15 +127,20 @@ body.menu-open {
 
 
 /* =========================
-   SORTIE
+   SORTIE DE PAGE
 ========================= */
 
-main.page-exit:not(.error-page) {
-    animation: main-exit 0.3s cubic-bezier(.55, 0, .1, 1) forwards;
+body.page-exit {
+    animation: page-exit var(--page-exit-duration) cubic-bezier(.55, 0, .1, 1) forwards;
 }
 
 
-@keyframes main-exit {
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes page-exit {
+
     from {
         opacity: 1;
         transform: translateY(0);
@@ -139,15 +148,22 @@ main.page-exit:not(.error-page) {
 
     to {
         opacity: 0;
-        transform: translateY(-30px);
+        transform: translateY(-0px);
     }
+
 }
 
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 700px) {
-    main.page-exit:not(.error-page) {
-        animation: none;
+
+    body.page-exit {
+        animation: page-exit 0s linear forwards;
     }
+
 }
 
 
@@ -172,25 +188,3 @@ main.page-exit:not(.error-page) {
 
 
 
-
-
-
-/* =========================
-   ANIMATIONS BLOQUÉES
-========================= */
-
-body:not(.page-loaded) .gallery-entry,
-body:not(.page-loaded) .hero,
-body:not(.page-loaded) .navbar {
-    animation: none !important;
-    transition: none !important;
-}
-
-
-/* =========================
-   PAGE PRÊTE
-========================= */
-
-body.page-loaded .gallery-entry {
-    /* Tes animations normales reprennent */
-}
