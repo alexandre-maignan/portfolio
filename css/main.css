@@ -30,6 +30,7 @@ html.lenis.lenis-stopped {
 
 
 
+
 @font-face {
     font-family: "Open Sans";
     src: url("../fonts/opensans.woff2") format("woff2");
@@ -70,7 +71,6 @@ main {
 }
 
 
-
 ::selection {
     background-color: #000;
     color: #fff;
@@ -78,9 +78,30 @@ main {
 
 
 
+
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    main:not(.error-page) {
+        animation: none;
+    }
+
+}
+
+
+
+
+
+
+
 :root {
     --main-entry-duration: 1s;
 }
+
+
+
+
 
 
 

@@ -85,40 +85,75 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "CollectionPage",
 
-        "name": "Dessins — Alexandre Maignan",
+        "@graph": [
 
-        "url": "https://alexandre-maignan.github.io/portfolio/dessins.html",
+            {
+                "@type": "WebSite",
+                "@id": "https://alexandre-maignan.github.io/portfolio/#website",
 
-        "description": "Collection de dessins et d'études anatomiques d'Alexandre Maignan, réalisées dans une approche académique et consacrées à l'étude du corps humain, des proportions et des volumes.",
+                "name": "Alexandre Maignan — Sculpteur",
 
-        "isPartOf": {
-            "@type": "WebSite",
-            "name": "Alexandre Maignan — Sculpteur",
-            "url": "https://alexandre-maignan.github.io/portfolio/"
-        },
+                "url": "https://alexandre-maignan.github.io/portfolio/",
 
-        "about": {
-            "@type": "Person",
+                "description": "Portfolio d'Alexandre Maignan, sculpteur et dessinateur travaillant dans une approche académique inspirée de la sculpture classique gréco-romaine et consacrée à l'étude du corps humain."
+            },
 
-            "name": "Alexandre Maignan",
 
-            "url": "https://alexandre-maignan.github.io/portfolio/",
+            {
+                "@type": "CollectionPage",
+                "@id": "https://alexandre-maignan.github.io/portfolio/dessins.html#webpage",
 
-            "image": "https://alexandre-maignan.github.io/portfolio/images/a-propos/alexandre-maignan.jpg",
+                "url": "https://alexandre-maignan.github.io/portfolio/dessins.html",
 
-            "jobTitle": "Sculpteur et dessinateur",
+                "name": "Dessins — Alexandre Maignan",
 
-            "description": "Sculpteur et dessinateur travaillant autour de l'étude du corps humain, de l'anatomie, des proportions et des volumes.",
+                "description": "Collection de dessins d'Alexandre Maignan, consacrés à l'étude du corps humain, de l'anatomie, des proportions et des volumes.",
 
-            "sameAs": [
-                "https://www.instagram.com/alexandre_maignan/",
-                "https://fr.pinterest.com/alexandremaignanart/",
-                "https://www.tiktok.com/@alexandre.maignan",
-                "https://www.linkedin.com/in/amaignan/"
-            ]
-        }
+                "isPartOf": {
+                    "@id": "https://alexandre-maignan.github.io/portfolio/#website"
+                },
+
+                "about": {
+                    "@id": "https://alexandre-maignan.github.io/portfolio/#person"
+                }
+            },
+
+
+            {
+                "@type": "Person",
+                "@id": "https://alexandre-maignan.github.io/portfolio/#person",
+
+                "name": "Alexandre Maignan",
+
+                "url": "https://alexandre-maignan.github.io/portfolio/",
+
+                "image": "https://alexandre-maignan.github.io/portfolio/images/a-propos/alexandre-maignan.jpg",
+
+                "jobTitle": "Sculpteur",
+
+                "description": "Sculpteur et dessinateur travaillant autour de l'étude du corps humain, de l'anatomie, des proportions et des volumes.",
+
+                "knowsAbout": [
+                    "Sculpture",
+                    "Dessin",
+                    "Anatomie artistique",
+                    "Figure humaine",
+                    "Sculpture classique",
+                    "Sculpture gréco-romaine"
+                ],
+
+                "sameAs": [
+                    "https://www.instagram.com/alexandre_maignan/",
+                    "https://fr.pinterest.com/alexandremaignanart/",
+                    "https://www.tiktok.com/@alexandre.maignan",
+                    "https://www.linkedin.com/in/amaignan/",
+                    "https://sketchfab.com/Alexandre.maignan",
+                    "https://www.facebook.com/alexandre.maignan.1401/"
+                ]
+            }
+
+        ]
     }
     </script>
 
