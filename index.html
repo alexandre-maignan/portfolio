@@ -84,48 +84,83 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        "@id": "https://alexandre-maignan.github.io/portfolio/#website",
+
+        "@graph": [
+
+            {
+                "@type": "WebSite",
+                "@id": "https://alexandre-maignan.github.io/portfolio/#website",
+
+                "name": "Alexandre Maignan — Sculpteur",
+
+                "url": "https://alexandre-maignan.github.io/portfolio/",
+
+                "description": "Portfolio d'Alexandre Maignan, sculpteur et dessinateur travaillant dans une approche académique inspirée de la sculpture classique gréco-romaine et consacrée à l'étude du corps humain.",
+
+                "publisher": {
+                    "@id": "https://alexandre-maignan.github.io/portfolio/#person"
+                }
+            },
 
 
-        "name": "Alexandre Maignan — Sculpteur",
+            {
+                "@type": "WebPage",
+                "@id": "https://alexandre-maignan.github.io/portfolio/#webpage",
 
-        "url": "https://alexandre-maignan.github.io/portfolio/",
+                "url": "https://alexandre-maignan.github.io/portfolio/",
 
-        "description": "Portfolio d'Alexandre Maignan, sculpteur et dessinateur travaillant dans une approche académique inspirée de la sculpture classique gréco-romaine et consacrée à l'étude du corps humain.",
+                "name": "Alexandre Maignan — Sculpteur",
 
-        "author": {
-            "@type": "Person",
-            "@id": "https://alexandre-maignan.github.io/portfolio/#person",
+                "description": "Portfolio d'Alexandre Maignan, sculpteur travaillant dans une approche académique inspirée de la sculpture classique gréco-romaine.",
 
-            "name": "Alexandre Maignan",
+                "isPartOf": {
+                    "@id": "https://alexandre-maignan.github.io/portfolio/#website"
+                },
 
-            "url": "https://alexandre-maignan.github.io/portfolio/",
+                "about": {
+                    "@id": "https://alexandre-maignan.github.io/portfolio/#person"
+                },
 
-            "image": "https://alexandre-maignan.github.io/portfolio/images/a-propos/alexandre-maignan.jpg",
+                "mainEntity": {
+                    "@id": "https://alexandre-maignan.github.io/portfolio/#person"
+                }
+            },
 
-            "jobTitle": "Sculpteur",
 
-            "description": "Sculpteur et dessinateur travaillant autour de l'étude du corps humain, de l'anatomie, des proportions et des volumes.",
+            {
+                "@type": "Person",
+                "@id": "https://alexandre-maignan.github.io/portfolio/#person",
 
-            "knowsAbout": [
-                "Sculpture",
-                "Dessin",
-                "Anatomie artistique",
-                "Figure humaine",
-                "Sculpture classique",
-                "Sculpture gréco-romaine"
-            ],
-        
-            "sameAs": [
-                "https://www.instagram.com/alexandre_maignan/",
-                "https://fr.pinterest.com/alexandremaignanart/",
-                "https://www.tiktok.com/@alexandre.maignan",
-                "https://www.linkedin.com/in/amaignan/",
-                "https://sketchfab.com/Alexandre.maignan",
-                "https://www.facebook.com/alexandre.maignan.1401/"
-            ]
-        }
+                "name": "Alexandre Maignan",
+
+                "url": "https://alexandre-maignan.github.io/portfolio/",
+
+                "image": "https://alexandre-maignan.github.io/portfolio/images/a-propos/alexandre-maignan.jpg",
+
+                "jobTitle": "Sculpteur",
+
+                "description": "Sculpteur et dessinateur travaillant autour de l'étude du corps humain, de l'anatomie, des proportions et des volumes.",
+
+                "knowsAbout": [
+                    "Sculpture",
+                    "Dessin",
+                    "Anatomie artistique",
+                    "Figure humaine",
+                    "Sculpture classique",
+                    "Sculpture gréco-romaine"
+                ],
+
+                "sameAs": [
+                    "https://www.instagram.com/alexandre_maignan/",
+                    "https://fr.pinterest.com/alexandremaignanart/",
+                    "https://www.tiktok.com/@alexandre.maignan",
+                    "https://www.linkedin.com/in/amaignan/",
+                    "https://sketchfab.com/Alexandre.maignan",
+                    "https://www.facebook.com/alexandre.maignan.1401/"
+                ]
+            }
+
+        ]
     }
     </script>
 
