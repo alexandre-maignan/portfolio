@@ -1,0 +1,573 @@
+/* ==================================================
+   VARIABLES
+================================================== */
+
+:root {
+
+    --primary: #111111;
+    --secondary: #666666;
+    --secondary-light: #888888;
+
+    --background: #ffffff;
+    --border: #dddddd;
+
+    --max-width: 1400px;
+
+    --section-padding: 140px;
+
+}
+
+
+/* ==================================================
+   BASE
+================================================== */
+
+main {
+    width: 100%;
+    overflow: hidden;
+}
+
+.section-container {
+    width: min(
+        calc(100% - 80px),
+        var(--max-width)
+    );
+
+    margin: 0 auto;
+}
+
+
+/* ==================================================
+   TYPOGRAPHIE
+================================================== */
+
+.hero h1,
+.intro-section h2,
+.home-gallery h2,
+.approach-section h2,
+.contact-section h2 {
+    margin: 0;
+    color: var(--primary);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+}
+
+.hero p,
+.intro-section p,
+.approach-section p,
+.contact-section p {
+    color: var(--secondary);
+    line-height: 1.7;
+}
+
+
+/* ==================================================
+   HERO
+================================================== */
+
+.hero {
+    min-height: 90vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 160px 40px 120px;
+}
+
+.hero-content {
+    width: min(900px, 100%);
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+/* Petit titre */
+
+.hero-eyebrow,
+.section-eyebrow {
+    margin: 0 0 24px;
+
+    color: var(--secondary-light);
+
+    font-size: 12px;
+    font-weight: 500;
+
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+
+/* Titre principal */
+
+.hero h1 {
+    max-width: 900px;
+    margin: 0 auto;
+
+    font-size: clamp(
+        48px,
+        7vw,
+        100px
+    );
+
+    line-height: 0.95;
+}
+
+
+/* Introduction */
+
+.hero-intro {
+    max-width: 650px;
+
+    margin: 40px auto 0;
+
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+/* Boutons */
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 30px;
+
+    margin-top: 50px;
+}
+
+.hero-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding: 0 24px;
+
+    border: 1px solid var(--primary);
+
+    color: var(--primary);
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition:
+        background-color 0.4s ease,
+        color 0.4s ease;
+}
+
+.hero-actions a:hover {
+    background-color: var(--primary);
+    color: var(--background);
+}
+
+
+/* ==================================================
+   INTRODUCTION
+================================================== */
+
+.intro-section {
+    padding: var(--section-padding) 0;
+
+    border-top: 1px solid var(--border);
+}
+
+.intro-section h2 {
+    max-width: 700px;
+
+    font-size: clamp(
+        42px,
+        6vw,
+        80px
+    );
+
+    line-height: 1;
+}
+
+.intro-content {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 80px;
+
+    max-width: 1000px;
+
+    margin-top: 60px;
+}
+
+.intro-content p {
+    margin: 0;
+
+    font-size: 17px;
+}
+
+
+/* ==================================================
+   GALERIES
+================================================== */
+
+.home-gallery {
+    padding: var(--section-padding) 0;
+}
+
+.home-gallery + .home-gallery {
+    border-top: 1px solid var(--border);
+}
+
+
+/* En-tête */
+
+.section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 40px;
+
+    margin-bottom: 70px;
+}
+
+.section-header h2 {
+    font-size: clamp(
+        50px,
+        7vw,
+        100px
+    );
+
+    line-height: 0.9;
+}
+
+
+/* Lien */
+
+.section-header > a,
+.approach-section a,
+.contact-section a {
+    display: inline-block;
+
+    color: var(--primary);
+
+    font-size: 13px;
+    font-weight: 500;
+
+    text-decoration: none;
+
+    border-bottom: 1px solid var(--primary);
+
+    padding-bottom: 5px;
+
+    transition:
+        opacity 0.3s ease;
+}
+
+.section-header > a:hover,
+.approach-section a:hover,
+.contact-section a:hover {
+    opacity: 0.5;
+}
+
+
+/* ==================================================
+   GRILLE DES ŒUVRES
+================================================== */
+
+.home-gallery-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 30px;
+}
+
+
+/* Image */
+
+.home-artwork {
+    display: block;
+
+    overflow: hidden;
+
+    text-decoration: none;
+}
+
+.home-artwork img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 3 / 4;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.8s cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        );
+}
+
+.home-artwork:hover img {
+    transform: scale(1.025);
+}
+
+
+/* ==================================================
+   DÉMARCHE ARTISTIQUE
+================================================== */
+
+.approach-section {
+    padding: var(--section-padding) 0;
+
+    border-top: 1px solid var(--border);
+}
+
+.approach-section h2 {
+    max-width: 900px;
+
+    font-size: clamp(
+        42px,
+        6vw,
+        80px
+    );
+
+    line-height: 1;
+}
+
+.approach-section p {
+    max-width: 700px;
+
+    margin: 50px 0 35px;
+
+    font-size: 18px;
+}
+
+
+/* ==================================================
+   CONTACT
+================================================== */
+
+.contact-section {
+    padding: 160px 0;
+
+    border-top: 1px solid var(--border);
+
+    text-align: center;
+}
+
+.contact-section .section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-section h2 {
+    max-width: 900px;
+
+    font-size: clamp(
+        48px,
+        7vw,
+        100px
+    );
+
+    line-height: 0.95;
+}
+
+.contact-section p {
+    max-width: 600px;
+
+    margin: 40px auto;
+
+    font-size: 17px;
+}
+
+
+/* ==================================================
+   TABLETTE
+================================================== */
+
+@media (max-width: 900px) {
+
+    :root {
+        --section-padding: 110px;
+    }
+
+    .hero {
+        min-height: 80vh;
+
+        padding:
+            140px
+            30px
+            100px;
+    }
+
+    .section-container {
+        width: min(
+            calc(100% - 60px),
+            var(--max-width)
+        );
+    }
+
+    .intro-content {
+        gap: 40px;
+    }
+
+    .home-gallery-grid {
+        gap: 20px;
+    }
+
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 600px) {
+
+    :root {
+        --section-padding: 90px;
+    }
+
+
+    /* Container */
+
+    .section-container {
+        width: calc(100% - 40px);
+    }
+
+
+    /* Hero */
+
+    .hero {
+        min-height: 80vh;
+
+        padding:
+            130px
+            20px
+            80px;
+    }
+
+    .hero h1 {
+        font-size: clamp(
+            42px,
+            13vw,
+            65px
+        );
+
+        line-height: 0.95;
+    }
+
+    .hero-intro {
+        margin-top: 30px;
+
+        font-size: 16px;
+    }
+
+
+    /* Boutons */
+
+    .hero-actions {
+        flex-direction: column;
+
+        gap: 12px;
+
+        margin-top: 40px;
+    }
+
+    .hero-actions a {
+        width: 100%;
+    }
+
+
+    /* Introduction */
+
+    .intro-content {
+        display: block;
+
+        margin-top: 40px;
+    }
+
+    .intro-content p {
+        font-size: 16px;
+    }
+
+    .intro-content p + p {
+        margin-top: 25px;
+    }
+
+
+    /* Headers */
+
+    .section-header {
+        display: block;
+
+        margin-bottom: 45px;
+    }
+
+    .section-header > a {
+        margin-top: 30px;
+    }
+
+
+    /* Galerie */
+
+    .home-gallery-grid {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .home-artwork img {
+        aspect-ratio: 4 / 5;
+    }
+
+
+    /* Démarche */
+
+    .approach-section p {
+        margin-top: 35px;
+
+        font-size: 16px;
+    }
+
+
+    /* Contact */
+
+    .contact-section {
+        padding:
+            110px
+            20px;
+    }
+
+    .contact-section p {
+        font-size: 16px;
+    }
+
+}
+
+
+/* ==================================================
+   ACCESSIBILITÉ
+================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .home-artwork img,
+    .hero-actions a,
+    .section-header > a,
+    .approach-section a,
+    .contact-section a {
+        transition: none;
+    }
+
+}
