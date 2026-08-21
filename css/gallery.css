@@ -39,12 +39,37 @@
     font-size: 15px;
     line-height: 1.4;
 
-    max-width: 350px;
+    max-width: 750px;
 
     color: var(--color-secondary);
 
     --entry-y: 30px;
 }
+
+
+
+
+
+/* =========================
+   GALERIE — EYEBROW
+========================= */
+
+.gallery-eyebrow {
+    margin: 0 0 16px 0;
+
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+
+    color: #666666;
+}
+
+
+
+
+
+
 
 
 /* ==================================================
