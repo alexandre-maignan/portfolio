@@ -181,13 +181,25 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
 
     <!-- ==================================================
          STYLES DU SITE
     ================================================== -->
 
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/gallery.css">
     <link rel="stylesheet" href="css/index.css">
@@ -197,414 +209,335 @@
 
 </head>
 
+
+
+
+
+
 <body>
 
 
+    <!-- ==================================================
+         NAVBAR
+    ================================================== -->
 
+    <nav class="navbar">
 
-
-
-
-
-
-
-
-
-
-
-
-<nav class="navbar">
-
-    <div class="nav-container">
-
-        <a href="index.html" class="logo">
-            ΣΚΟΥΛΤΕΙΑ.
+        <a
+            href="index.html"
+            class="logo"
+        >
+            Alexandre Maignan
         </a>
 
-        <button
-            class="menu-toggle"
-            id="menu-toggle"
-            aria-label="Ouvrir le menu"
-        >
-            <span class="menu-text">Menu</span>
-        </button>
 
-        <div class="nav-links" id="nav-links">
+        <div class="nav-links">
 
-            <button
-                class="menu-close"
-                id="menu-close"
-                aria-label="Fermer le menu"
-            >
-                ×
-            </button>
+            <a href="sculptures.html">
+                Sculptures
+            </a>
 
-            <div class="nav-menu-content">
-
-                <div class="menu-title">
-                    Menu
-                </div>
-
-                <ul>
-                    <li>
-                        <a href="index.html">Accueil</a>
-                    </li>
-
-                    <li>
-                        <a href="dessins.html">Dessins</a>
-                    </li>
-
-                    <li>
-                        <a href="sculptures.html">Sculptures</a>
-                    </li>
-
-                    <li>
-                        <a href="a-propos.html">À propos</a>
-                    </li>
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</nav>
-
-
-    <!-- CONTENU PRINCIPAL -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<main>
-
-    <!-- ==================================================
-         HERO
-    ================================================== -->
-
-    <section class="hero" aria-labelledby="hero-title">
-
-        <div class="hero-content">
-
-            <p class="hero-eyebrow">
-                Portfolio de sculpture
-            </p>
-
-            <h1 id="hero-title">
-                Alexandre Maignan — Sculpteur
-            </h1>
-
-            <p class="hero-intro">
-                Je suis Alexandre Maignan, sculpteur travaillant dans une
-                approche académique inspirée de la sculpture gréco-romaine
-                et de la tradition classique. Mon travail s'intéresse
-                particulièrement à l'étude du corps humain, de l'anatomie,
-                des proportions et du volume.
-            </p>
-
-            <div class="hero-actions">
-
-                <a href="sculptures.html">
-                    Découvrir mes sculptures
-                </a>
-
-                <a href="dessins.html">
-                    Découvrir mes dessins
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ==================================================
-         PRÉSENTATION
-    ================================================== -->
-
-    <section class="intro-section"
-             aria-labelledby="intro-title">
-
-        <div class="section-container">
-
-            <p class="section-eyebrow">
-                Démarche artistique
-            </p>
-
-            <h2 id="intro-title">
-                Une approche académique de la sculpture
-            </h2>
-
-            <div class="intro-content">
-
-                <p>
-                    Ma pratique est principalement consacrée à la sculpture
-                    figurative et à l'étude du corps humain. Je m'inscris
-                    dans une approche académique inspirée de la sculpture
-                    antique gréco-romaine et de la tradition classique.
-                </p>
-
-                <p>
-                    L'observation de l'anatomie, des proportions, de la
-                    structure du corps et de la construction des volumes
-                    occupe une place centrale dans mon travail. Le dessin
-                    accompagne cette recherche comme outil d'étude et
-                    d'observation.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ==================================================
-         SCULPTURES
-    ================================================== -->
-
-    <section class="home-gallery home-sculptures"
-             aria-labelledby="sculptures-title">
-
-        <div class="section-container">
-
-            <div class="section-header">
-
-                <div>
-
-                    <p class="section-eyebrow">
-                        Œuvres
-                    </p>
-
-                    <h2 id="sculptures-title">
-                        Sculptures
-                    </h2>
-
-                </div>
-
-                <a href="sculptures.html">
-                    Voir toutes les sculptures
-                </a>
-
-            </div>
-
-
-            <div class="home-gallery-grid">
-
-                <a href="sculptures.html"
-                   class="home-artwork">
-
-                    <img
-                        src="images/sculptures/sculpture-10.jpg"
-                        alt="Sculpture figurative inspirée de la tradition classique gréco-romaine">
-
-                </a>
-
-                <a href="sculptures.html"
-                   class="home-artwork">
-
-                    <img
-                        src="images/sculptures/sculpture-03.jpg"
-                        alt="Étude sculptée du corps humain dans une approche académique">
-
-                </a>
-
-                <a href="sculptures.html"
-                   class="home-artwork">
-
-                    <img
-                        src="images/sculptures/sculpture-07.jpg"
-                        alt="Sculpture académique représentant une étude anatomique du corps humain">
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ==================================================
-         DESSINS
-    ================================================== -->
-
-    <section class="home-gallery home-drawings"
-             aria-labelledby="drawings-title">
-
-        <div class="section-container">
-
-            <div class="section-header">
-
-                <div>
-
-                    <p class="section-eyebrow">
-                        Études
-                    </p>
-
-                    <h2 id="drawings-title">
-                        Dessins
-                    </h2>
-
-                </div>
-
-                <a href="dessins.html">
-                    Voir tous les dessins
-                </a>
-
-            </div>
-
-
-            <div class="home-gallery-grid">
-
-                <a href="dessins.html"
-                   class="home-artwork">
-
-                    <img
-                        src="images/dessins/dessin-01.jpg"
-                        alt="Étude de portrait au graphite">
-
-                </a>
-
-                <a href="dessins.html"
-                   class="home-artwork">
-
-                    <img
-                        src="images/dessins/dessin-08.jpg"
-                        alt="Étude de portrait au graphite">
-
-                </a>
-
-                <a href="dessins.html"
-                   class="home-artwork">
-
-                    <img
-                        src="images/dessins/dessin-04.jpg"
-                        alt="Étude de portrait au graphite">
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ==================================================
-         INFLUENCES
-    ================================================== -->
-
-    <section class="approach-section"
-             aria-labelledby="approach-title">
-
-        <div class="section-container">
-
-            <p class="section-eyebrow">
-                Influences
-            </p>
-
-            <h2 id="approach-title">
-                Sculpture classique et tradition académique
-            </h2>
-
-            <p>
-                Mon travail s'inscrit dans une recherche autour de la
-                sculpture classique et de la représentation du corps.
-                J'étudie notamment les principes de l'art académique,
-                l'anatomie, les proportions et la construction des volumes,
-                avec une attention particulière portée à l'héritage de
-                la sculpture grecque et romaine.
-            </p>
+            <a href="dessins.html">
+                Dessins
+            </a>
 
             <a href="a-propos.html">
-                Découvrir ma démarche
+                À propos
             </a>
 
         </div>
 
-    </section>
+    </nav>
 
 
     <!-- ==================================================
-         CONTACT
+         MAIN
     ================================================== -->
 
-    <section class="contact-section"
-             aria-labelledby="contact-title">
+    <main>
 
-        <div class="section-container">
 
-            <p class="section-eyebrow">
-                Contact
-            </p>
+        <!-- ==================================================
+             HERO
+        ================================================== -->
 
-            <h2 id="contact-title">
-                Une question ou un projet ?
+        <section
+            class="hero"
+            aria-labelledby="hero-title"
+        >
+
+            <img
+                class="hero-image"
+                src="images/hero/hero-image.jpg"
+                alt="Sculpture classique"
+            >
+
+
+            <div
+                class="hero-overlay"
+                aria-hidden="true"
+            ></div>
+
+
+            <div class="hero-content">
+
+                <p class="hero-eyebrow">
+                    Portfolio de sculpture
+                </p>
+
+
+                <h1
+                    id="hero-title"
+                    class="hero-title"
+                >
+
+                    <span>Alexandre</span>
+
+                    <span>Maignan</span>
+
+                </h1>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             INTRO
+        ================================================== -->
+
+        <section
+            class="intro"
+            id="about"
+            aria-labelledby="intro-title"
+        >
+
+            <h2
+                id="intro-title"
+                class="sr-only"
+            >
+                À propos
             </h2>
 
-            <p>
-                Pour toute demande concernant mon travail de sculpture,
-                mes dessins ou mes recherches artistiques, vous pouvez
-                me contacter directement.
+
+            <p class="intro-text">
+
+                Je suis Alexandre Maignan, sculpteur inspiré par la tradition
+                classique et l’art gréco-romain. Mon travail est consacré à
+                l’étude du corps humain à travers l’anatomie, les proportions,
+                la structure et le volume. La sculpture et le dessin constituent
+                les deux axes principaux de cette recherche.
+
             </p>
 
-            <a href="mailto:alexandre.maignan.pro@gmail.com">
-                Me contacter
-            </a>
-
-        </div>
-
-    </section>
-
-</main>
+        </section>
 
 
+        <!-- ==================================================
+             SCULPTURES
+        ================================================== -->
+
+        <section
+            class="gallery"
+            id="sculptures"
+            aria-labelledby="sculptures-title"
+        >
+
+            <div class="gallery-header">
+
+                <h2 id="sculptures-title">
+                    Sculptures
+                </h2>
 
 
+                <a href="sculptures.html">
+                    Tout voir
+                </a>
+
+            </div>
 
 
+            <div class="gallery-grid">
 
 
+                <article class="gallery-item">
+
+                    <div class="gallery-image-wrapper">
+
+                        <img
+                            src="images/sculptures/sculpture-03.jpg"
+                            alt="Étude sculpturale d'un torse en plastiline"
+                            loading="lazy"
+                        >
+
+                    </div>
 
 
+                    <div class="gallery-info">
+
+                        <span>
+                            Étude anatomique - Torse
+                        </span>
+
+                        <span>
+                            Plastiline · 2026
+                        </span>
+
+                    </div>
+
+                </article>
 
 
+                <article class="gallery-item">
+
+                    <div class="gallery-image-wrapper">
+
+                        <img
+                            src="images/sculptures/sculpture-07.jpg"
+                            alt="Étude sculpturale d'une bouche en plastiline"
+                            loading="lazy"
+                        >
+
+                    </div>
 
 
+                    <div class="gallery-info">
+
+                        <span>
+                            Étude anatomique - Bouche
+                        </span>
+
+                        <span>
+                            Plastiline · 2026
+                        </span>
+
+                    </div>
+
+                </article>
 
 
+            </div>
+
+        </section>
 
 
+        <!-- ==================================================
+             LARGE DRAWING IMAGE
+        ================================================== -->
+
+        <section
+            class="image-section"
+            aria-label="Étude anatomique"
+        >
+
+            <img
+                class="parallax-image"
+                src="images/dessins/dessin-01.jpg"
+                alt="Étude anatomique au graphite"
+                loading="lazy"
+            >
 
 
+            <div class="image-caption">
+                Étude anatomique — 2026
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             DRAWINGS
+        ================================================== -->
+
+        <section
+            class="gallery"
+            id="dessins"
+            aria-labelledby="dessins-title"
+        >
+
+            <div class="gallery-header">
+
+                <h2 id="dessins-title">
+                    Dessins
+                </h2>
+
+
+                <a href="dessins.html">
+                    Tout voir
+                </a>
+
+            </div>
+
+
+            <div class="gallery-grid">
+
+
+                <article class="gallery-item">
+
+                    <div class="gallery-image-wrapper">
+
+                        <img
+                            src="images/dessins/dessin-08.jpg"
+                            alt="Portrait au graphite"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="gallery-info">
+
+                        <span>
+                            Portrait
+                        </span>
+
+                        <span>
+                            Graphite · 2026
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <article class="gallery-item">
+
+                    <div class="gallery-image-wrapper">
+
+                        <img
+                            src="images/dessins/dessin-01.jpg"
+                            alt="Étude anatomique au graphite"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="gallery-info">
+
+                        <span>
+                            Étude
+                        </span>
+
+                        <span>
+                            Graphite · 2026
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================================================
+         FOOTER
+    ================================================== -->
 
 
 
@@ -741,29 +674,302 @@
     <i class="fa-solid fa-arrow-up-long"></i>
 </button>
 
-<script src="js/page-load.js"></script>
-<script src="js/dessins.js"></script>
-<script src="js/navbar.js"></script>
-<script src="js/pagetransition.js"></script>
-<script src="js/back-to-top.js"></script>
-<script src="js/lenis.min.js"></script>
-<script src="js/smooth-scroll.js"></script>
-<script src="js/main.js"></script>
 
-<div class="lightbox" id="lightbox">
 
-    <button class="lightbox-close" id="lightbox-close" aria-label="Fermer">
-        &times;
-    </button>
 
-    <img
-        class="lightbox-image"
-        id="lightbox-image"
-        src=""
-        alt=""
-    >
 
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ==================================================
+         SCREEN READER ONLY
+    ================================================== -->
+
+    <style>
+
+        .sr-only {
+            position: absolute;
+
+            width: 1px;
+            height: 1px;
+
+            padding: 0;
+            margin: -1px;
+
+            overflow: hidden;
+
+            clip: rect(0, 0, 0, 0);
+
+            white-space: nowrap;
+
+            border: 0;
+        }
+
+    </style>
+
+
+    <!-- ==================================================
+         GSAP
+    ================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"
+    ></script>
+
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"
+    ></script>
+
+
+    <script>
+
+        gsap.registerPlugin(ScrollTrigger);
+
+
+        /* ==================================================
+           HERO IMAGE
+        ================================================== */
+
+        gsap.to(".hero-image", {
+
+            scale: 1,
+
+            duration: 2.2,
+
+            ease: "power3.out"
+
+        });
+
+
+        /* ==================================================
+           HERO TITLE
+        ================================================== */
+
+        gsap.from(".hero-title span", {
+
+            yPercent: 110,
+
+            opacity: 0,
+
+            duration: 1.4,
+
+            stagger: 0.12,
+
+            delay: 0.3,
+
+            ease: "power4.out"
+
+        });
+
+
+        /* ==================================================
+           HERO EYEBROW
+        ================================================== */
+
+        gsap.from(".hero-eyebrow", {
+
+            y: 20,
+
+            opacity: 0,
+
+            duration: 1,
+
+            delay: 0.5,
+
+            ease: "power3.out"
+
+        });
+
+
+        /* ==================================================
+           INTRO
+        ================================================== */
+
+        gsap.from(".intro-text", {
+
+            y: 100,
+
+            opacity: 0,
+
+            duration: 1.4,
+
+            ease: "power3.out",
+
+            scrollTrigger: {
+
+                trigger: ".intro",
+
+                start: "top 75%"
+
+            }
+
+        });
+
+
+        /* ==================================================
+           PARALLAX IMAGES
+        ================================================== */
+
+        document
+            .querySelectorAll(".parallax-image")
+            .forEach(image => {
+
+                gsap.fromTo(
+
+                    image,
+
+                    {
+                        yPercent: -8
+                    },
+
+                    {
+                        yPercent: 8,
+
+                        ease: "none",
+
+                        scrollTrigger: {
+
+                            trigger:
+                                image.closest(".image-section"),
+
+                            start: "top bottom",
+
+                            end: "bottom top",
+
+                            scrub: true
+
+                        }
+
+                    }
+
+                );
+
+            });
+
+
+        /* ==================================================
+           GALLERY ITEMS
+        ================================================== */
+
+        document
+            .querySelectorAll(".gallery-item")
+            .forEach(item => {
+
+                const image =
+                    item.querySelector("img");
+
+
+                /* ITEM */
+
+                gsap.from(item, {
+
+                    y: 80,
+
+                    opacity: 0,
+
+                    duration: 1.2,
+
+                    ease: "power3.out",
+
+                    scrollTrigger: {
+
+                        trigger: item,
+
+                        start: "top 85%"
+
+                    }
+
+                });
+
+
+                /* IMAGE */
+
+                gsap.fromTo(
+
+                    image,
+
+                    {
+                        scale: 1.12
+                    },
+
+                    {
+                        scale: 1,
+
+                        duration: 1.5,
+
+                        ease: "power3.out",
+
+                        scrollTrigger: {
+
+                            trigger: item,
+
+                            start: "top 85%"
+
+                        }
+
+                    }
+
+                );
+
+            });
+
+
+        /* ==================================================
+           NAVBAR
+        ================================================== */
+
+        const navbar =
+            document.querySelector(".navbar");
+
+
+        gsap.set(navbar, {
+
+            mixBlendMode: "difference",
+
+            color: "#ffffff"
+
+        });
+
+
+        gsap.from(navbar, {
+
+            y: -30,
+
+            opacity: 0,
+
+            duration: 1.2,
+
+            delay: 0.2,
+
+            ease: "power3.out"
+
+        });
+
+    </script>
+
+
+    <!-- ==================================================
+         LENIS
+    ================================================== -->
+
+    <script src="js/lenis.min.js"></script>
+
+    <script src="js/smooth-scroll.js"></script>
+
 
 </body>
+
 </html>
