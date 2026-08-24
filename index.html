@@ -29,7 +29,7 @@
     <link rel="canonical"
           href="https://alexandre-maignan.github.io/portfolio/">
 
-    <title>Alexandre Maignan — Sculpteur</title>
+    <title>Alexandre Maignan — Portfolio</title>
 
 
     <!-- ==================================================
@@ -38,7 +38,7 @@
     ================================================== -->
 
     <meta property="og:title"
-          content="Alexandre Maignan — Sculpteur">
+          content="Alexandre Maignan — Portfolio">
 
     <meta property="og:description"
           content="Portfolio de sculpture d'Alexandre Maignan, inspiré de la tradition académique et de la sculpture classique gréco-romaine.">
@@ -306,6 +306,16 @@
              INTRO
         ================================================== -->
 
+<div class="intro-header">
+
+    <div class="intro-line"></div>
+
+    <p class="intro-eyebrow">
+        Portfolio de sculpture
+    </p>
+
+</div>
+
         <section
             class="intro"
             id="about"
@@ -320,15 +330,14 @@
             </h2>
 
 
+
+
             <p class="intro-text">
 
-                Je suis Alexandre Maignan, sculpteur inspiré par la tradition
-                classique et l’art gréco-romain. Mon travail est consacré à
-                l’étude du corps humain à travers l’anatomie, les proportions,
-                la structure et le volume. La sculpture et le dessin constituent
-                les deux axes principaux de cette recherche.
+                Je suis Alexandre Maignan. Inspiré par la tradition classique et l’art gréco-romain, je consacre ma pratique à l’étude du corps humain à travers l’anatomie, les proportions, la structure et le volume. La sculpture et le dessin constituent les deux axes principaux de cette recherche.
 
             </p>
+
 
         </section>
 
@@ -734,6 +743,11 @@
     ></script>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+
+
     <script>
 
         gsap.registerPlugin(ScrollTrigger);
@@ -793,31 +807,124 @@
 
         });
 
+/* ==================================================
+   INTRO
+================================================== */
+/* ==================================================
+   INTRO — LINE REVEAL
+================================================== */
 
-        /* ==================================================
-           INTRO
-        ================================================== */
+const introText = document.querySelector(".intro-text");
 
-        gsap.from(".intro-text", {
+if (introText) {
 
-            y: 100,
+    const originalText = introText.textContent.trim();
 
-            opacity: 0,
+    /*
+    --------------------------------------------------
+    1. Créer temporairement les mots uniquement
+       pour détecter les lignes
+    --------------------------------------------------
+    */
 
-            duration: 1.4,
+    introText.innerHTML = originalText
+        .split(/\s+/)
+        .map(word => `<span class="intro-word">${word}</span>`)
+        .join(" ");
 
-            ease: "power3.out",
+    const words = [...introText.querySelectorAll(".intro-word")];
 
-            scrollTrigger: {
+    /*
+    --------------------------------------------------
+    2. Détecter les vraies lignes
+    --------------------------------------------------
+    */
 
-                trigger: ".intro",
+    const lines = [];
 
-                start: "top 75%"
+    words.forEach(word => {
 
-            }
+        const top = word.offsetTop;
 
-        });
+        let line = lines.find(
+            line => Math.abs(line.top - top) < 2
+        );
 
+        if (!line) {
+
+            line = {
+                top: top,
+                words: []
+            };
+
+            lines.push(line);
+        }
+
+        line.words.push(word);
+
+    });
+
+    /*
+    --------------------------------------------------
+    3. Récupérer le texte de chaque ligne
+    --------------------------------------------------
+    */
+
+    const lineTexts = lines.map(line => {
+
+        return line.words
+            .map(word => word.textContent)
+            .join(" ");
+
+    });
+
+    /*
+    --------------------------------------------------
+    4. Reconstruire le <p> avec UN span par ligne
+    --------------------------------------------------
+    */
+
+    introText.innerHTML = "";
+
+    lineTexts.forEach(text => {
+
+        const mask = document.createElement("span");
+        mask.className = "intro-line-mask";
+
+        const line = document.createElement("span");
+        line.className = "intro-line";
+
+        line.textContent = text;
+
+        mask.appendChild(line);
+        introText.appendChild(mask);
+
+    });
+
+    /*
+    --------------------------------------------------
+    5. Animation GSAP
+    --------------------------------------------------
+    */
+
+    gsap.from(".intro-line", {
+
+        yPercent: 70,
+
+        ease: "none",
+
+        stagger: 0.0,
+
+        scrollTrigger: {
+            trigger: ".intro-text",
+            start: "top 100%",
+            end: "top 50%", 
+            scrub: true
+        }
+
+    });
+
+}
 
         /* ==================================================
            PARALLAX IMAGES
@@ -968,6 +1075,7 @@
     <script src="js/lenis.min.js"></script>
 
     <script src="js/smooth-scroll.js"></script>
+
 
 
 </body>
