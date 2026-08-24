@@ -112,7 +112,7 @@ img {
 .nav-links {
     display: flex;
 
-    gap: 35px;
+    gap: 100px;
 
     min-width: 0;
 }
@@ -251,19 +251,36 @@ img {
 .intro-text {
     width: 100%;
     max-width: 1400px;
+    text-indent: 0em;
 
     min-width: 0;
 
     font-family: "Inter", sans-serif;
 
-    font-size: clamp(35px, 5vw, 75px);
+    font-size: clamp(35px, 5vw, 50px);
 
-    line-height: 0.9;
+    line-height: 1.4;
 
-    font-weight: 400;
+    font-weight: 600;
 
     letter-spacing: -0.035em;
 }
+
+
+
+.intro-line-mask {
+    display: block;
+    overflow: hidden;
+}
+
+.intro-line {
+    display: block;
+}
+
+
+
+
+
 
 
 /* ==================================================
@@ -973,4 +990,57 @@ footer a:hover {
         padding-right: 15px;
     }
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================================================
+   INTRO HEADER
+================================================== */
+
+.intro-header {
+    width: 100%;
+    margin-top: 50px;
+    padding: 0 30px;
+}
+
+.intro-header .intro-line {
+    width: 100%;
+    height: 1px;
+    background: #111;
+}
+
+.intro-eyebrow {
+    margin: 14px 0 0;
+
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+
+    color: #111;
 }
