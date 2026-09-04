@@ -112,7 +112,7 @@ img {
 .nav-links {
     display: flex;
 
-    gap: 100px;
+    gap: clamp(30px, 5vw, 100px);
 
     min-width: 0;
 }
@@ -191,6 +191,16 @@ img {
 }
 
 
+
+
+
+
+
+
+
+
+
+
 .hero-eyebrow {
     margin-bottom: 20px;
 
@@ -226,6 +236,42 @@ img {
 
     max-width: 100%;
 }
+
+
+
+
+
+
+
+/* ==================================================
+   INTRO HEADER
+================================================== */
+
+.intro-header {
+    width: 100%;
+    margin-top: 50px;
+    padding: 0 2vw;
+}
+
+.intro-header .intro-line {
+    width: 100%;
+    height: 1px;
+    background: #111;
+}
+
+.intro-eyebrow {
+    margin: 14px 0 0;
+
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+
+    color: #111;
+}
+
+
 
 
 /* ==================================================
@@ -633,7 +679,7 @@ img {
 
         height: 75px;
 
-        padding: 0 2vw;
+        padding: 0 4vw;
     }
 
 
@@ -668,7 +714,7 @@ img {
 
         min-height: 600px;
 
-        padding: 25px 2vw;
+        padding: 25px 4vw;
 
         overflow: hidden;
     }
@@ -699,7 +745,7 @@ img {
         width: 100%;
         max-width: 100%;
 
-        padding: 100px 2vw;
+        padding: 100px 4vw;
 
         overflow: hidden;
     }
@@ -754,7 +800,7 @@ img {
         width: 100%;
         max-width: 100%;
 
-        padding: 100px 2vw;
+        padding: 100px 4vw;
 
         overflow: hidden;
     }
@@ -844,123 +890,11 @@ img {
         letter-spacing: 0.07em;
     }
 
+    .intro-header {
+        padding: 0 4vw;
+    }
 
 
 }
 
 
-/* ==================================================
-   VERY SMALL SCREENS
-================================================== */
-
-@media (max-width: 400px) {
-
-    /* NAVBAR */
-
-    .navbar {
-        padding: 0 2vw;
-    }
-
-
-    .nav-links {
-        gap: 10px;
-    }
-
-
-    .nav-links a {
-        font-size: 9px;
-    }
-
-
-    .logo {
-        font-size: 17px;
-    }
-
-
-    /* HERO */
-
-    .hero {
-        padding: 20px;
-    }
-
-
-    /* GALLERY */
-
-    .gallery {
-        padding-left: 1vw;
-        padding-right: 1vw;
-    }
-
-
-    .gallery-header {
-        align-items: center;
-
-        gap: 15px;
-    }
-
-
-    .gallery-header h2 {
-        font-size: 42px;
-    }
-
-
-    .gallery-header a {
-        font-size: 8px;
-    }
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ==================================================
-   INTRO HEADER
-================================================== */
-
-.intro-header {
-    width: 100%;
-    margin-top: 50px;
-    padding: 0 2vw;
-}
-
-.intro-header .intro-line {
-    width: 100%;
-    height: 1px;
-    background: #111;
-}
-
-.intro-eyebrow {
-    margin: 14px 0 0;
-
-    font-family: "Inter", sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-
-    letter-spacing: 0.08em;
-
-    color: #111;
-}
