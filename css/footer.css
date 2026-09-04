@@ -19,8 +19,7 @@
 ========================= */
 
 .footer-container {
-    width: 90%;
-    max-width: 1400px;
+    padding: 0 2vw;
 
     margin: 0 auto;
 }
