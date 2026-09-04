@@ -201,9 +201,7 @@
 
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/gallery.css">
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/404.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/components.css">
 
@@ -798,124 +796,7 @@
 
         });
 
-/* ==================================================
-   INTRO
-================================================== */
-/* ==================================================
-   INTRO — LINE REVEAL
-================================================== */
 
-const introText = document.querySelector(".intro-text");
-
-if (introText) {
-
-    const originalText = introText.textContent.trim();
-
-    /*
-    --------------------------------------------------
-    1. Créer temporairement les mots uniquement
-       pour détecter les lignes
-    --------------------------------------------------
-    */
-
-    introText.innerHTML = originalText
-        .split(/\s+/)
-        .map(word => `<span class="intro-word">${word}</span>`)
-        .join(" ");
-
-    const words = [...introText.querySelectorAll(".intro-word")];
-
-    /*
-    --------------------------------------------------
-    2. Détecter les vraies lignes
-    --------------------------------------------------
-    */
-
-    const lines = [];
-
-    words.forEach(word => {
-
-        const top = word.offsetTop;
-
-        let line = lines.find(
-            line => Math.abs(line.top - top) < 2
-        );
-
-        if (!line) {
-
-            line = {
-                top: top,
-                words: []
-            };
-
-            lines.push(line);
-        }
-
-        line.words.push(word);
-
-    });
-
-    /*
-    --------------------------------------------------
-    3. Récupérer le texte de chaque ligne
-    --------------------------------------------------
-    */
-
-    const lineTexts = lines.map(line => {
-
-        return line.words
-            .map(word => word.textContent)
-            .join(" ");
-
-    });
-
-    /*
-    --------------------------------------------------
-    4. Reconstruire le <p> avec UN span par ligne
-    --------------------------------------------------
-    */
-
-    introText.innerHTML = "";
-
-    lineTexts.forEach(text => {
-
-        const mask = document.createElement("span");
-        mask.className = "intro-line-mask";
-
-        const line = document.createElement("span");
-        line.className = "intro-line";
-
-        line.textContent = text;
-
-        mask.appendChild(line);
-        introText.appendChild(mask);
-
-    });
-
-    /*
-    --------------------------------------------------
-    5. Animation GSAP
-    --------------------------------------------------
-    */
-
-    gsap.from(".intro-line", {
-
-        yPercent: 70,
-
-        ease: "none",
-
-        stagger: 0.0,
-
-        scrollTrigger: {
-            trigger: ".intro-text",
-            start: "top 100%",
-            end: "top 50%", 
-            scrub: true
-        }
-
-    });
-
-}
 
         /* ==================================================
            PARALLAX IMAGES
