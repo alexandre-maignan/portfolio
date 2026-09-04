@@ -679,7 +679,7 @@ img {
 
         height: 75px;
 
-        padding: 0 4vw;
+        padding: 0 5vw;
     }
 
 
@@ -714,7 +714,7 @@ img {
 
         min-height: 600px;
 
-        padding: 25px 4vw;
+        padding: 25px 5vw;
 
         overflow: hidden;
     }
@@ -745,7 +745,7 @@ img {
         width: 100%;
         max-width: 100%;
 
-        padding: 100px 4vw;
+        padding: 100px 5vw;
 
         overflow: hidden;
     }
@@ -800,7 +800,7 @@ img {
         width: 100%;
         max-width: 100%;
 
-        padding: 100px 4vw;
+        padding: 100px 5vw;
 
         overflow: hidden;
     }
@@ -891,7 +891,7 @@ img {
     }
 
     .intro-header {
-        padding: 0 4vw;
+        padding: 0 5vw;
     }
 
 
