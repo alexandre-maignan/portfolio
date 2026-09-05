@@ -18,7 +18,6 @@
 .navbar {
     position: fixed;
 
-    --entry-y: -100px;
 
     top: 0;
     left: 0;
@@ -33,13 +32,6 @@
     z-index: 1000;
 
 
-    /* État initial */
-
-    opacity: 0;
-
-    transform: translateY(var(--entry-y));
-
-
     /* Animation d'entrée + scroll */
 
     transition:
@@ -48,27 +40,13 @@
 }
 
 
-/* ==================================================
-   NAVBAR APRÈS CHARGEMENT
-================================================== */
-
-.navbar.navbar-loaded {
-
-    opacity: 1;
-
-    transform: translateY(0);
-
-    transition:
-        transform var(--navbar-scroll-duration) var(--navbar-scroll-easing),
-        opacity var(--navbar-entry-duration) var(--navbar-entry-easing);
-}
 
 
 /* ==================================================
    NAVBAR CACHÉE AU SCROLL
 ================================================== */
 
-.navbar.navbar-loaded.navbar-hidden {
+.navbar.navbar-hidden {
 
     transform: translateY(-100%);
 }
@@ -237,7 +215,7 @@
 
     .nav-container {
         width: 100%;
-        padding: 0 4vw;
+        padding: 0 5vw;
     }
 
 

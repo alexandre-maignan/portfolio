@@ -44,114 +44,98 @@ if (menuToggle && menuClose && navLinks) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ==================================================
-   NAVBAR
+   NAVBAR — SCROLL
 ================================================== */
 
 const navbar = document.querySelector(".navbar");
-
-let lastScrollY = window.scrollY;
-
-
-/* ==================================================
-   APPARITION
-================================================== */
-
-if (navbar) {
-
-    window.addEventListener("load", () => {
-
-        requestAnimationFrame(() => {
-
-            navbar.classList.add("navbar-loaded");
-
-        });
-
-    });
-
-
-    /* ==================================================
-       SCROLL
-    ================================================== */
-
-    window.addEventListener("scroll", () => {
-
-        // Ne rien modifier pendant la transition de page
-        if (document.body.classList.contains("page-exit")) {
-            return;
-        }
-
-
-        const currentScrollY = window.scrollY;
-
-
-        /* -----------------------------------------------
-           Haut de page
-        ----------------------------------------------- */
-
-        if (currentScrollY <= 0) {
-
-            navbar.classList.remove("navbar-hidden");
-
-            lastScrollY = currentScrollY;
-
-            return;
-
-        }
-
-
-        /* -----------------------------------------------
-           Scroll vers le bas
-        ----------------------------------------------- */
-
-        if (currentScrollY > lastScrollY) {
-
-            navbar.classList.add("navbar-hidden");
-
-        }
-
-
-        /* -----------------------------------------------
-           Scroll vers le haut
-        ----------------------------------------------- */
-
-        else if (currentScrollY < lastScrollY) {
-
-            navbar.classList.remove("navbar-hidden");
-
-        }
-
-
-        lastScrollY = currentScrollY;
-
-    });
-
-}
-
-
-
-/* ==================================================
-   LOGO
-================================================== */
-
 const logo = document.querySelector(".logo");
 
+let lastScrollY = window.scrollY;
+let ticking = false;
 
-if (logo) {
 
-    window.addEventListener("scroll", () => {
+function handleNavbarScroll() {
 
-        if (window.scrollY > 50) {
+    const currentScrollY = window.scrollY;
 
+    /* =========================
+       LOGO
+    ========================= */
+
+    if (logo) {
+
+        if (currentScrollY > 50) {
             logo.classList.add("scrolled");
-
         } else {
-
             logo.classList.remove("scrolled");
-
         }
+    }
 
-    });
 
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    if (navbar) {
+
+        /*
+         * Ne rien faire si le menu mobile
+         * est ouvert.
+         */
+        if (!navLinks || !navLinks.classList.contains("active")) {
+
+            /* Tout en haut */
+            if (currentScrollY <= 0) {
+
+                navbar.classList.remove("navbar-hidden");
+
+            }
+
+            /* Descente */
+            else if (currentScrollY > lastScrollY) {
+
+                navbar.classList.add("navbar-hidden");
+
+            }
+
+            /* Remontée */
+            else if (currentScrollY < lastScrollY) {
+
+                navbar.classList.remove("navbar-hidden");
+
+            }
+        }
+    }
+
+
+    lastScrollY = currentScrollY;
+
+    ticking = false;
 }
 
+
+window.addEventListener("scroll", () => {
+
+    if (!ticking) {
+
+        window.requestAnimationFrame(handleNavbarScroll);
+
+        ticking = true;
+    }
+
+}, { passive: true });
