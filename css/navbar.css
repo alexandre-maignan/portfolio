@@ -6,7 +6,7 @@
     --navbar-entry-duration: var(--main-entry-duration);
     --navbar-entry-easing: cubic-bezier(0.55, 1, 0.55, 1);
 
-    --navbar-scroll-duration: 0.8s;
+    --navbar-scroll-duration: 0.4s;
     --navbar-scroll-easing: cubic-bezier(0.55, 0, 0.1, 1);
 }
 
@@ -49,6 +49,7 @@
 .navbar.navbar-hidden {
 
     transform: translateY(-100%);
+
 }
 
 

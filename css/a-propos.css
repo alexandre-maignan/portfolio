@@ -8,7 +8,6 @@
 ================================================== */
 
 :root {
-    --about-max-width: 1100px;
     --about-text-width: 720px;
 
     --about-spacing-large: 140px;
@@ -26,7 +25,7 @@
 .about-section {
     width: 100%;
 
-    padding: 180px 40px 140px;
+    padding: 180px 4vw 140px;
 }
 
 
