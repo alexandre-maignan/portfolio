@@ -198,11 +198,11 @@
     <!-- ==================================================
          STYLES DU SITE
     ================================================== -->
-
+    
+    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/components.css">
 
 </head>
@@ -861,72 +861,7 @@
 
                 );
 
-            });
-
-
-        /* ==================================================
-           GALLERY ITEMS
-        ================================================== */
-
-        document
-            .querySelectorAll(".gallery-item")
-            .forEach(item => {
-
-                const image =
-                    item.querySelector("img");
-
-
-                /* ITEM */
-
-                gsap.from(item, {
-
-                    y: 80,
-
-                    opacity: 0,
-
-                    duration: 1.2,
-
-                    ease: "power3.out",
-
-                    scrollTrigger: {
-
-                        trigger: item,
-
-                        start: "top 85%"
-
-                    }
-
-                });
-
-
-                /* IMAGE */
-
-                gsap.fromTo(
-
-                    image,
-
-                    {
-                        scale: 1.12
-                    },
-
-                    {
-                        scale: 1,
-
-                        duration: 1.5,
-
-                        ease: "power3.out",
-
-                        scrollTrigger: {
-
-                            trigger: item,
-
-                            start: "top 85%"
-
-                        }
-
-                    }
-
-                );
+            
 
             });
 
