@@ -6,7 +6,7 @@
     --navbar-entry-duration: var(--main-entry-duration);
     --navbar-entry-easing: cubic-bezier(0.55, 1, 0.55, 1);
 
-    --navbar-scroll-duration: 0.4s;
+    --navbar-scroll-duration: 0.8s;
     --navbar-scroll-easing: cubic-bezier(0.55, 0, 0.1, 1);
 }
 
@@ -27,16 +27,18 @@
 
     background-color: var(--color-background);
 
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 0px solid var(--color-border);
 
     z-index: 1000;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 
 
     /* Animation d'entrée + scroll */
 
     transition:
-        transform var(--navbar-entry-duration) var(--navbar-entry-easing),
-        opacity var(--navbar-entry-duration) var(--navbar-entry-easing);
+        transform var(--navbar-scroll-duration) var(--navbar-scroll-easing),
+        opacity var(--navbar-scroll-duration) var(--navbar-scroll-easing);
 }
 
 

@@ -56,8 +56,6 @@ if (menuToggle && menuClose && navLinks) {
 
 
 
-
-
 /* ==================================================
    NAVBAR — SCROLL
 ================================================== */
@@ -66,76 +64,28 @@ const navbar = document.querySelector(".navbar");
 const logo = document.querySelector(".logo");
 
 let lastScrollY = window.scrollY;
-let ticking = false;
-
-
-function handleNavbarScroll() {
-
-    const currentScrollY = window.scrollY;
-
-    /* =========================
-       LOGO
-    ========================= */
-
-    if (logo) {
-
-        if (currentScrollY > 50) {
-            logo.classList.add("scrolled");
-        } else {
-            logo.classList.remove("scrolled");
-        }
-    }
-
-
-    /* =========================
-       NAVBAR
-    ========================= */
-
-    if (navbar) {
-
-        /*
-         * Ne rien faire si le menu mobile
-         * est ouvert.
-         */
-        if (!navLinks || !navLinks.classList.contains("active")) {
-
-            /* Tout en haut */
-            if (currentScrollY <= 0) {
-
-                navbar.classList.remove("navbar-hidden");
-
-            }
-
-            /* Descente */
-            else if (currentScrollY > lastScrollY) {
-
-                navbar.classList.add("navbar-hidden");
-
-            }
-
-            /* Remontée */
-            else if (currentScrollY < lastScrollY) {
-
-                navbar.classList.remove("navbar-hidden");
-
-            }
-        }
-    }
-
-
-    lastScrollY = currentScrollY;
-
-    ticking = false;
-}
-
 
 window.addEventListener("scroll", () => {
 
-    if (!ticking) {
+    const currentScrollY = window.scrollY;
 
-        window.requestAnimationFrame(handleNavbarScroll);
-
-        ticking = true;
+    /* Logo */
+    if (logo) {
+        logo.classList.toggle("scrolled", currentScrollY > 50);
     }
+
+    /* Navbar */
+    if (
+        navbar &&
+        (!navLinks || !navLinks.classList.contains("active"))
+    ) {
+        if (currentScrollY > lastScrollY && currentScrollY > 50) {
+            navbar.classList.add("navbar-hidden");
+        } else {
+            navbar.classList.remove("navbar-hidden");
+        }
+    }
+
+    lastScrollY = currentScrollY;
 
 }, { passive: true });
