@@ -89,3 +89,63 @@ window.addEventListener("scroll", () => {
     lastScrollY = currentScrollY;
 
 }, { passive: true });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const navbar = document.querySelector(".navbar");
+    const hero = document.querySelector(".hero");
+
+    if (!navbar || !hero) {
+        return;
+    }
+
+    function updateNavbar() {
+
+        const heroRect = hero.getBoundingClientRect();
+
+        if (heroRect.bottom > 0) {
+            navbar.classList.add("navbar-over-hero");
+        } else {
+            navbar.classList.remove("navbar-over-hero");
+        }
+    }
+
+    updateNavbar();
+
+    window.addEventListener("scroll", updateNavbar, { passive: true });
+    window.addEventListener("resize", updateNavbar);
+
+});
