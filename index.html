@@ -893,33 +893,83 @@
         });
 
 
-    /* ==================================================
-       HERO PARALLAX
-    ================================================== */
-    const mm = gsap.matchMedia();
 
-    mm.add("(min-width: 701px)", () => {
 
-        gsap.fromTo(
-            ".hero-picture",
-            {
-                yPercent: -8
-            },
-            {
-                yPercent: 8,
+/* ==================================================
+   HERO PARALLAX
+================================================== */
 
-                ease: "none",
+const heroPicture = document.querySelector(".hero-picture");
 
-                scrollTrigger: {
-                    trigger: ".hero",
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: true
-                }
-            }
+if (heroPicture) {
+
+    let ticking = false;
+
+    function updateHeroParallax() {
+
+        const hero = document.querySelector(".hero");
+
+        if (!hero) {
+            return;
+        }
+
+        const rect = hero.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        /*
+         * Progression du hero :
+         * 0 = hero en bas de l'écran
+         * 1 = hero en haut de l'écran
+         */
+
+        const progress =
+            (windowHeight - rect.top) /
+            (windowHeight + rect.height);
+
+        const clampedProgress = Math.max(
+            0,
+            Math.min(1, progress)
         );
 
-    });
+        /*
+         * De -8% à +8%
+         */
+
+        const yPercent =
+            -8 + (clampedProgress * 16);
+
+        heroPicture.style.transform =
+            `translate3d(0, ${yPercent}%, 0)`;
+
+        ticking = false;
+    }
+
+
+    function requestUpdate() {
+
+        if (!ticking) {
+
+            requestAnimationFrame(updateHeroParallax);
+
+            ticking = true;
+        }
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        requestUpdate,
+        { passive: true }
+    );
+
+    window.addEventListener(
+        "resize",
+        requestUpdate
+    );
+
+    updateHeroParallax();
+}
+
 
 </script>
 
