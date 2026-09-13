@@ -4,10 +4,13 @@
 
 .gallery {
     width: 100%;
-    box-sizing: border-box;
+    padding: 0 4vw;
 
-    margin: 120px auto 0;
-    padding: 0 4vw 100px;
+    margin: 0 auto;
+    margin-top: 120px;
+    margin-bottom: 100px;
+
+    box-sizing: border-box;
 }
 
 
@@ -121,10 +124,9 @@
 ================================================== */
 
 .drawing-info {
-    width: 100%;
-    max-width: 100%;
-
     padding: 18px 0 0;
+
+    max-width: 100%;
 
     overflow-wrap: break-word;
 
@@ -238,7 +240,6 @@
     .drawing-card {
         width: 100%;
         max-width: 100%;
-        min-width: 0;
 
         justify-self: stretch;
 
@@ -260,57 +261,94 @@
 
 
 /* ==================================================
-   FILTRES GALERIE
+   MOBILE
 ================================================== */
 
-.gallery-filters {
-    display: flex;
+@media (max-width: 700px) {
 
-    gap: 28px;
-
-    margin-top: 50px;
-    margin-bottom: -25px;
-}
+    .gallery {
+        padding: 5vw;
+    }
 
 
-/* ==================================================
-   BOUTONS FILTRES
-================================================== */
-
-.filter-button {
-    padding: 0;
-
-    border: none;
-
-    background: none;
-
-    color: var(--color-secondary);
-
-    font-family: inherit;
-
-    font-size: 13px;
-    font-weight: 400;
-
-    cursor: pointer;
-
-    transition:
-        color 0.25s ease;
-}
+    .gallery-header {
+        margin-bottom: 50px;
+    }
 
 
-.filter-button:hover {
-    color: var(--color-primary);
-}
+    .gallery-header h2 {
+        font-size: 42px;
+    }
 
 
-/* ==================================================
-   FILTRE ACTIF
-================================================== */
+    .gallery-grid {
+        grid-template-columns:
+            minmax(0, 1fr);
 
-.filter-button.active {
-    color: var(--color-primary);
+        gap: 40px;
+    }
 
-    font-weight: 700;
+
+    /* ----------------------------------------------
+       CARTES
+    ---------------------------------------------- */
+
+    .drawing-card {
+        width: 100%;
+        max-width: 100%;
+
+        justify-self: stretch !important;
+
+        text-align: left;
+    }
+
+
+    /* ----------------------------------------------
+       IMAGES
+    ---------------------------------------------- */
+
+    .drawing-card img {
+        display: block;
+
+        width: 100%;
+        height: auto;
+
+        max-width: none;
+        max-height: 80vh;
+
+        object-fit: contain;
+        object-position: center;
+    }
+
+
+    /* ----------------------------------------------
+       INFORMATIONS
+    ---------------------------------------------- */
+
+    .drawing-info {
+        text-align: left;
+    }
+
+
+    .drawing-info h2,
+    .drawing-info h3,
+    .drawing-info p {
+        text-align: left;
+    }
+
+
+    /* ----------------------------------------------
+       DÉSACTIVATION DE L'ANIMATION
+    ---------------------------------------------- */
+
+    .gallery-entry {
+        opacity: 1;
+
+        transform: none;
+
+        animation: none;
+    }
+
 }
 
 
@@ -445,24 +483,124 @@
 
 
 /* ==================================================
+   MOBILE LIGHTBOX
+================================================== */
+
+@media (max-width: 700px) {
+
+    .gallery {
+        padding: 0 4vw;
+    }
+
+
+    .lightbox {
+        padding: 20px;
+    }
+
+
+    .lightbox-image {
+        max-width: 94vw;
+        max-height: 85vh;
+    }
+
+
+    .lightbox-close {
+        top: 15px;
+        right: 15px;
+
+        font-size: 32px;
+    }
+
+}
+
+
+/* ==================================================
+   FILTRES GALERIE
+================================================== */
+
+.gallery-filters {
+    display: flex;
+
+    gap: 28px;
+
+    margin-top: 50px;
+    margin-bottom: -25px;
+}
+
+
+/* ==================================================
+   BOUTONS FILTRES
+================================================== */
+
+.filter-button {
+    padding: 0;
+
+    border: none;
+
+    background: none;
+
+    color: var(--color-secondary);
+
+    font-family: inherit;
+
+    font-size: 13px;
+    font-weight: 400;
+
+    cursor: pointer;
+
+    transition:
+        color 0.25s ease;
+}
+
+
+/* ==================================================
+   HOVER FILTRES
+================================================== */
+
+.filter-button:hover {
+    color: var(--color-primary);
+}
+
+
+/* ==================================================
+   FILTRE ACTIF
+================================================== */
+
+.filter-button.active {
+    color: var(--color-primary);
+
+    font-weight: 700;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================================================
    MOBILE
 ================================================== */
 
 @media (max-width: 700px) {
 
     .gallery {
-        margin-top: 80px;
-
-        padding:
-            0
-            3vw
-            80px;
+        padding: 0 3vw;
     }
 
-
-    /* ----------------------------------------------
-       EN-TÊTE
-    ---------------------------------------------- */
 
     .gallery-header {
         margin-bottom: 50px;
@@ -474,13 +612,8 @@
     }
 
 
-    /* ----------------------------------------------
-       GRILLE
-    ---------------------------------------------- */
-
     .gallery-grid {
-        grid-template-columns:
-            minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1fr);
 
         gap: 40px;
     }
@@ -495,7 +628,7 @@
         max-width: 100%;
         min-width: 0;
 
-        justify-self: stretch;
+        justify-self: stretch !important;
 
         text-align: left;
     }
@@ -527,8 +660,6 @@
     .drawing-info {
         width: 100%;
 
-        padding: 18px 0 0;
-
         text-align: left;
     }
 
@@ -541,21 +672,7 @@
 
 
     /* ----------------------------------------------
-       FILTRES
-    ---------------------------------------------- */
-
-    .gallery-filters {
-        gap: 20px;
-
-        margin-top: 40px;
-        margin-bottom: 0;
-
-        flex-wrap: wrap;
-    }
-
-
-    /* ----------------------------------------------
-       ANIMATION
+       DÉSACTIVATION DE L'ANIMATION
     ---------------------------------------------- */
 
     .gallery-entry {
@@ -565,28 +682,4 @@
 
         animation: none;
     }
-
-
-    /* ----------------------------------------------
-       LIGHTBOX
-    ---------------------------------------------- */
-
-    .lightbox {
-        padding: 20px;
-    }
-
-
-    .lightbox-image {
-        max-width: 94vw;
-        max-height: 85vh;
-    }
-
-
-    .lightbox-close {
-        top: 15px;
-        right: 15px;
-
-        font-size: 32px;
-    }
-
 }
