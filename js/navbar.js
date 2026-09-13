@@ -56,6 +56,9 @@ if (menuToggle && menuClose && navLinks) {
 
 
 
+
+
+
 /* ==================================================
    NAVBAR — SCROLL
 ================================================== */
@@ -117,12 +120,6 @@ window.addEventListener("scroll", () => {
 
 
 
-
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const navbar = document.querySelector(".navbar");
@@ -147,5 +144,83 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("scroll", updateNavbar, { passive: true });
     window.addEventListener("resize", updateNavbar);
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const navbar = document.querySelector(".navbar");
+
+    if (!navbar) {
+        return;
+    }
+
+    gsap.from(navbar, {
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.out"
+    });
 
 });
