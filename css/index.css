@@ -616,7 +616,7 @@ img {
         width: 100%;
         max-width: 100%;
 
-        padding: 30px 5vw;
+        padding: 30px 3vw;
 
         overflow: hidden;
     }
@@ -669,7 +669,7 @@ img {
         width: 100%;
         max-width: 100%;
 
-        padding: 80px 5vw;
+        padding: 80px 3vw;
 
         overflow: hidden;
     }
@@ -760,7 +760,7 @@ img {
     }
 
     .intro-header {
-        padding: 0 5vw;
+        padding: 0 3vw;
     }
 
 
