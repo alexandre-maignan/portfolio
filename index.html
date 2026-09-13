@@ -296,7 +296,7 @@
         <picture class="hero-picture">
 
             <source
-                media="(max-width: 700px)"
+                media="(max-width: 800px)"
                 srcset="images/hero/hero-image-mobile.jpg"
             >
 
@@ -896,36 +896,30 @@
     /* ==================================================
        HERO PARALLAX
     ================================================== */
+    const mm = gsap.matchMedia();
 
-    gsap.fromTo(
+    mm.add("(min-width: 701px)", () => {
 
-        ".hero-picture",
+        gsap.fromTo(
+            ".hero-picture",
+            {
+                yPercent: -8
+            },
+            {
+                yPercent: 8,
 
-        {
-            yPercent: -0
-        },
+                ease: "none",
 
-        {
-            yPercent: 0,
-
-            ease: "none",
-
-            scrollTrigger: {
-
-                trigger: ".hero",
-
-                start: "top bottom",
-
-                end: "bottom top",
-
-                scrub: true
-
+                scrollTrigger: {
+                    trigger: ".hero",
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                }
             }
+        );
 
-        }
-
-    );
-
+    });
 
 </script>
 
