@@ -776,6 +776,27 @@
         gsap.registerPlugin(ScrollTrigger);
 
 
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const navContainer = document.querySelector(".nav-container");
+
+            if (!navContainer) {
+                return;
+            }
+
+            gsap.from(navContainer, {
+                y: -100,
+                duration: 0.8,
+                ease: "power2.out"
+            });
+
+        });
+
+
+
+
         /* ==================================================
            HERO IMAGE
         ================================================== */
@@ -870,9 +891,29 @@
 
                 );
 
-            
+ 
+                gsap.fromTo(
+                    ".hero-picture",
+                    {
+                        yPercent: -9
+                    },
+                    {
+                        yPercent: 9,
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: ".hero",
+                            start: "top bottom",
+                            end: "bottom top",
+                            scrub: true
+                        }
+                    }
+                );
+
 
             });
+
+
+
 
 
   
