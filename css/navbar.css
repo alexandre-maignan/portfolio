@@ -27,7 +27,7 @@
 
     background-color: var(--color-background);
 
-    border-bottom: 0px solid var(--color-border);
+    border-bottom: 0px solid white;
 
     z-index: 1000;
 
