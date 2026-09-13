@@ -9,8 +9,8 @@
 
     width: 100%;
     min-height: 60dvh;
-    max-height: 80dvh;
-    
+    max-height: 90dvh;
+
     color: #f5f5f2;
     background-color:  black;
 
@@ -77,6 +77,7 @@ main {
     margin: 0 0 20px;
 
     font-size: clamp(24px, 2.2vw, 30px);
+    margin-right: 20px;
 
 
 }
@@ -84,8 +85,10 @@ main {
 .footer-about p {
     max-width: 350px;
 
+
     margin: 0;
 
+    margin-right: 20px;
     font-size: 15px;
     line-height: 1.7;
 
@@ -285,13 +288,14 @@ main {
 
 @media (max-width: 1000px) {
 
-    .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
+.footer-grid {
+    display: grid;
 
-        gap: 45px;
+    grid-template-columns: repeat(2, 1fr);
 
-        padding: 60px 0;
-    }
+    gap: 80px;
+
+}
 
 }
 
@@ -307,26 +311,56 @@ main {
     }
 
     .footer-grid {
-        gap: 45px;
-
+        gap: 40px 10px;
         padding: 60px 0;
     }
 
+    /* Textes du footer */
+    
+    .footer-about h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
 
+    .footer-about p {
+        font-size: 13px;
+        line-height: 1.6;
+        margin-right: 10px;
+    }
 
+    .footer-column h3 {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+
+    .footer-column a {
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+    /* Réseaux sociaux */
+
+    .social-links a {
+        width: 36px;
+        height: 36px;
+    }
+
+    .social-links i {
+        font-size: 15px;
+    }
 
     /* Bas du footer */
 
     .footer-bottom {
         flex-direction: column;
-
         align-items: flex-start;
-
         gap: 15px;
-
         padding: 20px 0;
     }
 
-
+    .footer-bottom p,
+    .footer-legal a {
+        font-size: 11px;
+    }
 
 }
