@@ -58,7 +58,7 @@ html.lenis.lenis-stopped {
     font-family: "Open Sans";
     src: url("../fonts/opensans.woff2") format("woff2");
     font-style: normal;
-    font-weight: 300 800;
+    font-weight: 300 600 800;
 }
 
 
