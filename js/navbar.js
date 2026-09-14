@@ -9,39 +9,32 @@ const navLinks = document.getElementById("nav-links");
 
 if (menuToggle && menuClose && navLinks) {
 
-    /* =========================
-       OUVRIR
-    ========================= */
-
-    menuToggle.addEventListener("click", () => {
+    function openMenu() {
 
         navLinks.classList.add("active");
-
         document.body.classList.add("menu-open");
 
         menuToggle.setAttribute("aria-expanded", "true");
         menuToggle.setAttribute("aria-label", "Fermer le menu");
 
-    });
+    }
 
 
-    /* =========================
-       FERMER
-    ========================= */
-
-    menuClose.addEventListener("click", () => {
+    function closeMenu() {
 
         navLinks.classList.remove("active");
-
         document.body.classList.remove("menu-open");
 
         menuToggle.setAttribute("aria-expanded", "false");
         menuToggle.setAttribute("aria-label", "Ouvrir le menu");
 
-    });
+    }
+
+
+    menuToggle.addEventListener("click", openMenu);
+    menuClose.addEventListener("click", closeMenu);
 
 }
-
 
 
 
