@@ -230,6 +230,11 @@
             aria-label="Ouvrir le menu"
         >
             <span class="menu-text">Menu</span>
+
+            <span class="menu-icon" aria-hidden="true">
+                <span></span>
+                <span></span>
+            </span>
         </button>
 
         <div class="nav-links" id="nav-links">
@@ -895,79 +900,80 @@
 
 
 
+
+
 /* ==================================================
    HERO PARALLAX
 ================================================== */
 
-const heroPicture = document.querySelector(".hero-picture");
+if (window.matchMedia("(min-width: 701px)").matches) {
 
-if (heroPicture) {
+    const heroPicture = document.querySelector(".hero-picture");
 
-    let ticking = false;
+    if (heroPicture) {
 
-    function updateHeroParallax() {
+        let ticking = false;
 
-        const hero = document.querySelector(".hero");
+        function updateHeroParallax() {
 
-        if (!hero) {
-            return;
+            const hero = document.querySelector(".hero");
+
+            if (!hero) {
+                return;
+            }
+
+            const rect = hero.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+
+            /*
+             * Progression du hero :
+             * 0 = hero en bas de l'écran
+             * 1 = hero en haut de l'écran
+             */
+
+            const progress =
+                (windowHeight - rect.top) /
+                (windowHeight + rect.height);
+
+            const clampedProgress = Math.max(
+                0,
+                Math.min(1, progress)
+            );
+
+            /*
+             * De -8% à +8%
+             */
+
+            const yPercent =
+                -8 + (clampedProgress * 16);
+
+            heroPicture.style.transform =
+                `translate3d(0, ${yPercent}%, 0)`;
+
+            ticking = false;
         }
 
-        const rect = hero.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
+        function requestUpdate() {
 
-        /*
-         * Progression du hero :
-         * 0 = hero en bas de l'écran
-         * 1 = hero en haut de l'écran
-         */
+            if (!ticking) {
+                requestAnimationFrame(updateHeroParallax);
+                ticking = true;
+            }
+        }
 
-        const progress =
-            (windowHeight - rect.top) /
-            (windowHeight + rect.height);
-
-        const clampedProgress = Math.max(
-            0,
-            Math.min(1, progress)
+        window.addEventListener(
+            "scroll",
+            requestUpdate,
+            { passive: true }
         );
 
-        /*
-         * De -8% à +8%
-         */
+        window.addEventListener(
+            "resize",
+            requestUpdate
+        );
 
-        const yPercent =
-            -8 + (clampedProgress * 16);
-
-        heroPicture.style.transform =
-            `translate3d(0, ${yPercent}%, 0)`;
-
-        ticking = false;
+        updateHeroParallax();
     }
-
-
-    function requestUpdate() {
-
-        if (!ticking) {
-
-            requestAnimationFrame(updateHeroParallax);
-
-            ticking = true;
-        }
-    }
-
-
-    window.addEventListener(
-        "scroll",
-        requestUpdate,
-        { passive: true }
-    );
-
-    window.addEventListener(
-        "resize",
-        requestUpdate
-    );
-
-    updateHeroParallax();
 }
 
 

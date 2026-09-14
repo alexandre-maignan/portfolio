@@ -13,8 +13,6 @@
 
 /* ==================================================
    NAVBAR
-
-   background-color: var(--color-background);
 ================================================== */
 
 .navbar {
@@ -30,7 +28,7 @@
 
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0);
 
-    border-bottom: 0px solid #ffffff;
+    border-bottom: 0 solid #ffffff;
 
     z-index: 1000;
 
@@ -51,9 +49,12 @@
 }
 
 
-/* Desktop : logo + bouton Menu en blanc */
+/* ==================================================
+   ÉLÉMENTS BLANCS SUR LE HERO
+================================================== */
 
 .navbar.navbar-over-hero .logo,
+.navbar.navbar-over-hero .menu-toggle,
 .navbar.navbar-over-hero .menu-text {
     color: white;
 }
@@ -64,10 +65,11 @@
 
 
 /* ==================================================
-   MOBILE
+   MOBILE — COULEURS SUR LE HERO
 ================================================== */
 
 @media (max-width: 700px) {
+
     .navbar.navbar-over-hero .nav-links a {
         color: black;
     }
@@ -83,18 +85,12 @@
 }
 
 
-
-
-
-
 /* ==================================================
    NAVBAR CACHÉE AU SCROLL
 ================================================== */
 
 .navbar.navbar-hidden {
-
     transform: translateY(-100%);
-
 }
 
 
@@ -103,16 +99,14 @@
 ================================================== */
 
 .nav-container {
-
     width: 100%;
+    height: 100%;
 
     padding: 0 4vw;
-    height: 100%;
 
     margin: 0 auto;
 
     display: flex;
-
     align-items: center;
     justify-content: space-between;
 }
@@ -120,7 +114,6 @@
 
 /* ==================================================
    LOGO
-   var(--color-primary)
 ================================================== */
 
 .logo {
@@ -132,13 +125,11 @@
 
     color: var(--color-primary);
 
-    font-size: 24px;
+    font-size: 22px;
 
     transition:
         font-size 0.5s cubic-bezier(.55, 0, .1, 1);
 }
-
-
 
 
 /* ==================================================
@@ -146,10 +137,7 @@
 ================================================== */
 
 .nav-links {
-
-
     display: flex;
-
     align-items: center;
 
     margin: 0;
@@ -158,9 +146,7 @@
 
 
 .nav-links ul {
-
     display: flex;
-
     align-items: center;
 
     gap: clamp(40px, 8vw, 120px);
@@ -173,7 +159,6 @@
 
 
 .nav-links a {
-
     text-decoration: none;
 
     color: black;
@@ -196,7 +181,6 @@
 
 .menu-title {
     display: none;
-
 }
 
 
@@ -205,8 +189,12 @@
 ================================================== */
 
 .menu-toggle {
-
     display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
 
     border: none;
 
@@ -214,14 +202,64 @@
 
     padding: 0;
 
-    color: var(--color-primary);
+    color: black;
 
     font-family: inherit;
 
-    font-size: 16px;
+    font-size: 14px;
+
     font-weight: 500;
 
     cursor: pointer;
+}
+
+
+/* ==================================================
+   ICÔNE MENU — 2 TRAITS
+================================================== */
+
+.menu-icon {
+    position: relative;
+
+    display: block;
+
+    width: 18px;
+    height: 7px;
+
+    flex-shrink: 0;
+}
+
+
+.menu-icon::before,
+.menu-icon::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    width: 18px;
+    height: 2px;
+
+    background-color: currentColor;
+
+    transform: scaleY(0.5);
+
+    transform-origin: center;
+}
+
+
+/* Trait supérieur */
+
+.menu-icon::before {
+    top: 0;
+}
+
+
+/* Trait inférieur */
+
+.menu-icon::after {
+    bottom: 0;
 }
 
 
@@ -246,7 +284,6 @@
     ========================= */
 
     .navbar {
-
         height: 70px;
 
         transition:
@@ -261,6 +298,7 @@
 
     .nav-container {
         width: 100%;
+
         padding: 0 3vw;
     }
 
@@ -270,7 +308,7 @@
     ========================= */
 
     .logo {
-        font-size: 21px;
+        font-size: 18px;
     }
 
 
@@ -279,8 +317,14 @@
     ========================= */
 
     .menu-toggle {
-        display: block;
-        font-weight: 700;
+        text-transform: uppercase;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 9px;
     }
 
 
@@ -289,7 +333,6 @@
     ========================= */
 
     .nav-links {
-
         position: fixed;
 
         top: 0;
@@ -325,7 +368,6 @@
     ========================= */
 
     .nav-links.active {
-
         visibility: visible;
 
         transform: translateX(0);
@@ -350,7 +392,6 @@
     ========================= */
 
     .menu-title {
-
         display: block;
 
         margin: 0 0 20px 0;
@@ -370,7 +411,6 @@
     ========================= */
 
     .nav-links ul {
-
         display: block;
 
         width: 100%;
@@ -387,7 +427,6 @@
     ========================= */
 
     .nav-links li {
-
         width: 100%;
 
         margin: 0;
@@ -400,7 +439,6 @@
     ========================= */
 
     .nav-links li a {
-
         display: block;
 
         width: 100%;
@@ -410,6 +448,7 @@
         color: var(--color-primary);
 
         font-size: 20px;
+
         font-weight: 500;
 
         text-decoration: none;
@@ -417,7 +456,7 @@
 
 
     /* =========================
-       TRAITS
+       TRAITS ENTRE LES LIENS
     ========================= */
 
     .nav-links li + li {
@@ -430,7 +469,6 @@
     ========================= */
 
     .menu-close {
-
         position: absolute;
 
         top: 20px;
@@ -456,6 +494,7 @@
         font-family: inherit;
 
         font-size: 34px;
+
         font-weight: 300;
 
         line-height: 1;
@@ -466,20 +505,9 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* ==================================================
+   LIGNE SOUS LA NAVBAR — MOBILE
+================================================== */
 
 @media (max-width: 700px) {
 
@@ -487,6 +515,7 @@
         content: "";
 
         position: absolute;
+
         bottom: 0;
         left: 0;
 
@@ -496,6 +525,7 @@
         background: var(--color-background);
 
         transform: scaleY(0.5);
+
         transform-origin: center;
     }
 
