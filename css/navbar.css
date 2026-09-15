@@ -35,7 +35,7 @@
     transition:
         transform var(--navbar-scroll-duration) var(--navbar-scroll-easing),
         opacity var(--navbar-scroll-duration) var(--navbar-scroll-easing),
-        background-color 0.4s ease;
+        background-color 0s ease;
 }
 
 
