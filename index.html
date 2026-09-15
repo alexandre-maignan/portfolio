@@ -906,7 +906,7 @@
    HERO PARALLAX
 ================================================== */
 
-if (window.matchMedia("(min-width: 701px)").matches) {
+if (window.matchMedia("(min-width: 0px)").matches) {
 
     const heroPicture = document.querySelector(".hero-picture");
 
@@ -945,7 +945,7 @@ if (window.matchMedia("(min-width: 701px)").matches) {
              */
 
             const yPercent =
-                -8 + (clampedProgress * 16);
+                -15 + (clampedProgress * 30);
 
             heroPicture.style.transform =
                 `translate3d(0, ${yPercent}%, 0)`;
